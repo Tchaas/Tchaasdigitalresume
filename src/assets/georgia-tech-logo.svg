@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 220" role="img" aria-labelledby="title desc">
+  <title id="title">Georgia Tech Logo</title>
+  <desc id="desc">Stylized Georgia Tech GT mark on a navy background.</desc>
+  <rect width="200" height="220" fill="#003057" rx="24" />
+  <path
+    fill="#B3A369"
+    d="M20 110c0-44.2 35.8-80 80-80h76v28h-76c-28.7 0-52 23.3-52 52s23.3 52 52 52h42v-28h-32v-28h90v84h-30v-28h-70c-44.2 0-80-35.8-80-80z"
+  />
+  <path
+    fill="#B3A369"
+    d="M120 28h64v28h-17v112h-30V56h-17z"
+  />
+  <g fill="#ffffff" font-family="'Georgia', 'Times New Roman', serif" font-weight="700" text-anchor="middle">
+    <text x="100" y="190" font-size="28">Georgia</text>
+    <text x="100" y="214" font-size="28">Tech</text>
+  </g>
+</svg>

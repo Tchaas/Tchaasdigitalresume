@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import svgPaths from "./imports/svg-o41sg7fn0u";
-import imgImg from "figma:asset/0ec77554b9c2048ea8f456ec28402e266753147d.png";
+import profileImg from "./assets/profile-headshot.png";
 import circuitBg from "figma:asset/d1e24e304bd08c8dad5c534cb5493c70e5febc79.png";
-import gtLogo from "figma:asset/a9d6cc6ec6d79f0db9fc83f7fc2d9daa0ce4611a.png";
+import gtLogo from "./assets/georgia-tech-logo.svg";
 import { AnimatedCounter } from "./components/AnimatedCounter";
 import { SkillTag } from "./components/SkillTag";
 import { Header } from "./components/Header";
@@ -63,6 +63,8 @@ function OverviewPage() {
   const handleSkillClick = (skill: string) => {
     setSelectedSkill(selectedSkill === skill ? null : skill);
   };
+
+  const selectedExperiences = selectedSkill ? skillExperiences[selectedSkill] ?? [] : [];
 
   return (
     <div className="min-h-screen bg-[#0a0e1a]">
@@ -204,12 +206,12 @@ function OverviewPage() {
                   className="absolute inset-0 bg-gradient-to-br from-emerald-500/30 to-blue-500/30 rounded-full blur-2xl"
                 />
                 
-                <div className="relative w-80 h-80 rounded-full bg-gradient-to-br from-emerald-500/20 to-transparent p-1 backdrop-blur-sm border border-emerald-500/30">
-                  <div className="w-full h-full rounded-full bg-gray-900 p-4">
-                    <img 
-                      src={imgImg} 
-                      alt="Tchaas Alexander-Wright" 
-                      className="w-full h-full rounded-full object-cover border-2 border-emerald-500/50 shadow-xl"
+                <div className="relative w-[420px] h-[420px] rounded-full bg-gradient-to-br from-emerald-500/20 to-transparent p-2.5 backdrop-blur-sm border border-emerald-500/30">
+                  <div className="w-full h-full rounded-full bg-gray-900 p-6">
+                    <img
+                      src={profileImg}
+                      alt="Tchaas Alexander-Wright"
+                      className="w-full h-full rounded-full object-cover border-[6px] border-emerald-500/60 shadow-xl"
                     />
                   </div>
                 </div>
@@ -559,51 +561,55 @@ function OverviewPage() {
           </div>
 
           {/* Experience Panel - Shows when skill is selected */}
-          {selectedSkill && skillExperiences[selectedSkill] && (
+          {selectedSkill !== null && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="bg-gray-900/50 backdrop-blur-sm rounded-xl border border-emerald-500/30 p-8 mt-8"
-            >
-              <div className="flex items-start justify-between mb-6">
-                <div>
-                  <h3 className="text-gray-100 text-xl mb-2">
-                    Where I used <span className="text-emerald-400">{selectedSkill}</span>
-                  </h3>
-                  <p className="text-gray-400 text-sm">
-                    Click another skill to explore, or close this panel
-                  </p>
-                </div>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => setSelectedSkill(null)}
-                  className="text-gray-400 hover:text-emerald-400 transition-colors"
-                >
-                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </motion.button>
-              </div>
-
-              <ul className="space-y-3">
-                {skillExperiences[selectedSkill].map((experience, i) => (
-                  <motion.li
-                    key={i}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.1 }}
-                    className="flex items-center gap-3 text-gray-300"
+                className="bg-gray-900/50 backdrop-blur-sm rounded-xl border border-emerald-500/30 p-8 mt-8"
+              >
+                <div className="flex items-start justify-between mb-6">
+                  <div>
+                    <h3 className="text-gray-100 text-xl mb-2">
+                      Where I used <span className="text-emerald-400">{selectedSkill}</span>
+                    </h3>
+                    <p className="text-gray-400 text-sm">
+                      Click another skill to explore, or close this panel
+                    </p>
+                  </div>
+                  <motion.button
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setSelectedSkill(null)}
+                    className="text-gray-400 hover:text-emerald-400 transition-colors"
                   >
-                    <div className="w-2 h-2 bg-emerald-500 rounded-full flex-shrink-0" />
-                    <span>{experience}</span>
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
-          )}
+                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </motion.button>
+                </div>
+
+                {selectedExperiences.length > 0 ? (
+                  <ul className="space-y-3">
+                    {selectedExperiences.map((experience, i) => (
+                      <motion.li
+                        key={i}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: i * 0.1 }}
+                        className="flex items-center gap-3 text-gray-300"
+                      >
+                        <div className="w-2 h-2 bg-emerald-500 rounded-full flex-shrink-0" />
+                        <span>{experience}</span>
+                      </motion.li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="text-gray-400">No experience entries recorded yet for this skill.</p>
+                )}
+              </motion.div>
+            )}
         </div>
       </motion.section>
 
@@ -640,7 +646,7 @@ function OverviewPage() {
             >
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                 <div className="flex-1">
-                  <h3 className="text-gray-100 mb-2">Masters of Science in Computer Science</h3>
+                  <h3 className="text-gray-100 mb-2">Master of Science in Computer Science</h3>
                   <p className="text-emerald-400 mb-2">Georgia Institute of Technology</p>
                   <p className="text-gray-400 mb-1">2025 - Present</p>
                   <motion.span

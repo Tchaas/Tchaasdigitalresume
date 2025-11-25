@@ -1,6 +1,6 @@
 import circuitBg from "figma:asset/d1e24e304bd08c8dad5c534cb5493c70e5febc79.png";
 import educationIcon from "figma:asset/f4d02be8ee2e842c7fd42eeef23e798576542a47.png";
-import gtLogo from "figma:asset/a9d6cc6ec6d79f0db9fc83f7fc2d9daa0ce4611a.png";
+import gtLogo from "../assets/georgia-tech-logo.svg";
 import udLogo from "figma:asset/dd23cb4cc0353fe35b9d749c3ea903e87334bc53.png";
 import msoeLogo from "figma:asset/11b33a6497ad88b072c82caa862d024a5cd53c85.png";
 import matcLogo from "figma:asset/eb9d13c165ccdc296c05dd793c1a15712623f02a.png";
@@ -50,7 +50,7 @@ export function EducationPage() {
                       </div>
                       <div className="flex-1">
                         <h3 className="text-gray-100 mb-1">Georgia Institute of Technology</h3>
-                        <p className="text-emerald-400 mb-2">Masters of Science in Computer Science</p>
+                        <p className="text-emerald-400 mb-2">Master of Science in Computer Science</p>
                       </div>
                     </div>
                     
