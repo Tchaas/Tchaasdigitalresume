@@ -3,7 +3,7 @@ import educationIcon from "figma:asset/f4d02be8ee2e842c7fd42eeef23e798576542a47.
 import gtLogo from "../assets/georgia-tech-logo.svg";
 import udLogo from "figma:asset/dd23cb4cc0353fe35b9d749c3ea903e87334bc53.png";
 import msoeLogo from "figma:asset/11b33a6497ad88b072c82caa862d024a5cd53c85.png";
-import matcLogo from "figma:asset/eb9d13c165ccdc296c05dd793c1a15712623f02a.png";
+import matcLogo from "../assets/matc icon.jpg";
 import degreeIcon from "figma:asset/94719da024130e17b7466b55ccba8a0e51618a8b.png";
 import svgPaths from "../imports/svg-o41sg7fn0u";
 import { GraduationCap, BookOpen, Award, Calendar, MapPin, Users } from "lucide-react";

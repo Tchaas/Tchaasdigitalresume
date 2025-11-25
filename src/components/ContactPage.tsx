@@ -72,7 +72,7 @@ export function ContactPage() {
                 </a>
 
                 <a
-                  href="https://github.com"
+                  href="https://github.com/Tchaas"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 p-4 bg-gray-900/50 backdrop-blur-sm rounded-xl border border-emerald-500/20 hover:border-emerald-500/50 transition-all group"

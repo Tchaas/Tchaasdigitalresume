@@ -4,6 +4,10 @@ import svgPaths from "./imports/svg-o41sg7fn0u";
 import profileImg from "./assets/profile-headshot.png";
 import circuitBg from "figma:asset/d1e24e304bd08c8dad5c534cb5493c70e5febc79.png";
 import gtLogo from "./assets/georgia-tech-logo.svg";
+import { GraduationCap } from "lucide-react";
+import { Rocket } from "lucide-react";
+import { Code } from "lucide-react";
+import { Users } from "lucide-react";
 import { AnimatedCounter } from "./components/AnimatedCounter";
 import { SkillTag } from "./components/SkillTag";
 import { CircuitBackground } from "./components/CircuitBackground";
@@ -19,47 +23,59 @@ function OverviewPage() {
   const [selectedSkill, setSelectedSkill] = useState<string | null>(null);
 
   const skills = [
-    "Agile Methodology",
+    // From Professional Development - NovaOne Technology Stack
+    "JavaScript",
+    "GitHub Copilot",
+    "Google Cloud",
+    "CockroachDB",
+    "Postman",
+    "Squarespace",
+    "Fivetran",
+    "OKTA",
+    "Cypress",
+    "Nightwatch.js",
+    // From Professional Development - Bytonomy Core Competencies
+    "Business Strategy",
+    "Financial Modeling",
     "Product Management",
-    "Enterprise Architecture",
-    "API Development",
-    "Requirements Gathering",
-    "Data Architecture",
-    "User Experience (UX)",
-    "User Interface (UI)",
-    "GAP Analysis",
-    "Product Roadmapping",
-    "Business Process Analysis",
-    "User Acceptance Testing",
-    "Data Mining",
-    "Technical Documentation",
-    "Cross-Functional Leadership",
-    "Solution Design",
-    "User Interviews",
-    "Risk Management",
-    "Forecasting",
-    "Software Testing",
-    "SQL & Databases",
-    "Test Automation",
-    "Process Improvement",
-    "Stakeholder Management",
-    "Technical Support"
+    "Client Relations",
+    "Marketing Strategy",
+    "Team Leadership",
+    "Documentation",
+    "Project Prioritization",
+    // From Professional Development - Habitat Skills
+    "Committee Leadership",
+    "Member Recruitment",
+    "Strategic Alignment"
   ];
 
   const skillExperiences: Record<string, string[]> = {
-    "Agile Methodology": ["Business Architect - FedEx", "Senior Product Owner - FedEx", "Product Owner - FedEx"],
-    "Product Management": ["Senior Product Owner - FedEx", "Product Owner - FedEx", "Product Manager - Kohl's"],
-    "Enterprise Architecture": ["Business Architect - FedEx"],
-    "API Development": ["Senior Product Owner - FedEx", "Product Owner - FedEx"],
-    "Data Architecture": ["Business Architect - FedEx"],
-    "User Experience (UX)": ["Product Owner - FedEx"],
-    "GAP Analysis": ["Senior Product Owner - FedEx"],
-    "Requirements Gathering": ["Business Architect - FedEx", "Product Owner - FedEx", "Senior Business Analyst - FIS"],
-    "Product Roadmapping": ["Senior Product Owner - FedEx", "Product Owner - FedEx"],
-    "Technical Documentation": ["Senior Business Analyst - FIS", "Associate Automation QA - Northwestern Mutual"],
-    "User Acceptance Testing": ["Senior Business Analyst - FIS"],
-    "Test Automation": ["Associate Automation QA - Northwestern Mutual"],
-    "SQL & Databases": ["Product Manager - Kohl's"],
+    // NovaOne Technology Stack
+    "JavaScript": ["NovaOne Technology - Developed JavaScript logic using GitHub Copilot"],
+    "GitHub Copilot": ["NovaOne Technology - Utilized for JavaScript development and code generation"],
+    "Google Cloud": ["NovaOne Technology - Deployed cloud infrastructure and services"],
+    "CockroachDB": ["NovaOne Technology - Implemented distributed database solutions"],
+    "Postman": ["NovaOne Technology - API testing and development"],
+    "Squarespace": ["NovaOne Technology - Website and platform integration"],
+    "Fivetran": ["NovaOne Technology - Data pipeline and ETL processes"],
+    "OKTA": ["NovaOne Technology - Identity and access management integration"],
+    "Cypress": ["NovaOne Technology - End-to-end testing automation"],
+    "Nightwatch.js": ["NovaOne Technology - Browser automation and testing"],
+    
+    // Bytonomy Core Competencies
+    "Business Strategy": ["Bytonomy Tech - Established company vision through comprehensive business plan"],
+    "Financial Modeling": ["Bytonomy Tech - Created financial models based on project projections"],
+    "Product Management": ["Bytonomy Tech - Developed product features and coordinated with Lead Developers", "Business Architect - FedEx", "Senior Product Owner - FedEx", "Product Owner - FedEx"],
+    "Client Relations": ["Bytonomy Tech - Networked and established client relationships"],
+    "Marketing Strategy": ["Bytonomy Tech - Developed marketing plan to attract users"],
+    "Team Leadership": ["Bytonomy Tech - Coordinated team building events and work sessions"],
+    "Documentation": ["Bytonomy Tech - Created functional documentation for features", "Habitat for Humanity - Maintained meeting documentation"],
+    "Project Prioritization": ["Bytonomy Tech - Prioritized projects based on timeliness and complexity"],
+    
+    // Habitat for Humanity Skills
+    "Committee Leadership": ["Habitat for Humanity - Led committee operations as Membership Chair"],
+    "Member Recruitment": ["Habitat for Humanity - Recruited and engaged new members"],
+    "Strategic Alignment": ["Habitat for Humanity - Ensured alignment with organizational goals"],
   };
 
   const handleSkillClick = (skill: string) => {
@@ -413,7 +429,7 @@ function OverviewPage() {
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Stat 1 */}
+            {/* Stat 1 - Years of Experience */}
             <motion.div
               initial={{ opacity: 0, scale: 0.5 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -427,17 +443,15 @@ function OverviewPage() {
                 transition={{ duration: 0.5 }}
                 className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-lg shadow-emerald-500/30 group-hover:shadow-emerald-500/50 transition-all"
               >
-                <svg className="w-7 h-6 flex-shrink-0" fill="none" viewBox="0 0 30 24">
-                  <path d={svgPaths.p3d856570} fill="white" />
-                </svg>
+                <Users className="w-8 h-8 text-white" />
               </motion.div>
               <div className="text-gray-100 mb-2 text-3xl font-semibold">
-                <AnimatedCounter value="500" suffix="+" />
+                <AnimatedCounter value="9" suffix="+" />
               </div>
-              <p className="text-gray-400">Freight Operations Managed</p>
+              <p className="text-gray-400">Years of Experience</p>
             </motion.div>
 
-            {/* Stat 2 */}
+            {/* Stat 2 - Degrees Earned */}
             <motion.div
               initial={{ opacity: 0, scale: 0.5 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -451,17 +465,15 @@ function OverviewPage() {
                 transition={{ duration: 0.5 }}
                 className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-lg shadow-emerald-500/30 group-hover:shadow-emerald-500/50 transition-all"
               >
-                <svg className="w-4 h-6 flex-shrink-0" fill="none" viewBox="0 0 15 24">
-                  <path d={svgPaths.p1c740200} fill="white" />
-                </svg>
+                <GraduationCap className="w-8 h-8 text-white" />
               </motion.div>
               <div className="text-gray-100 mb-2 text-3xl font-semibold">
-                <AnimatedCounter value="2" suffix="M+" prefix="$" />
+                <AnimatedCounter value="4" />
               </div>
-              <p className="text-gray-400">Revenue Generated</p>
+              <p className="text-gray-400">Degrees Earned</p>
             </motion.div>
 
-            {/* Stat 3 */}
+            {/* Stat 3 - Startups Co-Founded */}
             <motion.div
               initial={{ opacity: 0, scale: 0.5 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -475,17 +487,15 @@ function OverviewPage() {
                 transition={{ duration: 0.5 }}
                 className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-lg shadow-emerald-500/30 group-hover:shadow-emerald-500/50 transition-all"
               >
-                <svg className="w-5 h-6 flex-shrink-0" fill="none" viewBox="0 0 18 24">
-                  <path d={svgPaths.p2f501700} fill="white" />
-                </svg>
+                <Rocket className="w-8 h-8 text-white" />
               </motion.div>
               <div className="text-gray-100 mb-2 text-3xl font-semibold">
-                <AnimatedCounter value="15" suffix="+" />
+                <AnimatedCounter value="2" />
               </div>
-              <p className="text-gray-400">Industry Certifications</p>
+              <p className="text-gray-400">Startups Co-Founded</p>
             </motion.div>
 
-            {/* Stat 4 */}
+            {/* Stat 4 - Technologies Deployed */}
             <motion.div
               initial={{ opacity: 0, scale: 0.5 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -499,14 +509,12 @@ function OverviewPage() {
                 transition={{ duration: 0.5 }}
                 className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-lg shadow-emerald-500/30 group-hover:shadow-emerald-500/50 transition-all"
               >
-                <svg className="w-7 h-6 flex-shrink-0" fill="none" viewBox="0 0 30 24">
-                  <path d={svgPaths.p6a55c00} fill="white" />
-                </svg>
+                <Code className="w-8 h-8 text-white" />
               </motion.div>
               <div className="text-gray-100 mb-2 text-3xl font-semibold">
-                <AnimatedCounter value="98" suffix="%" />
+                <AnimatedCounter value="10" suffix="+" />
               </div>
-              <p className="text-gray-400">Client Satisfaction Rate</p>
+              <p className="text-gray-400">Technologies Deployed</p>
             </motion.div>
           </div>
         </div>
@@ -719,40 +727,26 @@ function OverviewPage() {
                   >
                     <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
                       <div>
-                        <h3 className="text-gray-100 mb-1">Senior Product Manager</h3>
-                        <p className="text-emerald-400 mb-1">TechFlow Solutions</p>
-                        <p className="text-gray-400">2022 - Present</p>
+                        <h3 className="text-gray-100 mb-1">Business Architect</h3>
+                        <p className="text-emerald-400 mb-1">Federal Express Corporation</p>
+                        <p className="text-gray-400">Mar 2025 - Present</p>
                       </div>
                       <motion.span
                         animate={{ scale: [1, 1.05, 1] }}
                         transition={{ repeat: Infinity, duration: 2 }}
                         className="px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full"
                       >
-                        Current
+                        Current Role
                       </motion.span>
                     </div>
-                    <p className="text-gray-400 mb-4">
-                      Led cross-functional teams in developing innovative SaaS solutions for enterprise clients. Managed product roadmaps, conducted market research, and drove strategic initiatives that resulted in 40% revenue growth.
+                    <p className="text-gray-300 mb-4">
+                      Managing incoming business demand across five Agile Release Trains (ARTs), ensuring prioritization aligns with enterprise strategies. Defining and documenting data architecture to support new enterprise capabilities, developing process maps and capability models, and collaborating with architects and engineering teams to propose technology solutions.
                     </p>
                     <div className="flex flex-wrap gap-2">
-                      <motion.span
-                        whileHover={{ scale: 1.1, y: -2 }}
-                        className="px-4 py-1.5 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-full cursor-pointer hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-all"
-                      >
-                        Product Management
-                      </motion.span>
-                      <motion.span
-                        whileHover={{ scale: 1.1, y: -2 }}
-                        className="px-4 py-1.5 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-full cursor-pointer hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-all"
-                      >
-                        SaaS Solutions
-                      </motion.span>
-                      <motion.span
-                        whileHover={{ scale: 1.1, y: -2 }}
-                        className="px-4 py-1.5 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-full cursor-pointer hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-all"
-                      >
-                        Team Leadership
-                      </motion.span>
+                      <span className="px-3 py-1 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-lg">Enterprise Architecture</span>
+                      <span className="px-3 py-1 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-lg">Data Architecture</span>
+                      <span className="px-3 py-1 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-lg">Agile (SAFe)</span>
+                      <span className="px-3 py-1 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-lg">Process Modeling</span>
                     </div>
                   </motion.div>
                 </div>
