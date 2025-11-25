@@ -4,6 +4,9 @@ interface CircuitBackgroundProps {
   className?: string;
 }
 
+type Segment = { x1: number; y1: number; x2: number; y2: number };
+type Pulse = { pathIndex: number; t: number; speed: number };
+
 export function CircuitBackground({ className = "" }: CircuitBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -14,54 +17,93 @@ export function CircuitBackground({ className = "" }: CircuitBackgroundProps) {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    const paths: Segment[][] = [];
+    const pulses: Pulse[] = [];
+    const pads: { x: number; y: number }[] = [];
+
+    const GRID = 42;           // spacing between “tracks”
+    const PATH_COUNT = 26;     // how many distinct routed traces
+    const PULSES_PER_PATH = 3;
+    const TRACE_WIDTH = 1.4;
+
     const resize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+      buildCircuit();
     };
 
-    resize();
-    window.addEventListener("resize", resize);
-
-    // ---- circuit path + pulses setup ----
-    type Segment = { x1: number; y1: number; x2: number; y2: number };
-
-    const paths: Segment[][] = [];
-    const pulses: { pathIndex: number; t: number; speed: number }[] = [];
-    const PATH_COUNT = 18;
-    const PULSES_PER_PATH = 3;
-    const lineColor = "rgba(23, 255, 108, 0.35)";
-
-    const buildPaths = () => {
+    const buildCircuit = () => {
       paths.length = 0;
       pulses.length = 0;
+      pads.length = 0;
 
+      const w = canvas.width;
+      const h = canvas.height;
+
+      // Helper: snap to grid
+      const snap = (v: number) => Math.round(v / GRID) * GRID;
+
+      // Build orthogonal paths that follow the grid
       for (let i = 0; i < PATH_COUNT; i++) {
-        const y =
-          (canvas.height / PATH_COUNT) * i + Math.random() * 40 - 20;
         const segments: Segment[] = [];
-        let x = -100;
 
-        while (x < canvas.width + 100) {
-          const segLength = 80 + Math.random() * 140;
-          const nextX = x + segLength;
-          const offsetY = (Math.random() - 0.5) * 40;
-          segments.push({ x1: x, y1: y, x2: nextX, y2: y + offsetY });
-          x = nextX;
+        // start somewhere on the left or top
+        let x = snap(Math.random() < 0.5 ? -GRID : Math.random() * w);
+        let y = snap(Math.random() * h);
+
+        let lastDir: number | null = null;
+        const steps = 6 + Math.floor(Math.random() * 10);
+
+        for (let s = 0; s < steps; s++) {
+          // Directions: 0=right,1=down,2=left,3=up
+          const dirs = [0, 1, 2, 3].filter((d) =>
+            lastDir === null ? true : (d + 2) % 4 !== lastDir // no immediate reverse
+          );
+          const dir = dirs[Math.floor(Math.random() * dirs.length)];
+          lastDir = dir;
+
+          const stepUnits = 1 + Math.floor(Math.random() * 3); // 1–3 grid units
+          const dx =
+            dir === 0 ? GRID * stepUnits :
+            dir === 2 ? -GRID * stepUnits : 0;
+          const dy =
+            dir === 1 ? GRID * stepUnits :
+            dir === 3 ? -GRID * stepUnits : 0;
+
+          const nx = x + dx;
+          const ny = y + dy;
+
+          // keep inside a padded area so traces don't hug the edge
+          const margin = GRID * 2;
+          if (nx < -margin || nx > w + margin || ny < margin || ny > h - margin) {
+            break;
+          }
+
+          segments.push({ x1: x, y1: y, x2: nx, y2: ny });
+
+          // chance to drop a pad at corners / endpoints
+          if (Math.random() < 0.25) {
+            pads.push({ x: nx, y: ny });
+          }
+
+          x = nx;
+          y = ny;
         }
 
-        paths.push(segments);
+        if (segments.length > 0) {
+          paths.push(segments);
 
-        for (let j = 0; j < PULSES_PER_PATH; j++) {
-          pulses.push({
-            pathIndex: i,
-            t: Math.random(),
-            speed: 0.0004 + Math.random() * 0.0007,
-          });
+          // attach pulses to this path
+          for (let j = 0; j < PULSES_PER_PATH; j++) {
+            pulses.push({
+              pathIndex: paths.length - 1,
+              t: Math.random(),
+              speed: 0.001 + Math.random() * 0.0015,
+            });
+          }
         }
       }
     };
-
-    buildPaths();
 
     const getPointOnPath = (pathSegments: Segment[], t: number) => {
       const totalSegments = pathSegments.length;
@@ -75,13 +117,16 @@ export function CircuitBackground({ className = "" }: CircuitBackgroundProps) {
       };
     };
 
-    // subtle automatic drift, mouse just nudges it
+    resize();
+    window.addEventListener("resize", resize);
+
+    // subtle parallax
     let mouseX = 0.5;
     let mouseY = 0.5;
 
     const handlePointerMove = (e: PointerEvent) => {
-      mouseX = 0.5 + (e.clientX / window.innerWidth - 0.5) * 0.3;
-      mouseY = 0.5 + (e.clientY / window.innerHeight - 0.5) * 0.3;
+      mouseX = e.clientX / window.innerWidth;
+      mouseY = e.clientY / window.innerHeight;
     };
 
     window.addEventListener("pointermove", handlePointerMove);
@@ -89,30 +134,48 @@ export function CircuitBackground({ className = "" }: CircuitBackgroundProps) {
     let animationFrameId: number;
 
     const animate = () => {
-      const { width, height } = canvas;
-      const t = performance.now() * 0.0001; // slow time-based drift
+      const { width: w, height: h } = canvas;
+      const t = performance.now() * 0.00012;
 
-      // background gradient with slow automatic drift
-      const centerX = width * (mouseX * 0.7 + 0.15 * Math.sin(t));
-      const centerY = height * (mouseY * 0.7 + 0.15 * Math.cos(t));
-
-      const grad = ctx.createRadialGradient(
-        centerX,
-        centerY,
-        40,
-        width / 2,
-        height / 2,
-        Math.max(width, height)
-      );
-      grad.addColorStop(0, "#050608");
-      grad.addColorStop(1, "#000000");
+      // --- Background gradient (blue → teal → green bias) ---
+      const grad = ctx.createLinearGradient(0, 0, w, h);
+      grad.addColorStop(0, "#020617");  // deep navy
+      grad.addColorStop(0.4, "#012a3a"); // cyan / blue
+      grad.addColorStop(0.8, "#022c22"); // teal / green
+      grad.addColorStop(1, "#00110c");   // darker green edge
       ctx.fillStyle = grad;
-      ctx.fillRect(0, 0, width, height);
+      ctx.fillRect(0, 0, w, h);
 
-      // draw circuit lines
-      ctx.strokeStyle = lineColor;
+      // --- Faint matrix grid (like a PCB underlayer) ---
+      ctx.save();
+      ctx.strokeStyle = "rgba(12, 148, 136, 0.12)";
       ctx.lineWidth = 1;
-      paths.forEach((segments) => {
+
+      ctx.beginPath();
+      const GRID_BG = GRID;
+      for (let x = 0; x <= w; x += GRID_BG) {
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, h);
+      }
+      for (let y = 0; y <= h; y += GRID_BG) {
+        ctx.moveTo(0, y);
+        ctx.lineTo(w, y);
+      }
+      ctx.stroke();
+      ctx.restore();
+
+      // --- Main traces (brighter, PCB style) ---
+      ctx.lineWidth = TRACE_WIDTH;
+      ctx.lineCap = "round";
+
+      paths.forEach((segments, i) => {
+        // small hue variation per path
+        const phase = (i / paths.length) * Math.PI * 2 + t * 2;
+        const greenBoost = 180 + 60 * Math.sin(phase);
+        const blueBoost = 160 + 40 * Math.cos(phase * 0.6);
+
+        ctx.strokeStyle = `rgba(${40}, ${greenBoost}, ${blueBoost}, 0.55)`;
+
         ctx.beginPath();
         segments.forEach((seg, idx) => {
           if (idx === 0) ctx.moveTo(seg.x1, seg.y1);
@@ -121,20 +184,43 @@ export function CircuitBackground({ className = "" }: CircuitBackgroundProps) {
         ctx.stroke();
       });
 
-      // draw moving pulses
-      pulses.forEach((p, index) => {
-        p.t = (p.t + p.speed) % 1;
-        const pt = getPointOnPath(paths[p.pathIndex], p.t);
+      // --- Pads / vias (circular nodes on the network) ---
+      pads.forEach((pad, index) => {
+        const pulse = 0.3 + 0.2 * Math.sin(t * 8 + index);
+        const rOuter = 6 + pulse * 4;
+        const rInner = 2.5;
 
-        const radius = 2.5;
-        const alpha =
-          0.5 + 0.5 * Math.sin(performance.now() * 0.004 + index);
+        // outer glow
+        ctx.beginPath();
+        ctx.arc(pad.x, pad.y, rOuter, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(16, 185, 129, 0.20)";
+        ctx.fill();
+
+        // inner pad ring
+        ctx.beginPath();
+        ctx.arc(pad.x, pad.y, rInner, 0, Math.PI * 2);
+        ctx.strokeStyle = "rgba(209, 250, 229, 0.9)";
+        ctx.lineWidth = 1.4;
+        ctx.stroke();
+      });
+
+      // --- Flowing pulses on traces ---
+      pulses.forEach((p, index) => {
+        const path = paths[p.pathIndex];
+        if (!path || path.length === 0) return;
+
+        p.t = (p.t + p.speed) % 1;
+        const pt = getPointOnPath(path, p.t);
+
+        const baseR = 2.6;
+        const flicker = 0.4 + 0.3 * Math.sin(performance.now() * 0.006 + index);
+        const radius = baseR + flicker;
 
         ctx.beginPath();
         ctx.arc(pt.x, pt.y, radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(23, 255, 108, ${alpha})`;
-        ctx.shadowColor = "rgba(23, 255, 108, 0.8)";
-        ctx.shadowBlur = 12;
+        ctx.fillStyle = "rgba(34, 197, 94, 0.95)";
+        ctx.shadowColor = "rgba(52, 211, 153, 0.9)";
+        ctx.shadowBlur = 16;
         ctx.fill();
         ctx.shadowBlur = 0;
       });
@@ -142,6 +228,7 @@ export function CircuitBackground({ className = "" }: CircuitBackgroundProps) {
       animationFrameId = requestAnimationFrame(animate);
     };
 
+    buildCircuit();
     animate();
 
     return () => {
@@ -154,7 +241,7 @@ export function CircuitBackground({ className = "" }: CircuitBackgroundProps) {
   return (
     <canvas
       ref={canvasRef}
-      className={`fixed inset-0 -z-10 pointer-events-none ${className}`}
+      className={`fixed inset-0 -z-20 pointer-events-none ${className}`}
     />
   );
 }

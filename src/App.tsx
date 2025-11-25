@@ -69,7 +69,7 @@ function OverviewPage() {
   const selectedExperiences = selectedSkill ? skillExperiences[selectedSkill] ?? [] : [];
 
   return (
-    <div className="min-h-screen bg-[#0a0e1a]">
+    <div className="min-h-screen relative">
       {/* Hero Section with Circuit Background */}
       <motion.section 
         initial={{ opacity: 0 }}
@@ -195,7 +195,7 @@ function OverviewPage() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="flex justify-center lg:justify-end"
             >
-              <div className="relative">
+              <div className="relative z-20">
                 {/* Outer Glowing Frame */}
                 <motion.div 
                   animate={{ rotate: 360 }}
@@ -772,15 +772,15 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState('overview');
 
   return (
-    <div className="min-h-screen relative bg-[#0a0e1a] overflow-x-hidden">
+    <div className="min-h-screen relative bg-[#050608] overflow-x-hidden">
       {/* Global animated circuit background */}
-      <CircuitBackground className="opacity-60" />
+      <CircuitBackground />
 
       {/* Interactive sparks */}
       <InteractiveSparks />
 
       {/* Foreground content */}
-      <div className="relative z-10">
+      <div className="relative z-20">
         <Header currentPage={currentPage} onPageChange={setCurrentPage} />
         
         <main>

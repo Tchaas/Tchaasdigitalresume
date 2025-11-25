@@ -4,7 +4,7 @@ import { Footer } from "./Footer";
 
 export function ProfessionalDevelopmentPage() {
   return (
-    <div className="min-h-screen bg-[#0a0e1a] relative">
+    <div className="min-h-screen relative">
       {/* Hero Section */}
       <section className="relative py-16 px-6">
         <div className="max-w-6xl mx-auto text-center">
