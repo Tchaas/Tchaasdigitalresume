@@ -6,6 +6,8 @@ import circuitBg from "figma:asset/d1e24e304bd08c8dad5c534cb5493c70e5febc79.png"
 import gtLogo from "./assets/georgia-tech-logo.svg";
 import { AnimatedCounter } from "./components/AnimatedCounter";
 import { SkillTag } from "./components/SkillTag";
+import { CircuitBackground } from "./components/CircuitBackground";
+import { InteractiveSparks } from "./components/InteractiveSparks";
 import { Header } from "./components/Header";
 import { EducationPage } from "./components/EducationPage";
 import { WorkHistoryPage } from "./components/WorkHistoryPage";
@@ -73,13 +75,8 @@ function OverviewPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="relative bg-[#0a0e1a] min-h-[600px] flex items-center justify-center px-6 py-20 overflow-hidden"
+        className="relative min-h-[600px] flex items-center justify-center px-6 py-20 overflow-hidden"
       >
-        {/* Circuit Background */}
-        <div className="absolute inset-0 opacity-20">
-          <img src={circuitBg} alt="" className="w-full h-full object-cover" />
-        </div>
-        
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#0a0e1a]/90 via-[#0a0e1a]/70 to-emerald-900/20" />
         
@@ -775,14 +772,25 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState('overview');
 
   return (
-    <div className="min-h-screen">
-      <Header currentPage={currentPage} onPageChange={setCurrentPage} />
-      
-      {currentPage === 'overview' && <OverviewPage />}
-      {currentPage === 'education' && <EducationPage />}
-      {currentPage === 'experience' && <WorkHistoryPage />}
-      {currentPage === 'skills' && <ProfessionalDevelopmentPage />}
-      {currentPage === 'contact' && <ContactPage />}
+    <div className="min-h-screen relative bg-[#0a0e1a] overflow-x-hidden">
+      {/* Global animated circuit background */}
+      <CircuitBackground className="opacity-60" />
+
+      {/* Interactive sparks */}
+      <InteractiveSparks />
+
+      {/* Foreground content */}
+      <div className="relative z-10">
+        <Header currentPage={currentPage} onPageChange={setCurrentPage} />
+        
+        <main>
+          {currentPage === 'overview' && <OverviewPage />}
+          {currentPage === 'education' && <EducationPage />}
+          {currentPage === 'experience' && <WorkHistoryPage />}
+          {currentPage === 'skills' && <ProfessionalDevelopmentPage />}
+          {currentPage === 'contact' && <ContactPage />}
+        </main>
+      </div>
     </div>
   );
 }
