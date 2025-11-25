@@ -3,11 +3,13 @@ import { motion } from "framer-motion";
 import svgPaths from "./imports/svg-o41sg7fn0u";
 import profileImg from "./assets/profile-headshot.png";
 import circuitBg from "figma:asset/d1e24e304bd08c8dad5c534cb5493c70e5febc79.png";
-import gtLogo from "./assets/georgia-tech-logo.svg";
+// Georgia Tech logo loaded from public folder to match Education page
 import { GraduationCap } from "lucide-react";
 import { Rocket } from "lucide-react";
 import { Code } from "lucide-react";
 import { Users } from "lucide-react";
+import { TrendingUp } from "lucide-react";
+import { Award } from "lucide-react";
 import { AnimatedCounter } from "./components/AnimatedCounter";
 import { SkillTag } from "./components/SkillTag";
 import { CircuitBackground } from "./components/CircuitBackground";
@@ -286,9 +288,7 @@ function OverviewPage() {
                 transition={{ duration: 0.6 }}
                 className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center mb-6 shadow-lg shadow-emerald-500/30"
               >
-                <svg className="w-4 h-5 flex-shrink-0" fill="none" viewBox="0 0 15 20">
-                  <path d={svgPaths.p594b480} fill="white" />
-                </svg>
+                <TrendingUp className="w-6 h-6 text-white" />
               </motion.div>
               <h3 className="text-gray-100 mb-4">Enterprise Architecture & Data Strategy</h3>
               <p className="text-gray-400 mb-4">
@@ -330,9 +330,7 @@ function OverviewPage() {
                 transition={{ duration: 0.6 }}
                 className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center mb-6 shadow-lg shadow-emerald-500/30"
               >
-                <svg className="w-6 h-5 flex-shrink-0" fill="none" viewBox="0 0 25 20">
-                  <path d={svgPaths.p39a88000} fill="white" />
-                </svg>
+                <Users className="w-6 h-6 text-white" />
               </motion.div>
               <h3 className="text-gray-100 mb-4">Agile Product Ownership & Delivery</h3>
               <p className="text-gray-400 mb-4">
@@ -374,9 +372,7 @@ function OverviewPage() {
                 transition={{ duration: 0.6 }}
                 className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center mb-6 shadow-lg shadow-emerald-500/30"
               >
-                <svg className="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 20 20">
-                  <path d={svgPaths.p359f3c00} fill="white" />
-                </svg>
+                <Award className="w-6 h-6 text-white" />
               </motion.div>
               <h3 className="text-gray-100 mb-4">User Experience & Business Analysis</h3>
               <p className="text-gray-400 mb-4">
@@ -669,7 +665,7 @@ function OverviewPage() {
                   transition={{ duration: 0.6 }}
                   className="w-16 h-16 bg-[#B3A369] rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg shadow-emerald-500/30 p-2"
                 >
-                  <img src={gtLogo} alt="Georgia Tech" className="w-full h-full object-contain" />
+                  <img src="/icons/education/gt-logo.jpeg" alt="Georgia Tech" className="w-full h-full object-contain" />
                 </motion.div>
               </div>
             </motion.div>
@@ -715,10 +711,10 @@ function OverviewPage() {
                   <motion.div
                     whileHover={{ scale: 1.1, rotate: 360 }}
                     transition={{ duration: 0.6 }}
-                    className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 relative z-10 shadow-lg shadow-emerald-500/50 cursor-pointer"
+                    className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center flex-shrink-0 relative z-10 shadow-lg shadow-emerald-500/50 cursor-pointer"
                   >
-                    <svg className="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 20 20">
-                      <path d={svgPaths.p2b274680} fill="white" />
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                     </svg>
                   </motion.div>
                   <motion.div

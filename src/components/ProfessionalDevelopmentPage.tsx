@@ -147,7 +147,7 @@ export function ProfessionalDevelopmentPage() {
                   <img 
                     src={bytonomyIcon} 
                     alt="Bytonomy Tech" 
-                    className="w-32 h-32 object-contain relative z-10 rounded-lg" 
+                    className="w-32 h-32 object-contain relative z-10 rounded-full" 
                   />
                 </div>
                 

@@ -307,7 +307,7 @@ export function WorkHistoryPage() {
                 <div className="order-2 lg:order-1 mt-8 lg:mt-0">
                   <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-6 rounded-xl hover:border-emerald-500/50 transition-all">
                     <div className="flex items-center gap-3 mb-3">
-                      <img src="/icons/work/kohls-logo.png" alt="Kohl's" className="w-12 h-12 rounded-lg" />
+                      <img src="/icons/work/kohls-logo.jpg" alt="Kohl's" className="w-12 h-12 rounded-lg" />
                       <h4 className="text-gray-100">About Kohl's</h4>
                     </div>
                     <p className="text-gray-300 mb-4">
