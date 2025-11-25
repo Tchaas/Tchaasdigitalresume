@@ -1,11 +1,8 @@
 import circuitBg from "figma:asset/d1e24e304bd08c8dad5c534cb5493c70e5febc79.png";
 import educationIcon from "figma:asset/f4d02be8ee2e842c7fd42eeef23e798576542a47.png";
-import gtLogo from "../assets/georgia-tech-logo.svg";
-import udLogo from "figma:asset/dd23cb4cc0353fe35b9d749c3ea903e87334bc53.png";
-import msoeLogo from "figma:asset/11b33a6497ad88b072c82caa862d024a5cd53c85.png";
-import matcLogo from "../assets/matc icon.jpg";
 import degreeIcon from "figma:asset/94719da024130e17b7466b55ccba8a0e51618a8b.png";
 import svgPaths from "../imports/svg-o41sg7fn0u";
+// Logos are now loaded from public/icons/education folder
 import { GraduationCap, BookOpen, Award, Calendar, MapPin, Users } from "lucide-react";
 import { Footer } from "./Footer";
 
@@ -41,7 +38,7 @@ export function EducationPage() {
                   <div className="inline-block bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 rounded-xl shadow-lg shadow-emerald-500/10 p-8 text-left max-w-md w-full hover:border-emerald-500/50 transition-all">
                     <div className="flex items-start gap-4 mb-4">
                       <div className="w-12 h-12 bg-[#B3A369] rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg shadow-emerald-500/30 p-1.5">
-                        <img src={gtLogo} alt="Georgia Tech" className="w-full h-full object-contain" />
+                        <img src="/icons/education/gt-logo.jpeg" alt="Georgia Tech" className="w-full h-full object-contain" />
                       </div>
                       <div className="flex-1">
                         <h3 className="text-gray-100 mb-1">Georgia Institute of Technology</h3>
@@ -88,7 +85,7 @@ export function EducationPage() {
                   <div className="inline-block bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 rounded-xl shadow-lg shadow-emerald-500/10 p-8 text-left max-w-md w-full hover:border-emerald-500/50 transition-all">
                     <div className="flex items-start gap-4 mb-4">
                       <div className="w-12 h-12 bg-[#003A70] rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue-500/30 p-2">
-                        <img src={udLogo} alt="University of Dayton" className="w-full h-full object-contain" />
+                        <img src="/icons/education/ud-logo.webp" alt="University of Dayton" className="w-full h-full object-contain" />
                       </div>
                       <div className="flex-1">
                         <h3 className="text-gray-100 mb-1">University of Dayton</h3>
@@ -132,7 +129,7 @@ export function EducationPage() {
                   <div className="inline-block bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 rounded-xl shadow-lg shadow-emerald-500/10 p-8 text-left max-w-md w-full hover:border-emerald-500/50 transition-all">
                     <div className="flex items-start gap-4 mb-4">
                       <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg shadow-red-500/30 p-1.5">
-                        <img src={msoeLogo} alt="Milwaukee School of Engineering" className="w-full h-full object-contain" />
+                        <img src="/icons/education/msoe-logo.png" alt="Milwaukee School of Engineering" className="w-full h-full object-contain" />
                       </div>
                       <div className="flex-1">
                         <h3 className="text-gray-100 mb-1">Milwaukee School of Engineering</h3>
@@ -184,7 +181,7 @@ export function EducationPage() {
                   <div className="inline-block bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 rounded-xl shadow-lg shadow-emerald-500/10 p-8 text-left max-w-md w-full hover:border-emerald-500/50 transition-all">
                     <div className="flex items-start gap-4 mb-4">
                       <div className="w-12 h-12 bg-[#0066B3] rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue-500/30 p-1.5">
-                        <img src={matcLogo} alt="Milwaukee Area Technical College" className="w-full h-full object-contain" />
+                        <img src="/icons/education/matc-logo.jpg" alt="Milwaukee Area Technical College" className="w-full h-full object-contain" />
                       </div>
                       <div className="flex-1">
                         <h3 className="text-gray-100 mb-1">Milwaukee Area Technical College</h3>

@@ -1,9 +1,6 @@
 import circuitBg from "figma:asset/d1e24e304bd08c8dad5c534cb5493c70e5febc79.png";
 import svgPaths from "../imports/svg-o41sg7fn0u";
-import northwesternMutualLogo from "figma:asset/98586f21bd5edcf117d9f769109283d9aa5526db.png";
-import fisLogo from "figma:asset/4f5a36f91e0395747a78ce3ab06594ac361ce959.png";
-import kohlsLogo from "figma:asset/461a2e3cbf0d37c40f733da331877d62a57de833.png";
-import fedexLogo from "figma:asset/252fdb688f50c8ccf51f69284795552830d66ac6.png";
+// Company logos are now loaded from public/icons/work folder
 import { Briefcase, Calendar, TrendingUp, Users, Target, Award } from "lucide-react";
 import { Footer } from "./Footer";
 
@@ -37,7 +34,7 @@ export function WorkHistoryPage() {
                 <div className="order-2 lg:order-1 mt-8 lg:mt-0">
                   <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-6 rounded-xl hover:border-emerald-500/50 transition-all">
                     <div className="flex items-center gap-3 mb-3">
-                      <img src={fedexLogo} alt="FedEx" className="w-12 h-12 rounded-lg" />
+                      <img src="/icons/work/fedex-logo.png" alt="FedEx" className="w-12 h-12 rounded-lg" />
                       <h4 className="text-gray-100">About Federal Express Corporation</h4>
                     </div>
                     <p className="text-gray-300 mb-4">
@@ -125,7 +122,7 @@ export function WorkHistoryPage() {
                 <div className="order-2 lg:order-1 mt-8 lg:mt-0">
                   <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-6 rounded-xl hover:border-emerald-500/50 transition-all">
                     <div className="flex items-center gap-3 mb-3">
-                      <img src={fedexLogo} alt="FedEx" className="w-12 h-12 rounded-lg" />
+                      <img src="/icons/work/fedex-logo.png" alt="FedEx" className="w-12 h-12 rounded-lg" />
                       <h4 className="text-gray-100">About Federal Express Corporation</h4>
                     </div>
                     <p className="text-gray-300 mb-4">
@@ -216,7 +213,7 @@ export function WorkHistoryPage() {
                 <div className="order-2 lg:order-1 mt-8 lg:mt-0">
                   <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-6 rounded-xl hover:border-emerald-500/50 transition-all">
                     <div className="flex items-center gap-3 mb-3">
-                      <img src={fedexLogo} alt="FedEx" className="w-12 h-12 rounded-lg" />
+                      <img src="/icons/work/fedex-logo.png" alt="FedEx" className="w-12 h-12 rounded-lg" />
                       <h4 className="text-gray-100">About Federal Express Corporation</h4>
                     </div>
                     <p className="text-gray-300 mb-4">
@@ -310,7 +307,7 @@ export function WorkHistoryPage() {
                 <div className="order-2 lg:order-1 mt-8 lg:mt-0">
                   <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-6 rounded-xl hover:border-emerald-500/50 transition-all">
                     <div className="flex items-center gap-3 mb-3">
-                      <img src={kohlsLogo} alt="Kohl's" className="w-12 h-12 rounded-lg" />
+                      <img src="/icons/work/kohls-logo.png" alt="Kohl's" className="w-12 h-12 rounded-lg" />
                       <h4 className="text-gray-100">About Kohl's</h4>
                     </div>
                     <p className="text-gray-300 mb-4">
@@ -410,7 +407,7 @@ export function WorkHistoryPage() {
                 <div className="order-2 lg:order-1 mt-8 lg:mt-0">
                   <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-6 rounded-xl hover:border-emerald-500/50 transition-all">
                     <div className="flex items-center gap-3 mb-3">
-                      <img src={fisLogo} alt="FIS" className="w-12 h-12 rounded-lg" />
+                      <img src="/icons/work/fis-logo.png" alt="FIS" className="w-12 h-12 rounded-lg" />
                       <h4 className="text-gray-100">About FIS</h4>
                     </div>
                     <p className="text-gray-300 mb-4">
@@ -509,7 +506,7 @@ export function WorkHistoryPage() {
                 <div className="order-2 lg:order-1 mt-8 lg:mt-0">
                   <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-6 rounded-xl hover:border-emerald-500/50 transition-all">
                     <div className="flex items-center gap-3 mb-3">
-                      <img src={fisLogo} alt="FIS" className="w-12 h-12 rounded-lg" />
+                      <img src="/icons/work/fis-logo.png" alt="FIS" className="w-12 h-12 rounded-lg" />
                       <h4 className="text-gray-100">About FIS</h4>
                     </div>
                     <p className="text-gray-300 mb-4">
@@ -608,7 +605,7 @@ export function WorkHistoryPage() {
                 <div className="order-2 lg:order-1 mt-8 lg:mt-0">
                   <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-6 rounded-xl hover:border-emerald-500/50 transition-all">
                     <div className="flex items-center gap-3 mb-3">
-                      <img src={northwesternMutualLogo} alt="Northwestern Mutual" className="w-12 h-12 rounded-lg" />
+                      <img src="/icons/work/nm-logo.png" alt="Northwestern Mutual" className="w-12 h-12 rounded-lg" />
                       <h4 className="text-gray-100">About Northwestern Mutual</h4>
                     </div>
                     <p className="text-gray-300 mb-4">
