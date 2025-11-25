@@ -89,16 +89,14 @@ export function ContactPage() {
 
               {/* Download Resume Button */}
               <div className="pt-4">
-                <button 
-                  onClick={() => {
-                    // In a real implementation, this would link to your actual resume file
-                    alert('Resume download will be available soon!');
-                  }}
+                <a 
+                  href="/TchaasHAlexanderWright_Resume.pdf"
+                  download="TchaasHAlexanderWright_Resume.pdf"
                   className="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-8 py-4 rounded-xl hover:from-emerald-600 hover:to-emerald-700 transition-all flex items-center justify-center gap-3 shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 hover:scale-105"
                 >
                   <Download className="w-5 h-5" />
                   <span>Download My Resume</span>
-                </button>
+                </a>
               </div>
             </div>
           </div>
