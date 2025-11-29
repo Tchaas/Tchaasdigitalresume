@@ -23,14 +23,9 @@ export function Header({ currentPage, onPageChange }: HeaderProps) {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             onClick={() => onPageChange('overview')}
-            className="flex items-center gap-3 group"
+            className="text-gray-100 font-semibold text-lg"
           >
-            <div className="w-10 h-10 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center shadow-lg shadow-emerald-500/30">
-              <span className="text-white font-bold text-lg">TA</span>
-            </div>
-            <span className="text-gray-100 font-semibold text-lg hidden sm:block">
-              Tchaas Alexander-Wright
-            </span>
+            Tchaas Alexander-Wright
           </motion.button>
 
           {/* Navigation - Right Side */}

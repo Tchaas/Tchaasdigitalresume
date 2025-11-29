@@ -1,8 +1,4 @@
-import circuitBg from "figma:asset/d1e24e304bd08c8dad5c534cb5493c70e5febc79.png";
-import svgPaths from "../imports/svg-o41sg7fn0u";
-// Company logos are now loaded from public/icons/work folder
-import { Briefcase, Calendar, TrendingUp, Users, Target, Award } from "lucide-react";
-import { Footer } from "./Footer";
+import { Calendar, TrendingUp, Users, Award, MapPin, CheckCircle2 } from "lucide-react";
 
 export function WorkHistoryPage() {
   return (
@@ -44,9 +40,7 @@ export function WorkHistoryPage() {
                       Federal Express Corporation (FedEx) is a multinational conglomerate holding company focused on transportation, e-commerce, and business services. Founded in 1971, FedEx is a global leader in express shipping and logistics solutions, serving millions of customers worldwide with innovative delivery and supply chain management solutions.
                     </p>
                     <div className="flex items-center gap-2 text-emerald-400">
-                      <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 16 16">
-                        <path d={svgPaths.p36e52f00} fill="#10B981" />
-                      </svg>
+                      <MapPin className="w-4 h-4 flex-shrink-0" />
                       <span>Remote</span>
                     </div>
                   </div>
@@ -56,10 +50,8 @@ export function WorkHistoryPage() {
                 <div className="order-1 lg:order-2 space-y-6">
                   <div>
                     <span className="px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex items-center gap-2">
+                      <Calendar className="w-4 h-4" />
                       Mar 2025 - Present
-                      <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 16 16">
-                        <path d={svgPaths.p36e52f00} fill="#10B981" />
-                      </svg>
                     </span>
                   </div>
                   
@@ -77,33 +69,23 @@ export function WorkHistoryPage() {
                     <h5 className="text-gray-100 mb-3">Key Metrics:</h5>
                     <ul className="space-y-3">
                       <li className="flex items-start gap-2">
-                        <svg className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" fill="none" viewBox="0 0 16 16">
-                          <path d={svgPaths.p1dd1d300} fill="#10B981" />
-                        </svg>
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
                         <p className="text-gray-300">Managed demand across 5 Agile Release Trains (ARTs)</p>
                       </li>
                       <li className="flex items-start gap-2">
-                        <svg className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" fill="none" viewBox="0 0 16 16">
-                          <path d={svgPaths.p1dd1d300} fill="#10B981" />
-                        </svg>
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
                         <p className="text-gray-300">Defined scalable data architecture for new enterprise capabilities</p>
                       </li>
                       <li className="flex items-start gap-2">
-                        <svg className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" fill="none" viewBox="0 0 16 16">
-                          <path d={svgPaths.p1dd1d300} fill="#10B981" />
-                        </svg>
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
                         <p className="text-gray-300">Developed process maps and capability models for multiple business units</p>
                       </li>
                       <li className="flex items-start gap-2">
-                        <svg className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" fill="none" viewBox="0 0 16 16">
-                          <path d={svgPaths.p1dd1d300} fill="#10B981" />
-                        </svg>
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
                         <p className="text-gray-300">Delivered $70.5M in strategic value to FedEx in FY26</p>
                       </li>
                       <li className="flex items-start gap-2">
-                        <svg className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" fill="none" viewBox="0 0 16 16">
-                          <path d={svgPaths.p1dd1d300} fill="#10B981" />
-                        </svg>
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
                         <p className="text-gray-300">Created high-level solution designs and capability documentation for implementation readiness</p>
                       </li>
                     </ul>
@@ -132,9 +114,7 @@ export function WorkHistoryPage() {
                       Federal Express Corporation (FedEx) is a multinational conglomerate holding company focused on transportation, e-commerce, and business services. Founded in 1971, FedEx is a global leader in express shipping and logistics solutions, serving millions of customers worldwide with innovative delivery and supply chain management solutions.
                     </p>
                     <div className="flex items-center gap-2 text-emerald-400">
-                      <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 16 16">
-                        <path d={svgPaths.p36e52f00} fill="#10B981" />
-                      </svg>
+                      <MapPin className="w-4 h-4 flex-shrink-0" />
                       <span>Remote</span>
                     </div>
                   </div>
@@ -145,9 +125,7 @@ export function WorkHistoryPage() {
                   <div>
                     <span className="px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex items-center gap-2">
                       Oct 2023 - Mar 2025
-                      <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 16 16">
-                        <path d={svgPaths.p36e52f00} fill="#10B981" />
-                      </svg>
+                      <MapPin className="w-4 h-4 flex-shrink-0" />
                     </span>
                   </div>
                   
@@ -168,33 +146,23 @@ export function WorkHistoryPage() {
                     <h5 className="text-gray-100 mb-3">Key Metrics:</h5>
                     <ul className="space-y-3">
                       <li className="flex items-start gap-2">
-                        <svg className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" fill="none" viewBox="0 0 16 16">
-                          <path d={svgPaths.p1dd1d300} fill="#10B981" />
-                        </svg>
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
                         <p className="text-gray-300">Product Owner for UI/UX and backend teams</p>
                       </li>
                       <li className="flex items-start gap-2">
-                        <svg className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" fill="none" viewBox="0 0 16 16">
-                          <path d={svgPaths.p1dd1d300} fill="#10B981" />
-                        </svg>
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
                         <p className="text-gray-300">Delivered new products eliminating legacy processes and improving global network analytics</p>
                       </li>
                       <li className="flex items-start gap-2">
-                        <svg className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" fill="none" viewBox="0 0 16 16">
-                          <path d={svgPaths.p1dd1d300} fill="#10B981" />
-                        </svg>
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
                         <p className="text-gray-300">Led development of a process combining Express and Ground volume management per zip code</p>
                       </li>
                       <li className="flex items-start gap-2">
-                        <svg className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" fill="none" viewBox="0 0 16 16">
-                          <path d={svgPaths.p1dd1d300} fill="#10B981" />
-                        </svg>
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
                         <p className="text-gray-300">Owned deployment of a new application enabling engineers to submit volume changes for all FedEx Ground facilities</p>
                       </li>
                       <li className="flex items-start gap-2">
-                        <svg className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" fill="none" viewBox="0 0 16 16">
-                          <path d={svgPaths.p1dd1d300} fill="#10B981" />
-                        </svg>
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
                         <p className="text-gray-300">Developed enterprise software solutions supporting volume management for U.S. and Canada</p>
                       </li>
                     </ul>
@@ -223,9 +191,7 @@ export function WorkHistoryPage() {
                       Federal Express Corporation (FedEx) is a multinational conglomerate holding company focused on transportation, e-commerce, and business services. Founded in 1971, FedEx is a global leader in express shipping and logistics solutions, serving millions of customers worldwide with innovative delivery and supply chain management solutions.
                     </p>
                     <div className="flex items-center gap-2 text-emerald-400">
-                      <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 16 16">
-                        <path d={svgPaths.p36e52f00} fill="#10B981" />
-                      </svg>
+                      <MapPin className="w-4 h-4 flex-shrink-0" />
                       <span>Remote</span>
                     </div>
                   </div>
@@ -236,9 +202,7 @@ export function WorkHistoryPage() {
                   <div>
                     <span className="px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex items-center gap-2">
                       Mar 2021 - Sep 2023
-                      <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 16 16">
-                        <path d={svgPaths.p36e52f00} fill="#10B981" />
-                      </svg>
+                      <MapPin className="w-4 h-4 flex-shrink-0" />
                     </span>
                   </div>
                   
@@ -262,33 +226,23 @@ export function WorkHistoryPage() {
                     <h5 className="text-gray-100 mb-3">Key Metrics:</h5>
                     <ul className="space-y-3">
                       <li className="flex items-start gap-2">
-                        <svg className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" fill="none" viewBox="0 0 16 16">
-                          <path d={svgPaths.p1dd1d300} fill="#10B981" />
-                        </svg>
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
                         <p className="text-gray-300">Product Owner for 3 offshore backend teams and 1 UX/UI team</p>
                       </li>
                       <li className="flex items-start gap-2">
-                        <svg className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" fill="none" viewBox="0 0 16 16">
-                          <path d={svgPaths.p1dd1d300} fill="#10B981" />
-                        </svg>
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
                         <p className="text-gray-300">Implemented a new documentation process adopted by 8 development teams</p>
                       </li>
                       <li className="flex items-start gap-2">
-                        <svg className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" fill="none" viewBox="0 0 16 16">
-                          <path d={svgPaths.p1dd1d300} fill="#10B981" />
-                        </svg>
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
                         <p className="text-gray-300">Delivered over 16 new features improving security and network modernization</p>
                       </li>
                       <li className="flex items-start gap-2">
-                        <svg className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" fill="none" viewBox="0 0 16 16">
-                          <path d={svgPaths.p1dd1d300} fill="#10B981" />
-                        </svg>
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
                         <p className="text-gray-300">Partnered with Sr. UX Analyst to develop MVP features and engage external users</p>
                       </li>
                       <li className="flex items-start gap-2">
-                        <svg className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" fill="none" viewBox="0 0 16 16">
-                          <path d={svgPaths.p1dd1d300} fill="#10B981" />
-                        </svg>
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
                         <p className="text-gray-300">Defined API contracts and business rules for multiple UI applications</p>
                       </li>
                     </ul>
@@ -317,9 +271,7 @@ export function WorkHistoryPage() {
                       Kohl's is an American department store retail chain, founded in 1962. It operates over 1,100 stores across 49 states, offering a wide range of products including apparel, footwear, bedding, furniture, jewelry, beauty products, and housewares. Kohl's is known for its customer-centric approach, loyalty programs, and strategic partnerships with major brands.
                     </p>
                     <div className="flex items-center gap-2 text-emerald-400">
-                      <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 16 16">
-                        <path d={svgPaths.p36e52f00} fill="#10B981" />
-                      </svg>
+                      <MapPin className="w-4 h-4 flex-shrink-0" />
                       <span>Menomonee Falls, WI</span>
                     </div>
                   </div>
@@ -330,9 +282,7 @@ export function WorkHistoryPage() {
                   <div>
                     <span className="px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex items-center gap-2">
                       Jan 2020 - Oct 2020
-                      <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 16 16">
-                        <path d={svgPaths.p36e52f00} fill="#10B981" />
-                      </svg>
+                      <MapPin className="w-4 h-4 flex-shrink-0" />
                     </span>
                   </div>
                   
@@ -356,39 +306,27 @@ export function WorkHistoryPage() {
                     <h5 className="text-gray-100 mb-3">Key Metrics:</h5>
                     <ul className="space-y-3">
                       <li className="flex items-start gap-2">
-                        <svg className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" fill="none" viewBox="0 0 16 16">
-                          <path d={svgPaths.p1dd1d300} fill="#10B981" />
-                        </svg>
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
                         <p className="text-gray-300">Developed user stories and acceptance criteria for payment products</p>
                       </li>
                       <li className="flex items-start gap-2">
-                        <svg className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" fill="none" viewBox="0 0 16 16">
-                          <path d={svgPaths.p1dd1d300} fill="#10B981" />
-                        </svg>
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
                         <p className="text-gray-300">Utilized Splunk for transaction validation and troubleshooting</p>
                       </li>
                       <li className="flex items-start gap-2">
-                        <svg className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" fill="none" viewBox="0 0 16 16">
-                          <path d={svgPaths.p1dd1d300} fill="#10B981" />
-                        </svg>
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
                         <p className="text-gray-300">Created and tested pin-pad performance metrics</p>
                       </li>
                       <li className="flex items-start gap-2">
-                        <svg className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" fill="none" viewBox="0 0 16 16">
-                          <path d={svgPaths.p1dd1d300} fill="#10B981" />
-                        </svg>
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
                         <p className="text-gray-300">Managed and deployed software packages for Verifone Mx925 and Mx915 models</p>
                       </li>
                       <li className="flex items-start gap-2">
-                        <svg className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" fill="none" viewBox="0 0 16 16">
-                          <path d={svgPaths.p1dd1d300} fill="#10B981" />
-                        </svg>
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
                         <p className="text-gray-300">Supported Microsoft Server 2008 R2 and 2016 patching in test environments</p>
                       </li>
                       <li className="flex items-start gap-2">
-                        <svg className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" fill="none" viewBox="0 0 16 16">
-                          <path d={svgPaths.p1dd1d300} fill="#10B981" />
-                        </svg>
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
                         <p className="text-gray-300">Designed workflows and diagrams for new projects using Lucidchart</p>
                       </li>
                     </ul>
@@ -428,9 +366,7 @@ export function WorkHistoryPage() {
                       </div>
                     </div>
                     <div className="flex items-center gap-2 text-emerald-400">
-                      <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 16 16">
-                        <path d={svgPaths.p36e52f00} fill="#10B981" />
-                      </svg>
+                      <MapPin className="w-4 h-4 flex-shrink-0" />
                       <span>Milwaukee, WI</span>
                     </div>
                   </div>
@@ -441,9 +377,7 @@ export function WorkHistoryPage() {
                   <div>
                     <span className="px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex items-center gap-2">
                       Oct 2019 - Dec 2019
-                      <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 16 16">
-                        <path d={svgPaths.p36e52f00} fill="#10B981" />
-                      </svg>
+                      <MapPin className="w-4 h-4 flex-shrink-0" />
                     </span>
                   </div>
                   
@@ -467,27 +401,19 @@ export function WorkHistoryPage() {
                     <h5 className="text-gray-100 mb-3">Key Metrics:</h5>
                     <ul className="space-y-3">
                       <li className="flex items-start gap-2">
-                        <svg className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" fill="none" viewBox="0 0 16 16">
-                          <path d={svgPaths.p1dd1d300} fill="#10B981" />
-                        </svg>
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
                         <p className="text-gray-300">Analyzed compliance impacts for 4 major payment networks across 2 development platforms</p>
                       </li>
                       <li className="flex items-start gap-2">
-                        <svg className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" fill="none" viewBox="0 0 16 16">
-                          <path d={svgPaths.p1dd1d300} fill="#10B981" />
-                        </svg>
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
                         <p className="text-gray-300">Coordinated timely delivery of compliance features based on network schedules</p>
                       </li>
                       <li className="flex items-start gap-2">
-                        <svg className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" fill="none" viewBox="0 0 16 16">
-                          <path d={svgPaths.p1dd1d300} fill="#10B981" />
-                        </svg>
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
                         <p className="text-gray-300">Managed production releases and feature deployments</p>
                       </li>
                       <li className="flex items-start gap-2">
-                        <svg className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" fill="none" viewBox="0 0 16 16">
-                          <path d={svgPaths.p1dd1d300} fill="#10B981" />
-                        </svg>
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
                         <p className="text-gray-300">Supported creation of customer bulletins for feature changes</p>
                       </li>
                     </ul>
@@ -527,9 +453,7 @@ export function WorkHistoryPage() {
                       </div>
                     </div>
                     <div className="flex items-center gap-2 text-emerald-400">
-                      <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 16 16">
-                        <path d={svgPaths.p36e52f00} fill="#10B981" />
-                      </svg>
+                      <MapPin className="w-4 h-4 flex-shrink-0" />
                       <span>Milwaukee, WI</span>
                     </div>
                   </div>
@@ -540,9 +464,7 @@ export function WorkHistoryPage() {
                   <div>
                     <span className="px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex items-center gap-2">
                       Jul 2017 - Oct 2019
-                      <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 16 16">
-                        <path d={svgPaths.p36e52f00} fill="#10B981" />
-                      </svg>
+                      <MapPin className="w-4 h-4 flex-shrink-0" />
                     </span>
                   </div>
                   
@@ -566,27 +488,19 @@ export function WorkHistoryPage() {
                     <h5 className="text-gray-100 mb-3">Key Metrics:</h5>
                     <ul className="space-y-3">
                       <li className="flex items-start gap-2">
-                        <svg className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" fill="none" viewBox="0 0 16 16">
-                          <path d={svgPaths.p1dd1d300} fill="#10B981" />
-                        </svg>
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
                         <p className="text-gray-300">Managed and completed 15 IT development projects</p>
                       </li>
                       <li className="flex items-start gap-2">
-                        <svg className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" fill="none" viewBox="0 0 16 16">
-                          <path d={svgPaths.p1dd1d300} fill="#10B981" />
-                        </svg>
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
                         <p className="text-gray-300">Executed code releases across 6 applications</p>
                       </li>
                       <li className="flex items-start gap-2">
-                        <svg className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" fill="none" viewBox="0 0 16 16">
-                          <path d={svgPaths.p1dd1d300} fill="#10B981" />
-                        </svg>
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
                         <p className="text-gray-300">Targeted process improvements to reduce delays by 60%</p>
                       </li>
                       <li className="flex items-start gap-2">
-                        <svg className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" fill="none" viewBox="0 0 16 16">
-                          <path d={svgPaths.p1dd1d300} fill="#10B981" />
-                        </svg>
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
                         <p className="text-gray-300">Facilitated and trained 20+ individuals on new software functionality</p>
                       </li>
                     </ul>
@@ -626,9 +540,7 @@ export function WorkHistoryPage() {
                       </ul>
                     </div>
                     <div className="flex items-center gap-2 text-emerald-400">
-                      <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 16 16">
-                        <path d={svgPaths.p36e52f00} fill="#10B981" />
-                      </svg>
+                      <MapPin className="w-4 h-4 flex-shrink-0" />
                       <span>Milwaukee, WI</span>
                     </div>
                   </div>
@@ -639,9 +551,7 @@ export function WorkHistoryPage() {
                   <div>
                     <span className="px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex items-center gap-2">
                       Jun 2015 - Jul 2017
-                      <svg className="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 16 16">
-                        <path d={svgPaths.p36e52f00} fill="#10B981" />
-                      </svg>
+                      <MapPin className="w-4 h-4 flex-shrink-0" />
                     </span>
                   </div>
                   
@@ -657,27 +567,19 @@ export function WorkHistoryPage() {
                     <h5 className="text-gray-100 mb-3">Key Metrics:</h5>
                     <ul className="space-y-3">
                       <li className="flex items-start gap-2">
-                        <svg className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" fill="none" viewBox="0 0 16 16">
-                          <path d={svgPaths.p1dd1d300} fill="#10B981" />
-                        </svg>
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
                         <p className="text-gray-300">Completed 20 test cases</p>
                       </li>
                       <li className="flex items-start gap-2">
-                        <svg className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" fill="none" viewBox="0 0 16 16">
-                          <path d={svgPaths.p1dd1d300} fill="#10B981" />
-                        </svg>
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
                         <p className="text-gray-300">Supported 100+ scripts internally</p>
                       </li>
                       <li className="flex items-start gap-2">
-                        <svg className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" fill="none" viewBox="0 0 16 16">
-                          <path d={svgPaths.p1dd1d300} fill="#10B981" />
-                        </svg>
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
                         <p className="text-gray-300">Trained offshore QA testers</p>
                       </li>
                       <li className="flex items-start gap-2">
-                        <svg className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" fill="none" viewBox="0 0 16 16">
-                          <path d={svgPaths.p1dd1d300} fill="#10B981" />
-                        </svg>
+                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
                         <p className="text-gray-300">Implemented automation using Nightwatch.js and Sauce Labs</p>
                       </li>
                     </ul>
@@ -732,9 +634,6 @@ export function WorkHistoryPage() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <Footer />
     </div>
   );
 }

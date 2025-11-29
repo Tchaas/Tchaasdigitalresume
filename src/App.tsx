@@ -3,10 +3,7 @@ import { motion } from "framer-motion";
 import svgPaths from "./imports/svg-o41sg7fn0u";
 import profileImg from "./assets/profile-headshot.png";
 import circuitBg from "figma:asset/d1e24e304bd08c8dad5c534cb5493c70e5febc79.png";
-import { GraduationCap } from "lucide-react";
-import { Rocket } from "lucide-react";
-import { Code } from "lucide-react";
-import { Users } from "lucide-react";
+import { GraduationCap, Rocket, Code, Users, TrendingUp, Award } from "lucide-react";
 import { AnimatedCounter } from "./components/AnimatedCounter";
 import { SkillTag } from "./components/SkillTag";
 import { CircuitBackground } from "./components/CircuitBackground";
@@ -760,35 +757,27 @@ function OverviewPage() {
 }
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState('overview');
+  const [currentPage, setCurrentPage] = useState<string>('overview');
 
   return (
-    <div className="min-h-screen relative bg-[#050608]">
+    <div className="h-screen relative bg-[#050608] overflow-hidden flex flex-col">
       {/* Global animated circuit background */}
       <CircuitBackground />
 
       {/* Interactive sparks */}
       <InteractiveSparks />
 
-      {/* Fixed Header */}
-      <div className="fixed top-0 left-0 right-0 z-50">
+      {/* Foreground content */}
+      <div className="relative z-20 flex flex-col h-full">
         <Header currentPage={currentPage} onPageChange={setCurrentPage} />
-      </div>
-
-      {/* Main content with padding for fixed header and footer */}
-      <div className="pt-36 pb-12">
-        <main>
+        
+        <main className="flex-1 overflow-y-auto overflow-x-hidden">
           {currentPage === 'overview' && <OverviewPage />}
           {currentPage === 'education' && <EducationPage />}
           {currentPage === 'experience' && <WorkHistoryPage />}
           {currentPage === 'skills' && <ProfessionalDevelopmentPage />}
           {currentPage === 'contact' && <ContactPage />}
         </main>
-      </div>
-
-      {/* Fixed Footer */}
-      <div className="fixed bottom-0 left-0 right-0 z-50">
-        <Footer />
       </div>
     </div>
   );

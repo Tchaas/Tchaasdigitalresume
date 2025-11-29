@@ -1,9 +1,4 @@
-import circuitBg from "figma:asset/d1e24e304bd08c8dad5c534cb5493c70e5febc79.png";
-import degreeIcon from "figma:asset/94719da024130e17b7466b55ccba8a0e51618a8b.png";
-import svgPaths from "../imports/svg-o41sg7fn0u";
-// Logos are now loaded from public/icons/education folder
 import { GraduationCap, BookOpen, Award, Calendar, MapPin, Users } from "lucide-react";
-import { Footer } from "./Footer";
 
 export function EducationPage() {
   return (
@@ -262,9 +257,6 @@ export function EducationPage() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <Footer />
     </div>
   );
 }

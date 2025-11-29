@@ -1,7 +1,5 @@
-import circuitBg from "figma:asset/d1e24e304bd08c8dad5c534cb5493c70e5febc79.png";
 import profileImg from "../assets/profile-headshot.png";
-import { Mail, Linkedin, Github, MapPin, Phone, Send, Download } from "lucide-react";
-import { Footer } from "./Footer";
+import { Mail, Linkedin, Github, MapPin, Download } from "lucide-react";
 
 export function ContactPage() {
   return (
@@ -175,9 +173,6 @@ export function ContactPage() {
           </div>
         </div>
       </section>
-
-      {/* Footer */}
-      <Footer />
     </div>
   );
 }
