@@ -762,7 +762,7 @@ export default function App() {
   const [currentPage, setCurrentPage] = useState('overview');
 
   return (
-    <div className="min-h-screen relative bg-[#050608] overflow-x-hidden">
+    <div className="h-screen relative bg-[#050608] overflow-hidden flex flex-col">
       {/* Global animated circuit background */}
       <CircuitBackground />
 
@@ -770,10 +770,10 @@ export default function App() {
       <InteractiveSparks />
 
       {/* Foreground content */}
-      <div className="relative z-20">
+      <div className="relative z-20 flex flex-col h-full">
         <Header currentPage={currentPage} onPageChange={setCurrentPage} />
         
-        <main>
+        <main className="flex-1 overflow-y-auto overflow-x-hidden">
           {currentPage === 'overview' && <OverviewPage />}
           {currentPage === 'education' && <EducationPage />}
           {currentPage === 'experience' && <WorkHistoryPage />}

@@ -1,5 +1,4 @@
 import circuitBg from "figma:asset/d1e24e304bd08c8dad5c534cb5493c70e5febc79.png";
-import educationIcon from "figma:asset/f4d02be8ee2e842c7fd42eeef23e798576542a47.png";
 import degreeIcon from "figma:asset/94719da024130e17b7466b55ccba8a0e51618a8b.png";
 import svgPaths from "../imports/svg-o41sg7fn0u";
 // Logos are now loaded from public/icons/education folder
@@ -14,7 +13,7 @@ export function EducationPage() {
         <div className="max-w-4xl mx-auto text-center">
           <div className="inline-block mb-8">
             <div className="w-24 h-24 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl shadow-xl shadow-emerald-500/50 flex items-center justify-center p-4">
-              <img src={educationIcon} alt="Education" className="w-full h-full object-contain" />
+              <GraduationCap className="w-16 h-16 text-white" />
             </div>
           </div>
           <h1 className="text-gray-100 mb-4">Educational Journey</h1>
