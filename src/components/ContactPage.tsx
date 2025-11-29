@@ -1,5 +1,5 @@
 import circuitBg from "figma:asset/d1e24e304bd08c8dad5c534cb5493c70e5febc79.png";
-import svgPaths from "../imports/svg-o41sg7fn0u";
+import profileImg from "../assets/profile-headshot.png";
 import { Mail, Linkedin, Github, MapPin, Phone, Send, Download } from "lucide-react";
 import { Footer } from "./Footer";
 
@@ -16,9 +16,9 @@ export function ContactPage() {
                 {/* Glow Effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/30 to-blue-500/20 rounded-2xl blur-2xl" />
                 
-                <div className="relative w-[500px] h-[500px] rounded-2xl overflow-hidden border-2 border-emerald-500/30 shadow-2xl shadow-emerald-500/20">
+                <div className="relative w-[600px] h-[600px] rounded-2xl overflow-hidden border-2 border-emerald-500/30 shadow-2xl shadow-emerald-500/20">
                   <img 
-                    src={svgPaths.profileImg} 
+                    src={profileImg} 
                     alt="Tchaas Alexander-Wright" 
                     className="w-full h-full object-cover"
                   />
