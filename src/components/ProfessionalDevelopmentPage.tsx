@@ -34,7 +34,7 @@ export function ProfessionalDevelopmentPage() {
                 <div className="bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 p-12 flex items-center justify-center relative overflow-hidden lg:col-span-1">
                   <div className="absolute inset-0 opacity-10 bg-gradient-to-br from-emerald-500/20 to-emerald-600/10"></div>
                   <img 
-                    src="/src/assets/icononly_nobuffer.png" 
+                    src="/icons/work/NovaOne_icon.png" 
                     alt="NovaOne Technology" 
                     className="w-32 h-32 object-contain relative z-10 rounded-lg" 
                   />
@@ -123,7 +123,7 @@ export function ProfessionalDevelopmentPage() {
                 <div className="bg-gradient-to-br from-blue-500/20 to-blue-600/10 p-12 flex items-center justify-center relative overflow-hidden lg:col-span-1">
                   <div className="absolute inset-0 opacity-10 bg-gradient-to-br from-blue-500/20 to-blue-600/10"></div>
                   <img 
-                    src="/src/assets/BT icon.jpeg" 
+                    src="/icons/work/BT_icon.jpeg" 
                     alt="Bytonomy Tech" 
                     className="w-32 h-32 object-contain relative z-10 rounded-lg" 
                   />
@@ -230,7 +230,7 @@ export function ProfessionalDevelopmentPage() {
                 {/* Icon Area */}
                 <div className="bg-gradient-to-br from-red-500/20 to-red-600/10 p-12 flex items-center justify-center relative overflow-hidden lg:col-span-1">
                   <img 
-                    src="/src/assets/HFH icon.jpeg" 
+                    src="/icons/work/HFH_icon.jpeg" 
                     alt="Habitat for Humanity" 
                     className="w-32 h-32 object-contain relative z-10 rounded-lg" 
                   />
