@@ -5,16 +5,16 @@ export function ContactPage() {
   return (
     <div className="min-h-screen relative">
       {/* Hero Section */}
-      <section className="relative py-16 px-6">
+      <section className="relative py-8 sm:py-12 md:py-16 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Left Side - Image */}
-            <div className="flex justify-center lg:justify-start">
-              <div className="relative">
+            <div className="flex justify-center lg:justify-start order-2 lg:order-1">
+              <div className="relative w-full max-w-[280px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[600px]">
                 {/* Glow Effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/30 to-blue-500/20 rounded-2xl blur-2xl" />
                 
-                <div className="relative w-[600px] h-[600px] rounded-2xl overflow-hidden border-2 border-emerald-500/30 shadow-2xl shadow-emerald-500/20">
+                <div className="relative aspect-square rounded-2xl overflow-hidden border-2 border-emerald-500/30 shadow-2xl shadow-emerald-500/20">
                   <img 
                     src={profileImg} 
                     alt="Tchaas Alexander-Wright" 
@@ -23,34 +23,34 @@ export function ContactPage() {
                 </div>
                 
                 {/* Decorative element */}
-                <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-gradient-to-br from-emerald-500/50 to-emerald-600/30 rounded-2xl -z-10 blur-xl" />
+                <div className="absolute -bottom-4 sm:-bottom-6 -right-4 sm:-right-6 w-20 sm:w-32 h-20 sm:h-32 bg-gradient-to-br from-emerald-500/50 to-emerald-600/30 rounded-2xl -z-10 blur-xl" />
               </div>
             </div>
 
             {/* Right Side - Contact Info */}
-            <div className="space-y-8">
+            <div className="space-y-6 sm:space-y-8 order-1 lg:order-2">
               <div>
-                <h1 className="text-gray-100 mb-4">Let's Connect</h1>
-                <p className="text-gray-400 mb-6">
+                <h1 className="text-gray-100 mb-3 sm:mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl">Let's Connect</h1>
+                <p className="text-gray-400 mb-4 sm:mb-6 text-sm sm:text-base">
                   I'm always excited to connect with professionals, discuss new opportunities, or explore potential collaborations. Whether you have a project in mind, want to discuss logistics innovation, or just want to say hello, I'd love to hear from you.
                 </p>
-                <p className="text-gray-400">
+                <p className="text-gray-400 text-sm sm:text-base">
                   Feel free to reach out through any of the channels below, and I'll get back to you as soon as possible.
                 </p>
               </div>
 
               {/* Contact Methods */}
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 <a
                   href="mailto:tchaasawright@gmail.com"
-                  className="flex items-center gap-4 p-4 bg-gray-900/50 backdrop-blur-sm rounded-xl border border-emerald-500/20 hover:border-emerald-500/50 transition-all group"
+                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-900/50 backdrop-blur-sm rounded-xl border border-emerald-500/20 hover:border-emerald-500/50 transition-all group"
                 >
-                  <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center group-hover:shadow-lg group-hover:shadow-emerald-500/50 transition-all">
-                    <Mail className="w-6 h-6 text-white" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center group-hover:shadow-lg group-hover:shadow-emerald-500/50 transition-all flex-shrink-0">
+                    <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
-                  <div>
-                    <p className="text-gray-500">Email</p>
-                    <p className="text-gray-200">tchaasawright@gmail.com</p>
+                  <div className="min-w-0">
+                    <p className="text-gray-500 text-xs sm:text-sm">Email</p>
+                    <p className="text-gray-200 text-sm sm:text-base truncate">tchaasawright@gmail.com</p>
                   </div>
                 </a>
 
@@ -58,14 +58,14 @@ export function ContactPage() {
                   href="https://www.linkedin.com/in/tchaas-alexander-wright/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-4 bg-gray-900/50 backdrop-blur-sm rounded-xl border border-emerald-500/20 hover:border-emerald-500/50 transition-all group"
+                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-900/50 backdrop-blur-sm rounded-xl border border-emerald-500/20 hover:border-emerald-500/50 transition-all group"
                 >
-                  <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center group-hover:shadow-lg group-hover:shadow-emerald-500/50 transition-all">
-                    <Linkedin className="w-6 h-6 text-white" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center group-hover:shadow-lg group-hover:shadow-emerald-500/50 transition-all flex-shrink-0">
+                    <Linkedin className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
                   <div>
-                    <p className="text-gray-500">LinkedIn</p>
-                    <p className="text-gray-200">Tchaas Alexander-Wright</p>
+                    <p className="text-gray-500 text-xs sm:text-sm">LinkedIn</p>
+                    <p className="text-gray-200 text-sm sm:text-base">Tchaas Alexander-Wright</p>
                   </div>
                 </a>
 
@@ -73,26 +73,26 @@ export function ContactPage() {
                   href="https://github.com/Tchaas"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-4 p-4 bg-gray-900/50 backdrop-blur-sm rounded-xl border border-emerald-500/20 hover:border-emerald-500/50 transition-all group"
+                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-900/50 backdrop-blur-sm rounded-xl border border-emerald-500/20 hover:border-emerald-500/50 transition-all group"
                 >
-                  <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center group-hover:shadow-lg group-hover:shadow-emerald-500/50 transition-all">
-                    <Github className="w-6 h-6 text-white" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center group-hover:shadow-lg group-hover:shadow-emerald-500/50 transition-all flex-shrink-0">
+                    <Github className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
                   </div>
                   <div>
-                    <p className="text-gray-500">GitHub</p>
-                    <p className="text-gray-200">View My Projects</p>
+                    <p className="text-gray-500 text-xs sm:text-sm">GitHub</p>
+                    <p className="text-gray-200 text-sm sm:text-base">View My Projects</p>
                   </div>
                 </a>
               </div>
 
               {/* Download Resume Button */}
-              <div className="pt-4">
+              <div className="pt-2 sm:pt-4">
                 <a 
                   href="/TchaasHAlexanderWright_Resume.pdf"
                   download="TchaasHAlexanderWright_Resume.pdf"
-                  className="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-8 py-4 rounded-xl hover:from-emerald-600 hover:to-emerald-700 transition-all flex items-center justify-center gap-3 shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 hover:scale-105"
+                  className="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:from-emerald-600 hover:to-emerald-700 transition-all flex items-center justify-center gap-2 sm:gap-3 shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 hover:scale-105 text-sm sm:text-base"
                 >
-                  <Download className="w-5 h-5" />
+                  <Download className="w-4 h-4 sm:w-5 sm:h-5" />
                   <span>Download My Resume</span>
                 </a>
               </div>

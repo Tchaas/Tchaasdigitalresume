@@ -87,7 +87,7 @@ function OverviewPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="relative min-h-[600px] flex items-center justify-center px-6 py-20 overflow-hidden"
+        className="relative min-h-[500px] sm:min-h-[600px] flex items-center justify-center px-4 sm:px-6 py-12 sm:py-20 overflow-hidden"
       >
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#0a0e1a]/90 via-[#0a0e1a]/70 to-emerald-900/20" />
@@ -102,27 +102,27 @@ function OverviewPage() {
         }} />
         
         <div className="max-w-7xl mx-auto w-full relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Left Content */}
             <motion.div 
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="space-y-6"
+              className="space-y-4 sm:space-y-6"
             >
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full mb-4">
+              <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full mb-2 sm:mb-4">
                 <motion.div 
                   animate={{ scale: [1, 1.2, 1] }}
                   transition={{ repeat: Infinity, duration: 2 }}
                   className="w-2 h-2 bg-emerald-500 rounded-full"
                 />
-                <span className="text-emerald-400">Available for opportunities</span>
+                <span className="text-emerald-400 text-xs sm:text-sm">Available for opportunities</span>
               </div>
               
-              <h1 className="text-gray-100">
+              <h1 className="text-gray-100 text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
                 Hello, I'm <span className="text-emerald-400 drop-shadow-[0_0_10px_rgba(16,185,129,0.5)]">Tchaas</span>
               </h1>
-              <div className="text-gray-400 max-w-xl space-y-4">
+              <div className="text-gray-400 max-w-xl space-y-3 sm:space-y-4 text-sm sm:text-base">
                 <p>
                   I design systems, build products, and solve problems that sit at the crossroads of business strategy and technology. My work blends experience across enterprise architecture, product development, and UX research, supported by ongoing study in Computer Science at Georgia Tech.
                 </p>
@@ -138,42 +138,42 @@ function OverviewPage() {
               </div>
               
               {/* Tech Stack Pills */}
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2 sm:gap-3">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6 }}
                   whileHover={{ scale: 1.05, y: -2 }}
-                  className="flex items-center gap-2 px-4 py-2 bg-gray-900/50 border border-emerald-500/30 rounded-lg backdrop-blur-sm cursor-pointer hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-all"
+                  className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-900/50 border border-emerald-500/30 rounded-lg backdrop-blur-sm cursor-pointer hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-all\"
                 >
-                  <svg className="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24">
-                    <path d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  <svg className="w-3 h-3 sm:w-4 sm:h-4 text-emerald-400\" fill=\"none\" viewBox=\"0 0 24 24\">
+                    <path d=\"M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z\" stroke=\"currentColor\" strokeWidth=\"2\" strokeLinecap=\"round\" strokeLinejoin=\"round\" />
                   </svg>
-                  <span className="text-gray-300">Enterprise Architecture</span>
+                  <span className=\"text-gray-300 text-xs sm:text-sm\">Enterprise Architecture</span>
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.7 }}
                   whileHover={{ scale: 1.05, y: -2 }}
-                  className="flex items-center gap-2 px-4 py-2 bg-gray-900/50 border border-emerald-500/30 rounded-lg backdrop-blur-sm cursor-pointer hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-all"
+                  className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-900/50 border border-emerald-500/30 rounded-lg backdrop-blur-sm cursor-pointer hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-all\"
                 >
-                  <svg className="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24">
-                    <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  <svg className=\"w-3 h-3 sm:w-4 sm:h-4 text-emerald-400\" fill=\"none\" viewBox=\"0 0 24 24\">
+                    <path d=\"M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4\" stroke=\"currentColor\" strokeWidth=\"2\" strokeLinecap=\"round\" strokeLinejoin=\"round\" />
                   </svg>
-                  <span className="text-gray-300">Product Management</span>
+                  <span className=\"text-gray-300 text-xs sm:text-sm\">Product Management</span>
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.8 }}
                   whileHover={{ scale: 1.05, y: -2 }}
-                  className="flex items-center gap-2 px-4 py-2 bg-gray-900/50 border border-emerald-500/30 rounded-lg backdrop-blur-sm cursor-pointer hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-all"
+                  className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-900/50 border border-emerald-500/30 rounded-lg backdrop-blur-sm cursor-pointer hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-all\"
                 >
-                  <svg className="w-4 h-4 text-emerald-400" fill="none" viewBox="0 0 24 24">
-                    <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  <svg className=\"w-3 h-3 sm:w-4 sm:h-4 text-emerald-400\" fill=\"none\" viewBox=\"0 0 24 24\">
+                    <path d=\"M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01\" stroke=\"currentColor\" strokeWidth=\"2\" strokeLinecap=\"round\" strokeLinejoin=\"round\" />
                   </svg>
-                  <span className="text-gray-300">Business Analysis</span>
+                  <span className=\"text-gray-300 text-xs sm:text-sm\">Business Analysis</span>
                 </motion.div>
               </div>
 
@@ -182,18 +182,18 @@ function OverviewPage() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.9 }}
-                className="flex flex-wrap gap-4 pt-4"
+                className="flex flex-wrap gap-3 sm:gap-4 pt-2 sm:pt-4\"
               >
                 <motion.a
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  href="https://www.linkedin.com/in/tchaas-alexander-wright/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-emerald-400 px-6 py-3 border border-emerald-500/30 rounded-lg hover:bg-emerald-500/10 transition-all"
+                  href=\"https://www.linkedin.com/in/tchaas-alexander-wright/\"
+                  target=\"_blank\"
+                  rel=\"noopener noreferrer\"
+                  className="flex items-center gap-2 text-emerald-400 px-4 sm:px-6 py-2 sm:py-3 border border-emerald-500/30 rounded-lg hover:bg-emerald-500/10 transition-all text-sm sm:text-base\"
                 >
-                  <svg className="w-5 h-6" fill="none" viewBox="0 0 21 24">
-                    <path d={svgPaths.p303ef300} fill="#10B981" />
+                  <svg className=\"w-4 h-4 sm:w-5 sm:h-6\" fill=\"none\" viewBox=\"0 0 21 24\">
+                    <path d={svgPaths.p303ef300} fill=\"#10B981\" />
                   </svg>
                   LinkedIn
                 </motion.a>
@@ -205,22 +205,22 @@ function OverviewPage() {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="flex justify-center lg:justify-end"
+              className="flex justify-center lg:justify-end\"
             >
-              <div className="relative z-20">
+              <div className=\"relative z-20 w-full max-w-[280px] sm:max-w-[350px] md:max-w-[420px]\">
                 {/* Outer Glowing Frame */}
                 <motion.div 
                   animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  className="absolute inset-0 bg-gradient-to-br from-emerald-500/30 to-blue-500/30 rounded-full blur-2xl"
+                  transition={{ duration: 20, repeat: Infinity, ease: \"linear\" }}
+                  className=\"absolute inset-0 bg-gradient-to-br from-emerald-500/30 to-blue-500/30 rounded-full blur-2xl\"
                 />
                 
-                <div className="relative w-[420px] h-[420px] rounded-full bg-gradient-to-br from-emerald-500/20 to-transparent p-2.5 backdrop-blur-sm border border-emerald-500/30">
-                  <div className="w-full h-full rounded-full bg-gray-900 p-6">
+                <div className=\"relative aspect-square rounded-full bg-gradient-to-br from-emerald-500/20 to-transparent p-2 sm:p-2.5 backdrop-blur-sm border border-emerald-500/30\">
+                  <div className=\"w-full h-full rounded-full bg-gray-900 p-4 sm:p-6\">
                     <img
                       src={profileImg}
-                      alt="Tchaas Alexander-Wright"
-                      className="w-full h-full rounded-full object-cover border-[6px] border-emerald-500/60 shadow-xl"
+                      alt=\"Tchaas Alexander-Wright\"
+                      className=\"w-full h-full rounded-full object-cover border-4 sm:border-[6px] border-emerald-500/60 shadow-xl\"
                     />
                   </div>
                 </div>
@@ -228,10 +228,10 @@ function OverviewPage() {
                 {/* Floating Tech Badge */}
                 <motion.div
                   whileHover={{ scale: 1.1, rotate: 5 }}
-                  className="absolute bottom-4 -right-4 w-16 h-16 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full shadow-lg shadow-emerald-500/50 flex items-center justify-center border border-emerald-400/50 cursor-pointer"
+                  className=\"absolute bottom-2 sm:bottom-4 -right-2 sm:-right-4 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full shadow-lg shadow-emerald-500/50 flex items-center justify-center border border-emerald-400/50 cursor-pointer\"
                 >
-                  <svg className="w-7 h-6" fill="none" viewBox="0 0 27 24">
-                    <path d={svgPaths.p302cc000} fill="white" />
+                  <svg className=\"w-5 h-5 sm:w-7 sm:h-6\" fill=\"none\" viewBox=\"0 0 27 24\">
+                    <path d={svgPaths.p302cc000} fill=\"white\" />
                   </svg>
                 </motion.div>
               </div>
@@ -246,7 +246,7 @@ function OverviewPage() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6 }}
-        className="relative bg-[#0a0e1a] py-20 px-6 overflow-hidden"
+        className="relative bg-[#0a0e1a] py-12 sm:py-16 md:py-20 px-4 sm:px-6 overflow-hidden"
       >
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
@@ -259,15 +259,15 @@ function OverviewPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-center mb-16"
+            className="text-center mb-12 sm:mb-16"
           >
-            <h2 className="text-gray-100 mb-4">Core Competencies</h2>
-            <p className="text-gray-400 max-w-3xl mx-auto">
+            <h2 className="text-gray-100 mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">Core Competencies</h2>
+            <p className="text-gray-400 max-w-3xl mx-auto text-sm sm:text-base px-4">
               Expertise spanning enterprise architecture, agile product development, and strategic technology leadership
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
             {/* Competency Card 1 */}
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
@@ -275,19 +275,19 @@ function OverviewPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0 * 0.2 }}
               whileHover={{ y: -10, scale: 1.02 }}
-              className="bg-gray-900/50 backdrop-blur-sm p-8 rounded-xl border border-emerald-500/20 hover:border-emerald-500/50 transition-all hover:shadow-lg hover:shadow-emerald-500/10 cursor-pointer"
+              className="bg-gray-900/50 backdrop-blur-sm p-6 sm:p-8 rounded-xl border border-emerald-500/20 hover:border-emerald-500/50 transition-all hover:shadow-lg hover:shadow-emerald-500/10 cursor-pointer"
             >
               <motion.div 
                 whileHover={{ rotate: 360 }}
                 transition={{ duration: 0.6 }}
-                className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center mb-6 shadow-lg shadow-emerald-500/30"
+                className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center mb-4 sm:mb-6 shadow-lg shadow-emerald-500/30"
               >
-                <svg className="w-4 h-5 flex-shrink-0" fill="none" viewBox="0 0 15 20">
+                <svg className="w-4 h-4 sm:w-4 sm:h-5 flex-shrink-0" fill="none" viewBox="0 0 15 20">
                   <path d={svgPaths.p594b480} fill="white" />
                 </svg>
               </motion.div>
-              <h3 className="text-gray-100 mb-4">Enterprise Architecture & Data Strategy</h3>
-              <p className="text-gray-400 mb-4">
+              <h3 className="text-gray-100 mb-3 sm:mb-4 text-lg sm:text-xl">Enterprise Architecture & Data Strategy</h3>
+              <p className="text-gray-400 mb-3 sm:mb-4 text-sm sm:text-base">
                 Defining scalable data architectures and capability models that bridge FedEx Express and Ground systems. Leading cross-functional requirements gathering and translating enterprise goals into executable technology solutions.
               </p>
               <div className="flex flex-wrap gap-2">

@@ -4,62 +4,62 @@ export function ProfessionalDevelopmentPage() {
   return (
     <div className="min-h-screen relative">
       {/* Hero Section */}
-      <section className="relative py-16 px-6">
+      <section className="relative py-12 sm:py-16 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto text-center">
-          <div className="inline-block mb-8">
-            <div className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl shadow-xl shadow-emerald-500/50 flex items-center justify-center">
-              <Heart className="w-10 h-10 text-white" />
+          <div className="inline-block mb-6 sm:mb-8">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl shadow-xl shadow-emerald-500/50 flex items-center justify-center">
+              <Heart className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
             </div>
           </div>
-          <h1 className="text-gray-100 mb-4">Professional Development</h1>
-          <p className="text-gray-400 max-w-3xl mx-auto">
+          <h1 className="text-gray-100 mb-3 sm:mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl">Professional Development</h1>
+          <p className="text-gray-400 max-w-3xl mx-auto text-sm sm:text-base">
             Beyond my professional career, I'm deeply committed to giving back to the community, contributing to meaningful projects, and serving on boards that drive positive change.
           </p>
         </div>
       </section>
 
       {/* Startup Ventures */}
-      <section className="relative py-20 px-6">
+      <section className="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="mb-16">
-            <h2 className="text-gray-100 mb-2">Startup Ventures</h2>
-            <p className="text-gray-400">Building innovative solutions from the ground up</p>
+          <div className="mb-12 sm:mb-16">
+            <h2 className="text-gray-100 mb-2 text-2xl sm:text-3xl md:text-4xl">Startup Ventures</h2>
+            <p className="text-gray-400 text-sm sm:text-base">Building innovative solutions from the ground up</p>
           </div>
 
-          <div className="space-y-12">
+          <div className="space-y-8 sm:space-y-12">
             {/* NovaOne Technology */}
             <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 rounded-xl overflow-hidden hover:border-emerald-500/50 transition-all">
               <div className="grid lg:grid-cols-3 gap-0">
                 {/* Icon Area */}
-                <div className="bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 p-12 flex items-center justify-center relative overflow-hidden lg:col-span-1">
+                <div className="bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 p-8 sm:p-12 flex items-center justify-center relative overflow-hidden lg:col-span-1">
                   <div className="absolute inset-0 opacity-10 bg-gradient-to-br from-emerald-500/20 to-emerald-600/10"></div>
                   <img 
                     src="/icons/work/NovaOne_icon.png" 
                     alt="NovaOne Technology" 
-                    className="w-32 h-32 object-contain relative z-10 rounded-lg" 
+                    className="w-24 h-24 sm:w-32 sm:h-32 object-contain relative z-10 rounded-lg" 
                   />
                 </div>
                 
                 {/* Details */}
-                <div className="p-8 lg:col-span-2">
+                <div className="p-6 sm:p-8 lg:col-span-2">
                   <div className="flex items-start justify-between gap-4 mb-4">
                     <div>
-                      <h3 className="text-gray-100 mb-2">NovaOne Technology</h3>
-                      <p className="text-emerald-400 mb-4">Co-Founder & Technology Lead</p>
+                      <h3 className="text-gray-100 mb-2 text-xl sm:text-2xl">NovaOne Technology</h3>
+                      <p className="text-emerald-400 mb-4 text-sm sm:text-base">Co-Founder & Technology Lead</p>
                     </div>
                     <div className="flex gap-2">
-                      <span className="px-3 py-1 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full">Active</span>
+                      <span className="px-2 sm:px-3 py-1 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full text-xs sm:text-sm whitespace-nowrap">Active</span>
                     </div>
                   </div>
                   
-                  <p className="text-gray-400 mb-6">
+                  <p className="text-gray-400 mb-6 text-sm sm:text-base">
                     Co-founded a technology startup focused on developing innovative software solutions. Led the technical development strategy while managing budget, infrastructure, and vendor relationships.
                   </p>
                   
                   <div className="mb-6">
-                    <h4 className="text-gray-200 mb-3">Key Contributions</h4>
-                    <div className="grid md:grid-cols-2 gap-3">
-                      <div className="flex items-start gap-2 text-gray-400">
+                    <h4 className="text-gray-200 mb-3 text-base sm:text-lg">Key Contributions</h4>
+                    <div className="grid sm:grid-cols-2 gap-3">
+                      <div className="flex items-start gap-2 text-gray-400 text-sm sm:text-base">
                         <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full mt-2 flex-shrink-0" />
                         <span>Defined and developed product roadmap through customer engagement</span>
                       </div>
