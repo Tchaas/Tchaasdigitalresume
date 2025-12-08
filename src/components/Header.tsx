@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 
@@ -62,38 +62,47 @@ export function Header({ currentPage, onPageChange }: HeaderProps) {
           <motion.button
             whileTap={{ scale: 0.95 }}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 text-gray-400 hover:text-emerald-400 transition-colors"
+            className="lg:hidden p-2 text-gray-400 hover:text-emerald-400 transition-colors rounded-lg hover:bg-emerald-500/5"
+            aria-label="Toggle menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </motion.button>
         </div>
 
         {/* Mobile Menu Dropdown */}
-        {mobileMenuOpen && (
-          <motion.nav
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="lg:hidden mt-4 pb-4 space-y-2"
-          >
-            {navItems.map((item) => (
-              <motion.button
-                key={item.id}
-                whileTap={{ scale: 0.98 }}
-                onClick={() => handleNavClick(item.id)}
-                className={`
-                  w-full px-4 py-3 rounded-lg text-left font-medium transition-all
-                  ${currentPage === item.id 
-                    ? 'text-emerald-400 bg-emerald-500/10 border border-emerald-500/30' 
-                    : 'text-gray-400 hover:text-emerald-400 hover:bg-emerald-500/5'
-                  }
-                `}
-              >
-                {item.label}
-              </motion.button>
-            ))}
-          </motion.nav>
-        )}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.nav
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.2 }}
+              className="lg:hidden overflow-hidden"
+            >
+              <div className="mt-4 pb-4 space-y-2">
+                {navItems.map((item, index) => (
+                  <motion.button
+                    key={item.id}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={() => handleNavClick(item.id)}
+                    className={`
+                      w-full px-4 py-3 rounded-lg text-left font-medium transition-all
+                      ${currentPage === item.id 
+                        ? 'text-emerald-400 bg-emerald-500/10 border border-emerald-500/30' 
+                        : 'text-gray-400 hover:text-emerald-400 hover:bg-emerald-500/5 border border-transparent'
+                      }
+                    `}
+                  >
+                    {item.label}
+                  </motion.button>
+                ))}
+              </div>
+            </motion.nav>
+          )}
+        </AnimatePresence>
       </div>
     </header>
   );
