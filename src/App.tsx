@@ -144,36 +144,36 @@ function OverviewPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6 }}
                   whileHover={{ scale: 1.05, y: -2 }}
-                  className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-900/50 border border-emerald-500/30 rounded-lg backdrop-blur-sm cursor-pointer hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-all\"
+                  className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-900/50 border border-emerald-500/30 rounded-lg backdrop-blur-sm cursor-pointer hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-all"
                 >
-                  <svg className="w-3 h-3 sm:w-4 sm:h-4 text-emerald-400\" fill=\"none\" viewBox=\"0 0 24 24\">
-                    <path d=\"M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z\" stroke=\"currentColor\" strokeWidth=\"2\" strokeLinecap=\"round\" strokeLinejoin=\"round\" />
+                  <svg className="w-3 h-3 sm:w-4 sm:h-4 text-emerald-400" fill="none" viewBox="0 0 24 24">
+                    <path d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
-                  <span className=\"text-gray-300 text-xs sm:text-sm\">Enterprise Architecture</span>
+                  <span className="text-gray-300 text-xs sm:text-sm">Enterprise Architecture</span>
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.7 }}
                   whileHover={{ scale: 1.05, y: -2 }}
-                  className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-900/50 border border-emerald-500/30 rounded-lg backdrop-blur-sm cursor-pointer hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-all\"
+                  className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-900/50 border border-emerald-500/30 rounded-lg backdrop-blur-sm cursor-pointer hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-all"
                 >
-                  <svg className=\"w-3 h-3 sm:w-4 sm:h-4 text-emerald-400\" fill=\"none\" viewBox=\"0 0 24 24\">
-                    <path d=\"M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4\" stroke=\"currentColor\" strokeWidth=\"2\" strokeLinecap=\"round\" strokeLinejoin=\"round\" />
+                  <svg className="w-3 h-3 sm:w-4 sm:h-4 text-emerald-400" fill="none" viewBox="0 0 24 24">
+                    <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
-                  <span className=\"text-gray-300 text-xs sm:text-sm\">Product Management</span>
+                  <span className="text-gray-300 text-xs sm:text-sm">Product Management</span>
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.8 }}
                   whileHover={{ scale: 1.05, y: -2 }}
-                  className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-900/50 border border-emerald-500/30 rounded-lg backdrop-blur-sm cursor-pointer hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-all\"
+                  className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-900/50 border border-emerald-500/30 rounded-lg backdrop-blur-sm cursor-pointer hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-all"
                 >
-                  <svg className=\"w-3 h-3 sm:w-4 sm:h-4 text-emerald-400\" fill=\"none\" viewBox=\"0 0 24 24\">
-                    <path d=\"M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01\" stroke=\"currentColor\" strokeWidth=\"2\" strokeLinecap=\"round\" strokeLinejoin=\"round\" />
+                  <svg className="w-3 h-3 sm:w-4 sm:h-4 text-emerald-400" fill="none" viewBox="0 0 24 24">
+                    <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
-                  <span className=\"text-gray-300 text-xs sm:text-sm\">Business Analysis</span>
+                  <span className="text-gray-300 text-xs sm:text-sm">Business Analysis</span>
                 </motion.div>
               </div>
 
@@ -182,18 +182,18 @@ function OverviewPage() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.9 }}
-                className="flex flex-wrap gap-3 sm:gap-4 pt-2 sm:pt-4\"
+                className="flex flex-wrap gap-3 sm:gap-4 pt-2 sm:pt-4"
               >
                 <motion.a
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  href=\"https://www.linkedin.com/in/tchaas-alexander-wright/\"
-                  target=\"_blank\"
-                  rel=\"noopener noreferrer\"
-                  className="flex items-center gap-2 text-emerald-400 px-4 sm:px-6 py-2 sm:py-3 border border-emerald-500/30 rounded-lg hover:bg-emerald-500/10 transition-all text-sm sm:text-base\"
+                  href="https://www.linkedin.com/in/tchaas-alexander-wright/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-emerald-400 px-4 sm:px-6 py-2 sm:py-3 border border-emerald-500/30 rounded-lg hover:bg-emerald-500/10 transition-all text-sm sm:text-base"
                 >
-                  <svg className=\"w-4 h-4 sm:w-5 sm:h-6\" fill=\"none\" viewBox=\"0 0 21 24\">
-                    <path d={svgPaths.p303ef300} fill=\"#10B981\" />
+                  <svg className="w-4 h-4 sm:w-5 sm:h-6" fill="none" viewBox="0 0 21 24">
+                    <path d={svgPaths.p303ef300} fill="#10B981" />
                   </svg>
                   LinkedIn
                 </motion.a>
@@ -205,22 +205,22 @@ function OverviewPage() {
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="flex justify-center lg:justify-end\"
+              className="flex justify-center lg:justify-end"
             >
-              <div className=\"relative z-20 w-full max-w-[280px] sm:max-w-[350px] md:max-w-[420px]\">
+              <div className="relative z-20 w-full max-w-[280px] sm:max-w-[350px] md:max-w-[420px]">
                 {/* Outer Glowing Frame */}
                 <motion.div 
                   animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: \"linear\" }}
-                  className=\"absolute inset-0 bg-gradient-to-br from-emerald-500/30 to-blue-500/30 rounded-full blur-2xl\"
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  className="absolute inset-0 bg-gradient-to-br from-emerald-500/30 to-blue-500/30 rounded-full blur-2xl"
                 />
                 
-                <div className=\"relative aspect-square rounded-full bg-gradient-to-br from-emerald-500/20 to-transparent p-2 sm:p-2.5 backdrop-blur-sm border border-emerald-500/30\">
-                  <div className=\"w-full h-full rounded-full bg-gray-900 p-4 sm:p-6\">
+                <div className="relative aspect-square rounded-full bg-gradient-to-br from-emerald-500/20 to-transparent p-2 sm:p-2.5 backdrop-blur-sm border border-emerald-500/30">
+                  <div className="w-full h-full rounded-full bg-gray-900 p-4 sm:p-6">
                     <img
                       src={profileImg}
-                      alt=\"Tchaas Alexander-Wright\"
-                      className=\"w-full h-full rounded-full object-cover border-4 sm:border-[6px] border-emerald-500/60 shadow-xl\"
+                      alt="Tchaas Alexander-Wright"
+                      className="w-full h-full rounded-full object-cover border-4 sm:border-[6px] border-emerald-500/60 shadow-xl"
                     />
                   </div>
                 </div>
@@ -228,10 +228,10 @@ function OverviewPage() {
                 {/* Floating Tech Badge */}
                 <motion.div
                   whileHover={{ scale: 1.1, rotate: 5 }}
-                  className=\"absolute bottom-2 sm:bottom-4 -right-2 sm:-right-4 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full shadow-lg shadow-emerald-500/50 flex items-center justify-center border border-emerald-400/50 cursor-pointer\"
+                  className="absolute bottom-2 sm:bottom-4 -right-2 sm:-right-4 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full shadow-lg shadow-emerald-500/50 flex items-center justify-center border border-emerald-400/50 cursor-pointer"
                 >
-                  <svg className=\"w-5 h-5 sm:w-7 sm:h-6\" fill=\"none\" viewBox=\"0 0 27 24\">
-                    <path d={svgPaths.p302cc000} fill=\"white\" />
+                  <svg className="w-5 h-5 sm:w-7 sm:h-6" fill="none" viewBox="0 0 27 24">
+                    <path d={svgPaths.p302cc000} fill="white" />
                   </svg>
                 </motion.div>
               </div>
