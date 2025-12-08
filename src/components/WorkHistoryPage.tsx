@@ -4,22 +4,22 @@ export function WorkHistoryPage() {
   return (
     <div className="min-h-screen relative">
       {/* Hero Section */}
-      <section className="relative py-16 px-6">
+      <section className="relative py-12 sm:py-16 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto text-center">
-          <h1 className="text-gray-100 mb-4">Professional Experience</h1>
-          <p className="text-gray-400 max-w-3xl mx-auto">
+          <h1 className="text-gray-100 mb-3 sm:mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl">Professional Experience</h1>
+          <p className="text-gray-400 max-w-3xl mx-auto text-sm sm:text-base">
             A 9+ year journey from quality assurance to business architecture, spanning fintech, retail, financial services, and logistics. My career showcases progressive growth in product ownership, enterprise architecture, and leading digital transformation initiatives that deliver strategic value across global organizations.
           </p>
         </div>
       </section>
 
       {/* Timeline Section */}
-      <section className="relative py-12 px-6">
+      <section className="relative py-8 sm:py-12 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto relative">
           {/* Center line */}
           <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-500 via-emerald-500/50 to-transparent hidden lg:block" />
 
-          <div className="space-y-24">
+          <div className="space-y-16 sm:space-y-24">
             {/* Job 1 - Business Architect (Left Side) */}
             <div className="relative">
               {/* Timeline dot */}
@@ -27,19 +27,19 @@ export function WorkHistoryPage() {
               
               <div className="lg:grid lg:grid-cols-2 lg:gap-16">
                 {/* Left side - Company Info */}
-                <div className="order-2 lg:order-1 mt-8 lg:mt-0">
-                  <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-6 rounded-xl hover:border-emerald-500/50 transition-all">
+                <div className="order-2 lg:order-1 mt-6 sm:mt-8 lg:mt-0">
+                  <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-5 sm:p-6 rounded-xl hover:border-emerald-500/50 transition-all">
                     <div className="flex items-center gap-3 mb-3">
-                      <img src="/icons/work/fedex-logo.png" alt="FedEx" className="w-12 h-12 rounded-lg" />
-                      <h4 className="text-gray-100">About Federal Express Corporation</h4>
+                      <img src="/icons/work/fedex-logo.png" alt="FedEx" className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg" />
+                      <h4 className="text-gray-100 text-base sm:text-lg">About Federal Express Corporation</h4>
                     </div>
-                    <p className="text-gray-300 mb-4">
+                    <p className="text-gray-300 mb-3 sm:mb-4 text-sm sm:text-base">
                       Logistics & Transportation
                     </p>
-                    <p className="text-gray-300 mb-4">
+                    <p className="text-gray-300 mb-3 sm:mb-4 text-sm sm:text-base">
                       Federal Express Corporation (FedEx) is a multinational conglomerate holding company focused on transportation, e-commerce, and business services. Founded in 1971, FedEx is a global leader in express shipping and logistics solutions, serving millions of customers worldwide with innovative delivery and supply chain management solutions.
                     </p>
-                    <div className="flex items-center gap-2 text-emerald-400">
+                    <div className="flex items-center gap-2 text-emerald-400 text-sm sm:text-base">
                       <MapPin className="w-4 h-4 flex-shrink-0" />
                       <span>Remote</span>
                     </div>
@@ -47,18 +47,18 @@ export function WorkHistoryPage() {
                 </div>
 
                 {/* Right side - Job Details */}
-                <div className="order-1 lg:order-2 space-y-6">
+                <div className="order-1 lg:order-2 space-y-4 sm:space-y-6">
                   <div>
-                    <span className="px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex items-center gap-2">
-                      <Calendar className="w-4 h-4" />
+                    <span className="px-3 sm:px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex items-center gap-2 text-xs sm:text-sm">
+                      <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
                       Mar 2025 - Present
                     </span>
                   </div>
                   
                   <div>
-                    <h3 className="text-gray-100 mb-2">Business Architect</h3>
-                    <h4 className="text-emerald-400 mb-4">Federal Express Corporation</h4>
-                    <div className="text-gray-400 space-y-3">
+                    <h3 className="text-gray-100 mb-2 text-xl sm:text-2xl">Business Architect</h3>
+                    <h4 className="text-emerald-400 mb-3 sm:mb-4 text-base sm:text-lg">Federal Express Corporation</h4>
+                    <div className="text-gray-400 space-y-2 sm:space-y-3 text-sm sm:text-base">
                       <p>
                         I manage incoming business demand across five Agile Release Trains (ARTs), ensuring prioritization aligns with enterprise strategies. My responsibilities include defining and documenting data architecture to support new enterprise capabilities, developing process maps and capability models for current and future-state operations, and collaborating with architects and engineering teams to propose technology solutions.
                       </p>
@@ -66,27 +66,27 @@ export function WorkHistoryPage() {
                   </div>
 
                   <div>
-                    <h5 className="text-gray-100 mb-3">Key Metrics:</h5>
-                    <ul className="space-y-3">
+                    <h5 className="text-gray-100 mb-3 text-base sm:text-lg">Key Metrics:</h5>
+                    <ul className="space-y-2 sm:space-y-3">
                       <li className="flex items-start gap-2">
                         <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300">Managed demand across 5 Agile Release Trains (ARTs)</p>
+                        <p className="text-gray-300 text-sm sm:text-base">Managed demand across 5 Agile Release Trains (ARTs)</p>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300">Defined scalable data architecture for new enterprise capabilities</p>
+                        <p className="text-gray-300 text-sm sm:text-base">Defined scalable data architecture for new enterprise capabilities</p>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300">Developed process maps and capability models for multiple business units</p>
+                        <p className="text-gray-300 text-sm sm:text-base">Developed process maps and capability models for multiple business units</p>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300">Delivered $70.5M in strategic value to FedEx in FY26</p>
+                        <p className="text-gray-300 text-sm sm:text-base">Delivered $70.5M in strategic value to FedEx in FY26</p>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300">Created high-level solution designs and capability documentation for implementation readiness</p>
+                        <p className="text-gray-300 text-sm sm:text-base">Created high-level solution designs and capability documentation for implementation readiness</p>
                       </li>
                     </ul>
                   </div>

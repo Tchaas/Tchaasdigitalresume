@@ -4,43 +4,43 @@ export function EducationPage() {
   return (
     <div className="min-h-screen relative">
       {/* Hero Section */}
-      <section className="relative py-16 px-6">
+      <section className="relative py-12 sm:py-16 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-block mb-8">
-            <div className="w-24 h-24 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl shadow-xl shadow-emerald-500/50 flex items-center justify-center p-4">
-              <GraduationCap className="w-16 h-16 text-white" />
+          <div className="inline-block mb-6 sm:mb-8">
+            <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl shadow-xl shadow-emerald-500/50 flex items-center justify-center p-3 sm:p-4">
+              <GraduationCap className="w-14 h-14 sm:w-16 sm:h-16 text-white" />
             </div>
           </div>
-          <h1 className="text-gray-100 mb-4">Educational Journey</h1>
-          <p className="text-gray-400 max-w-3xl mx-auto">
+          <h1 className="text-gray-100 mb-3 sm:mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl">Educational Journey</h1>
+          <p className="text-gray-400 max-w-3xl mx-auto text-sm sm:text-base">
             A decade-long academic progression from IT networking fundamentals to advanced computer science. My educational foundation spans technical infrastructure, information systems management, business strategy, and human-computer interaction—equipping me with a unique blend of technical expertise and business acumen.
           </p>
         </div>
       </section>
 
       {/* Timeline Section */}
-      <section className="relative py-12 px-6">
+      <section className="relative py-8 sm:py-12 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto relative">
           {/* Timeline connector line */}
           <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-500 via-emerald-500/50 to-transparent hidden lg:block" />
 
-          <div className="space-y-16">
+          <div className="space-y-12 sm:space-y-16">
             {/* Georgia Institute of Technology */}
             <div className="relative">
               <div className="lg:grid lg:grid-cols-2 lg:gap-8 items-start">
-                <div className="lg:text-right mb-8 lg:mb-0">
-                  <div className="inline-block bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 rounded-xl shadow-lg shadow-emerald-500/10 p-8 text-left max-w-md w-full hover:border-emerald-500/50 transition-all">
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className="w-12 h-12 bg-[#B3A369] rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg shadow-emerald-500/30 p-1.5">
+                <div className="lg:text-right mb-6 sm:mb-8 lg:mb-0">
+                  <div className="inline-block bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 rounded-xl shadow-lg shadow-emerald-500/10 p-6 sm:p-8 text-left max-w-md w-full hover:border-emerald-500/50 transition-all">
+                    <div className="flex items-start gap-3 sm:gap-4 mb-4">
+                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#B3A369] rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg shadow-emerald-500/30 p-1.5">
                         <img src="/icons/education/gt-logo.jpeg" alt="Georgia Tech" className="w-full h-full object-contain" />
                       </div>
-                      <div className="flex-1">
-                        <h3 className="text-gray-100 mb-1">Georgia Institute of Technology</h3>
-                        <p className="text-emerald-400 mb-2">Master of Science in Computer Science</p>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-gray-100 mb-1 text-base sm:text-lg">Georgia Institute of Technology</h3>
+                        <p className="text-emerald-400 mb-2 text-sm sm:text-base">Master of Science in Computer Science</p>
                       </div>
                     </div>
                     
-                    <div className="flex items-center gap-4 text-gray-400 mb-6">
+                    <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-gray-400 mb-4 sm:mb-6 text-xs sm:text-sm">
                       <div className="flex items-center gap-1">
                         <Calendar className="w-4 h-4" />
                         <span>2025-Present</span>
