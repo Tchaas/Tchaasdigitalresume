@@ -28,7 +28,7 @@ export function WorkHistoryPage() {
               <div className="lg:grid lg:grid-cols-2 lg:gap-16">
                 {/* Left side - Company Info */}
                 <div className="order-2 lg:order-1 mt-6 sm:mt-8 lg:mt-0">
-                  <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-5 sm:p-6 rounded-xl hover:border-emerald-500/50 transition-all">
+                  <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-4 sm:p-6 rounded-xl hover:border-emerald-500/50 transition-all">
                     <div className="flex items-center gap-3 mb-3">
                       <img src="/icons/work/fedex-logo.png" alt="FedEx" className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg" />
                       <h4 className="text-gray-100 text-base sm:text-lg">About Federal Express Corporation</h4>
@@ -47,7 +47,7 @@ export function WorkHistoryPage() {
                 </div>
 
                 {/* Right side - Job Details */}
-                <div className="order-1 lg:order-2 space-y-4 sm:space-y-6 px-5 sm:px-0">
+                <div className="order-1 lg:order-2 space-y-4 sm:space-y-6">
                   <div>
                     <span className="px-3 sm:px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex items-center gap-2 text-xs sm:text-sm">
                       <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
@@ -102,7 +102,7 @@ export function WorkHistoryPage() {
               <div className="lg:grid lg:grid-cols-2 lg:gap-16">
                 {/* Left side - Company Info */}
                 <div className="order-2 lg:order-1 mt-8 lg:mt-0">
-                  <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-5 sm:p-6 rounded-xl hover:border-emerald-500/50 transition-all">
+                  <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-4 sm:p-6 rounded-xl hover:border-emerald-500/50 transition-all">
                     <div className="flex items-center gap-3 mb-3">
                       <img src="/icons/work/fedex-logo.png" alt="FedEx" className="w-12 h-12 rounded-lg" />
                       <h4 className="text-gray-100">About Federal Express Corporation</h4>
@@ -121,7 +121,7 @@ export function WorkHistoryPage() {
                 </div>
 
                 {/* Right side - Job Details */}
-                <div className="order-1 lg:order-2 space-y-6 px-5 sm:px-0">
+                <div className="order-1 lg:order-2 space-y-6">
                   <div>
                     <span className="px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex items-center gap-2">
                       Oct 2023 - Mar 2025
@@ -179,7 +179,7 @@ export function WorkHistoryPage() {
               <div className="lg:grid lg:grid-cols-2 lg:gap-16">
                 {/* Left side - Company Info */}
                 <div className="order-2 lg:order-1 mt-8 lg:mt-0">
-                  <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-5 sm:p-6 rounded-xl hover:border-emerald-500/50 transition-all">
+                  <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-4 sm:p-6 rounded-xl hover:border-emerald-500/50 transition-all">
                     <div className="flex items-center gap-3 mb-3">
                       <img src="/icons/work/fedex-logo.png" alt="FedEx" className="w-12 h-12 rounded-lg" />
                       <h4 className="text-gray-100">About Federal Express Corporation</h4>
@@ -198,7 +198,7 @@ export function WorkHistoryPage() {
                 </div>
 
                 {/* Right side - Job Details */}
-                <div className="order-1 lg:order-2 space-y-6 px-5 sm:px-0">
+                <div className="order-1 lg:order-2 space-y-6">
                   <div>
                     <span className="px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex items-center gap-2">
                       Mar 2021 - Sep 2023
@@ -259,7 +259,7 @@ export function WorkHistoryPage() {
               <div className="lg:grid lg:grid-cols-2 lg:gap-16">
                 {/* Left side - Company Info */}
                 <div className="order-2 lg:order-1 mt-8 lg:mt-0">
-                  <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-5 sm:p-6 rounded-xl hover:border-emerald-500/50 transition-all">
+                  <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-4 sm:p-6 rounded-xl hover:border-emerald-500/50 transition-all">
                     <div className="flex items-center gap-3 mb-3">
                       <img src="/icons/work/kohls-logo.jpg" alt="Kohl's" className="w-12 h-12 rounded-lg" />
                       <h4 className="text-gray-100">About Kohl's</h4>
@@ -278,7 +278,7 @@ export function WorkHistoryPage() {
                 </div>
 
                 {/* Right side - Job Details */}
-                <div className="order-1 lg:order-2 space-y-6 px-5 sm:px-0">
+                <div className="order-1 lg:order-2 space-y-6">
                   <div>
                     <span className="px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex items-center gap-2">
                       Jan 2020 - Oct 2020
@@ -343,7 +343,7 @@ export function WorkHistoryPage() {
               <div className="lg:grid lg:grid-cols-2 lg:gap-16">
                 {/* Left side - Company Info */}
                 <div className="order-2 lg:order-1 mt-8 lg:mt-0">
-                  <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-5 sm:p-6 rounded-xl hover:border-emerald-500/50 transition-all">
+                  <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-4 sm:p-6 rounded-xl hover:border-emerald-500/50 transition-all">
                     <div className="flex items-center gap-3 mb-3">
                       <img src="/icons/work/fis-logo.png" alt="FIS" className="w-12 h-12 rounded-lg" />
                       <h4 className="text-gray-100">About FIS</h4>
@@ -373,7 +373,7 @@ export function WorkHistoryPage() {
                 </div>
 
                 {/* Right side - Job Details */}
-                <div className="order-1 lg:order-2 space-y-6 px-5 sm:px-0">
+                <div className="order-1 lg:order-2 space-y-6">
                   <div>
                     <span className="px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex items-center gap-2">
                       Oct 2019 - Dec 2019
@@ -430,7 +430,7 @@ export function WorkHistoryPage() {
               <div className="lg:grid lg:grid-cols-2 lg:gap-16">
                 {/* Left side - Company Info */}
                 <div className="order-2 lg:order-1 mt-8 lg:mt-0">
-                  <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-5 sm:p-6 rounded-xl hover:border-emerald-500/50 transition-all">
+                  <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-4 sm:p-6 rounded-xl hover:border-emerald-500/50 transition-all">
                     <div className="flex items-center gap-3 mb-3">
                       <img src="/icons/work/fis-logo.png" alt="FIS" className="w-12 h-12 rounded-lg" />
                       <h4 className="text-gray-100">About FIS</h4>
@@ -460,7 +460,7 @@ export function WorkHistoryPage() {
                 </div>
 
                 {/* Right side - Job Details */}
-                <div className="order-1 lg:order-2 space-y-6 px-5 sm:px-0">
+                <div className="order-1 lg:order-2 space-y-6">
                   <div>
                     <span className="px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex items-center gap-2">
                       Jul 2017 - Oct 2019
@@ -517,7 +517,7 @@ export function WorkHistoryPage() {
               <div className="lg:grid lg:grid-cols-2 lg:gap-16">
                 {/* Left side - Company Info */}
                 <div className="order-2 lg:order-1 mt-8 lg:mt-0">
-                  <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-5 sm:p-6 rounded-xl hover:border-emerald-500/50 transition-all">
+                  <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-4 sm:p-6 rounded-xl hover:border-emerald-500/50 transition-all">
                     <div className="flex items-center gap-3 mb-3">
                       <img src="/icons/work/nm-logo.png" alt="Northwestern Mutual" className="w-12 h-12 rounded-lg" />
                       <h4 className="text-gray-100">About Northwestern Mutual</h4>
@@ -547,7 +547,7 @@ export function WorkHistoryPage() {
                 </div>
 
                 {/* Right side - Job Details */}
-                <div className="order-1 lg:order-2 space-y-6 px-5 sm:px-0">
+                <div className="order-1 lg:order-2 space-y-6">
                   <div>
                     <span className="px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex items-center gap-2">
                       Jun 2015 - Jul 2017
