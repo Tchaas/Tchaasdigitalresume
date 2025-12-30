@@ -30,7 +30,7 @@ export function WorkHistoryPage() {
                 <div className="order-2 lg:order-1 mt-6 sm:mt-8 lg:mt-0">
                   <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-5 sm:p-6 rounded-xl hover:border-emerald-500/50 transition-all">
                     <div className="flex items-center gap-3 mb-3">
-                      <img src="/icons/work/fedex-logo.png" alt="FedEx" className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg" />
+                      <img src="/icons/work/fedex-logo.png" alt="FedEx" className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg object-contain bg-white/5" />
                       <h4 className="text-gray-100 text-base sm:text-lg">About Federal Express Corporation</h4>
                     </div>
                     <p className="text-gray-300 mb-3 sm:mb-4 text-sm sm:text-base">
@@ -102,9 +102,9 @@ export function WorkHistoryPage() {
               <div className="lg:grid lg:grid-cols-2 lg:gap-16">
                 {/* Left side - Company Info */}
                 <div className="order-2 lg:order-1 mt-8 lg:mt-0">
-                  <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-6 rounded-xl hover:border-emerald-500/50 transition-all">
+                  <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-5 sm:p-6 rounded-xl hover:border-emerald-500/50 transition-all">
                     <div className="flex items-center gap-3 mb-3">
-                      <img src="/icons/work/fedex-logo.png" alt="FedEx" className="w-12 h-12 rounded-lg" />
+                      <img src="/icons/work/fedex-logo.png" alt="FedEx" className="w-12 h-12 rounded-lg object-contain bg-white/5" />
                       <h4 className="text-gray-100">About Federal Express Corporation</h4>
                     </div>
                     <p className="text-gray-300 mb-4">
@@ -179,9 +179,9 @@ export function WorkHistoryPage() {
               <div className="lg:grid lg:grid-cols-2 lg:gap-16">
                 {/* Left side - Company Info */}
                 <div className="order-2 lg:order-1 mt-8 lg:mt-0">
-                  <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-6 rounded-xl hover:border-emerald-500/50 transition-all">
+                  <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-5 sm:p-6 rounded-xl hover:border-emerald-500/50 transition-all">
                     <div className="flex items-center gap-3 mb-3">
-                      <img src="/icons/work/fedex-logo.png" alt="FedEx" className="w-12 h-12 rounded-lg" />
+                      <img src="/icons/work/fedex-logo.png" alt="FedEx" className="w-12 h-12 rounded-lg object-contain bg-white/5" />
                       <h4 className="text-gray-100">About Federal Express Corporation</h4>
                     </div>
                     <p className="text-gray-300 mb-4">
@@ -259,9 +259,9 @@ export function WorkHistoryPage() {
               <div className="lg:grid lg:grid-cols-2 lg:gap-16">
                 {/* Left side - Company Info */}
                 <div className="order-2 lg:order-1 mt-8 lg:mt-0">
-                  <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-6 rounded-xl hover:border-emerald-500/50 transition-all">
+                  <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-5 sm:p-6 rounded-xl hover:border-emerald-500/50 transition-all">
                     <div className="flex items-center gap-3 mb-3">
-                      <img src="/icons/work/kohls-logo.jpg" alt="Kohl's" className="w-12 h-12 rounded-lg" />
+                      <img src="/icons/work/kohls-logo.jpg" alt="Kohl's" className="w-12 h-12 rounded-lg object-contain bg-white/5" />
                       <h4 className="text-gray-100">About Kohl's</h4>
                     </div>
                     <p className="text-gray-300 mb-4">
@@ -343,9 +343,9 @@ export function WorkHistoryPage() {
               <div className="lg:grid lg:grid-cols-2 lg:gap-16">
                 {/* Left side - Company Info */}
                 <div className="order-2 lg:order-1 mt-8 lg:mt-0">
-                  <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-6 rounded-xl hover:border-emerald-500/50 transition-all">
+                  <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-5 sm:p-6 rounded-xl hover:border-emerald-500/50 transition-all">
                     <div className="flex items-center gap-3 mb-3">
-                      <img src="/icons/work/fis-logo.png" alt="FIS" className="w-12 h-12 rounded-lg" />
+                      <img src="/icons/work/fis-logo.png" alt="FIS" className="w-12 h-12 rounded-lg object-contain bg-white/5" />
                       <h4 className="text-gray-100">About FIS</h4>
                     </div>
                     <p className="text-gray-300 mb-4">
@@ -430,9 +430,9 @@ export function WorkHistoryPage() {
               <div className="lg:grid lg:grid-cols-2 lg:gap-16">
                 {/* Left side - Company Info */}
                 <div className="order-2 lg:order-1 mt-8 lg:mt-0">
-                  <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-6 rounded-xl hover:border-emerald-500/50 transition-all">
+                  <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-5 sm:p-6 rounded-xl hover:border-emerald-500/50 transition-all">
                     <div className="flex items-center gap-3 mb-3">
-                      <img src="/icons/work/fis-logo.png" alt="FIS" className="w-12 h-12 rounded-lg" />
+                      <img src="/icons/work/fis-logo.png" alt="FIS" className="w-12 h-12 rounded-lg object-contain bg-white/5" />
                       <h4 className="text-gray-100">About FIS</h4>
                     </div>
                     <p className="text-gray-300 mb-4">
@@ -517,9 +517,9 @@ export function WorkHistoryPage() {
               <div className="lg:grid lg:grid-cols-2 lg:gap-16">
                 {/* Left side - Company Info */}
                 <div className="order-2 lg:order-1 mt-8 lg:mt-0">
-                  <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-6 rounded-xl hover:border-emerald-500/50 transition-all">
+                  <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-5 sm:p-6 rounded-xl hover:border-emerald-500/50 transition-all">
                     <div className="flex items-center gap-3 mb-3">
-                      <img src="/icons/work/nm-logo.png" alt="Northwestern Mutual" className="w-12 h-12 rounded-lg" />
+                      <img src="/icons/work/nm-logo.png" alt="Northwestern Mutual" className="w-12 h-12 rounded-lg object-contain bg-white/5" />
                       <h4 className="text-gray-100">About Northwestern Mutual</h4>
                     </div>
                     <p className="text-gray-300 mb-4">
