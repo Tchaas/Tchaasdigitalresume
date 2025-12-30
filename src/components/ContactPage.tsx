@@ -102,17 +102,17 @@ export function ContactPage() {
       </section>
 
       {/* Additional Info Section */}
-      <section className="py-16 px-6">
+      <section className="py-12 sm:py-16 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="bg-white rounded-2xl shadow-xl p-12">
-            <div className="text-center mb-12">
+          <div className="bg-white rounded-2xl shadow-xl p-8 sm:p-12">
+            <div className="text-center mb-8 sm:mb-12">
               <h2 className="text-gray-900 mb-4">What I Bring to the Table</h2>
               <p className="text-gray-600 max-w-3xl mx-auto">
                 With years of experience in logistics, technology, and innovation, I'm passionate about creating solutions that drive real business value.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-6 sm:gap-8">
               <div className="text-center">
                 <div className="w-16 h-16 bg-emerald-100 rounded-xl mx-auto mb-4 flex items-center justify-center">
                   <MapPin className="w-8 h-8 text-emerald-600" />
@@ -145,17 +145,17 @@ export function ContactPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 px-6">
+      <section className="py-12 sm:py-16 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-to-br from-emerald-600 to-emerald-700 rounded-2xl p-12 shadow-xl text-center">
+          <div className="bg-gradient-to-br from-emerald-600 to-emerald-700 rounded-2xl p-8 sm:p-12 shadow-xl text-center">
             <h2 className="text-white mb-4">Ready to Start a Conversation?</h2>
-            <p className="text-emerald-100 mb-8 max-w-2xl mx-auto">
+            <p className="text-emerald-100 mb-6 sm:mb-8 max-w-2xl mx-auto text-sm sm:text-base">
               Whether you're looking to collaborate on a project, explore job opportunities, or simply connect, I'm here and eager to hear from you.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <a
                 href="mailto:tchaasawright@gmail.com"
-                className="bg-white text-emerald-600 px-8 py-4 rounded-xl hover:bg-emerald-50 transition-colors inline-flex items-center gap-2"
+                className="bg-white text-emerald-600 px-5 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-emerald-50 transition-colors inline-flex items-center gap-2 text-sm sm:text-base"
               >
                 <Mail className="w-5 h-5" />
                 Send Me an Email
@@ -164,7 +164,7 @@ export function ContactPage() {
                 href="https://www.linkedin.com/in/tchaas-alexander-wright/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-emerald-800 text-white px-8 py-4 rounded-xl hover:bg-emerald-900 transition-colors inline-flex items-center gap-2"
+                className="bg-emerald-800 text-white px-5 sm:px-8 py-3 sm:py-4 rounded-xl hover:bg-emerald-900 transition-colors inline-flex items-center gap-2 text-sm sm:text-base"
               >
                 <Linkedin className="w-5 h-5" />
                 Connect on LinkedIn

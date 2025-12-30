@@ -120,17 +120,17 @@ export function ProfessionalDevelopmentPage() {
             <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 rounded-xl overflow-hidden hover:border-emerald-500/50 transition-all">
               <div className="grid lg:grid-cols-3 gap-0">
                 {/* Icon Area */}
-                <div className="bg-gradient-to-br from-blue-500/20 to-blue-600/10 p-12 flex items-center justify-center relative overflow-hidden lg:col-span-1">
+                <div className="bg-gradient-to-br from-blue-500/20 to-blue-600/10 p-8 sm:p-12 flex items-center justify-center relative overflow-hidden lg:col-span-1">
                   <div className="absolute inset-0 opacity-10 bg-gradient-to-br from-blue-500/20 to-blue-600/10"></div>
                   <img 
                     src="/icons/work/BT_icon.jpeg" 
                     alt="Bytonomy Tech" 
-                    className="w-32 h-32 object-contain relative z-10 rounded-lg" 
+                    className="w-24 h-24 sm:w-32 sm:h-32 object-contain relative z-10 rounded-lg" 
                   />
                 </div>
                 
                 {/* Details */}
-                <div className="p-8 lg:col-span-2">
+                <div className="p-6 sm:p-8 lg:col-span-2">
                   <div className="flex items-start justify-between gap-4 mb-4">
                     <div>
                       <h3 className="text-gray-100 mb-2">Bytonomy Tech</h3>
@@ -228,16 +228,16 @@ export function ProfessionalDevelopmentPage() {
             <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 rounded-xl overflow-hidden hover:border-emerald-500/50 transition-all">
               <div className="grid lg:grid-cols-3 gap-0">
                 {/* Icon Area */}
-                <div className="bg-gradient-to-br from-red-500/20 to-red-600/10 p-12 flex items-center justify-center relative overflow-hidden lg:col-span-1">
+                <div className="bg-gradient-to-br from-red-500/20 to-red-600/10 p-8 sm:p-12 flex items-center justify-center relative overflow-hidden lg:col-span-1">
                   <img 
                     src="/icons/work/HFH_icon.jpeg" 
                     alt="Habitat for Humanity" 
-                    className="w-32 h-32 object-contain relative z-10 rounded-lg" 
+                    className="w-24 h-24 sm:w-32 sm:h-32 object-contain relative z-10 rounded-lg" 
                   />
                 </div>
                 
                 {/* Details */}
-                <div className="p-8 lg:col-span-2">
+                <div className="p-6 sm:p-8 lg:col-span-2">
                   <div className="flex items-start justify-between gap-4 mb-4">
                     <div>
                       <h3 className="text-gray-100 mb-2">Habitat for Humanity International</h3>
@@ -321,7 +321,7 @@ export function ProfessionalDevelopmentPage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-gray-900/50 backdrop-blur-sm p-8 rounded-xl border border-emerald-500/20 text-center">
+            <div className="bg-gray-900/50 backdrop-blur-sm p-6 sm:p-8 rounded-xl border border-emerald-500/20 text-center">
               <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-lg shadow-emerald-500/30">
                 <Rocket className="w-8 h-8 text-white" />
               </div>
@@ -332,7 +332,7 @@ export function ProfessionalDevelopmentPage() {
               </p>
             </div>
 
-            <div className="bg-gray-900/50 backdrop-blur-sm p-8 rounded-xl border border-emerald-500/20 text-center">
+            <div className="bg-gray-900/50 backdrop-blur-sm p-6 sm:p-8 rounded-xl border border-emerald-500/20 text-center">
               <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-lg shadow-emerald-500/30">
                 <Code className="w-8 h-8 text-white" />
               </div>
@@ -343,7 +343,7 @@ export function ProfessionalDevelopmentPage() {
               </p>
             </div>
 
-            <div className="bg-gray-900/50 backdrop-blur-sm p-8 rounded-xl border border-emerald-500/20 text-center">
+            <div className="bg-gray-900/50 backdrop-blur-sm p-6 sm:p-8 rounded-xl border border-emerald-500/20 text-center">
               <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-lg shadow-emerald-500/30">
                 <Award className="w-8 h-8 text-white" />
               </div>

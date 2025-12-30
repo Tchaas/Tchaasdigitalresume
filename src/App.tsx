@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import svgPaths from "./imports/svg-o41sg7fn0u";
 import profileImg from "./assets/profile-headshot.png";
 import circuitBg from "figma:asset/d1e24e304bd08c8dad5c534cb5493c70e5febc79.png";
-import { GraduationCap, Rocket, Code, Users, TrendingUp, Award } from "lucide-react";
+import { GraduationCap, Rocket, Code, Users } from "lucide-react";
 import { AnimatedCounter } from "./components/AnimatedCounter";
 import { SkillTag } from "./components/SkillTag";
 import { CircuitBackground } from "./components/CircuitBackground";

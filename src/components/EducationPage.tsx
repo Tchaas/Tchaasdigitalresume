@@ -76,7 +76,7 @@ export function EducationPage() {
                 </div>
 
                 <div className="mb-8 lg:mb-0">
-                  <div className="inline-block bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 rounded-xl shadow-lg shadow-emerald-500/10 p-8 text-left max-w-md w-full hover:border-emerald-500/50 transition-all">
+                  <div className="inline-block bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 rounded-xl shadow-lg shadow-emerald-500/10 p-6 sm:p-8 text-left max-w-md w-full hover:border-emerald-500/50 transition-all">
                     <div className="flex items-start gap-4 mb-4">
                       <div className="w-12 h-12 bg-[#003A70] rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue-500/30 p-2">
                         <img src="/icons/education/ud-logo.webp" alt="University of Dayton" className="w-full h-full object-contain" />
@@ -120,7 +120,7 @@ export function EducationPage() {
             <div className="relative">
               <div className="lg:grid lg:grid-cols-2 lg:gap-8 items-start">
                 <div className="lg:text-right mb-8 lg:mb-0">
-                  <div className="inline-block bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 rounded-xl shadow-lg shadow-emerald-500/10 p-8 text-left max-w-md w-full hover:border-emerald-500/50 transition-all">
+                  <div className="inline-block bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 rounded-xl shadow-lg shadow-emerald-500/10 p-6 sm:p-8 text-left max-w-md w-full hover:border-emerald-500/50 transition-all">
                     <div className="flex items-start gap-4 mb-4">
                       <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg shadow-red-500/30 p-1.5">
                         <img src="/icons/education/msoe-logo.png" alt="Milwaukee School of Engineering" className="w-full h-full object-contain" />
@@ -172,7 +172,7 @@ export function EducationPage() {
                 </div>
 
                 <div className="mb-8 lg:mb-0">
-                  <div className="inline-block bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 rounded-xl shadow-lg shadow-emerald-500/10 p-8 text-left max-w-md w-full hover:border-emerald-500/50 transition-all">
+                  <div className="inline-block bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 rounded-xl shadow-lg shadow-emerald-500/10 p-6 sm:p-8 text-left max-w-md w-full hover:border-emerald-500/50 transition-all">
                     <div className="flex items-start gap-4 mb-4">
                       <div className="w-12 h-12 bg-[#0066B3] rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue-500/30 p-1.5">
                         <img src="/icons/education/matc-logo.jpg" alt="Milwaukee Area Technical College" className="w-full h-full object-contain" />
