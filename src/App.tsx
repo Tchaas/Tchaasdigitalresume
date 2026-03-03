@@ -14,6 +14,7 @@ import { EducationPage } from "./components/EducationPage";
 import { WorkHistoryPage } from "./components/WorkHistoryPage";
 import { ContactPage } from "./components/ContactPage";
 import { ProfessionalDevelopmentPage } from "./components/ProfessionalDevelopmentPage";
+import { StatusBadge } from "./components/StatusBadge";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -132,7 +133,7 @@ function OverviewPage() {
               <h1 className="text-gray-100 text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
                 Hello, I'm <span className="text-emerald-400 drop-shadow-[0_0_10px_rgba(16,185,129,0.5)]">Tchaas</span>
               </h1>
-              <div className="text-gray-400 max-w-xl space-y-3 sm:space-y-4 text-sm sm:text-base">
+              <div className="text-gray-300 max-w-2xl space-y-3 sm:space-y-4 text-sm sm:text-base leading-relaxed bg-black/30 border border-emerald-500/20 backdrop-blur-sm rounded-xl p-4 sm:p-5 shadow-[0_0_30px_rgba(0,0,0,0.2)]">
                 <p>
                   I design systems, build products, and solve problems that sit at the crossroads of business strategy and technology. My work blends experience across enterprise architecture, product development, and UX research, supported by ongoing study in Computer Science at Georgia Tech.
                 </p>
@@ -199,8 +200,8 @@ function OverviewPage() {
                   whileTap={{ scale: 0.95 }}
                   href="https://www.linkedin.com/in/tchaas-alexander-wright/"
                   target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-emerald-400 px-4 sm:px-6 py-2 sm:py-3 border border-emerald-500/30 rounded-lg hover:bg-emerald-500/10 transition-all text-sm sm:text-base"
+                  rel="noreferrer"
+                  className="flex items-center gap-2 text-emerald-300 px-4 sm:px-6 py-2 sm:py-3 border border-emerald-500/30 rounded-lg hover:bg-emerald-500/10 transition-all text-sm sm:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0e1a]"
                 >
                   <svg className="w-4 h-4 sm:w-5 sm:h-6" fill="none" viewBox="0 0 21 24">
                     <path d={svgPaths.p303ef300} fill="#10B981" />
@@ -230,6 +231,11 @@ function OverviewPage() {
                     <img
                       src={profileImg}
                       alt="Tchaas Alexander-Wright"
+                      width={840}
+                      height={840}
+                      sizes="(max-width: 640px) 280px, (max-width: 768px) 350px, 420px"
+                      decoding="async"
+                      fetchPriority="high"
                       className="w-full h-full rounded-full object-cover border-4 sm:border-[6px] border-emerald-500/60 shadow-xl"
                     />
                   </div>
@@ -660,12 +666,11 @@ function OverviewPage() {
                   <h3 className="text-gray-100 mb-2">Master of Science in Computer Science</h3>
                   <p className="text-emerald-400 mb-2">Georgia Institute of Technology</p>
                   <p className="text-gray-400 mb-1">2025 - Present</p>
-                  <motion.span
-                    whileHover={{ scale: 1.1 }}
-                    className="inline-block px-3 py-1 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full mb-4 cursor-pointer"
-                  >
+                  <motion.div whileHover={{ scale: 1.06 }} className="inline-block mb-4 cursor-pointer">
+                    <StatusBadge>
                     In Progress
-                  </motion.span>
+                    </StatusBadge>
+                  </motion.div>
                   <p className="text-gray-400">
                     Currently pursuing advanced studies in Computer Science with a focus on Human Computer Interaction and emerging technologies.
                   </p>
@@ -737,13 +742,12 @@ function OverviewPage() {
                         <p className="text-emerald-400 mb-1">Federal Express Corporation</p>
                         <p className="text-gray-400">Mar 2025 - Present</p>
                       </div>
-                      <motion.span
+                      <motion.div
                         animate={{ scale: [1, 1.05, 1] }}
                         transition={{ repeat: Infinity, duration: 2 }}
-                        className="px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full"
                       >
-                        Current Role
-                      </motion.span>
+                        <StatusBadge>Current Role</StatusBadge>
+                      </motion.div>
                     </div>
                     <p className="text-gray-300 mb-4">
                       Managing incoming business demand across five Agile Release Trains (ARTs), ensuring prioritization aligns with enterprise strategies. Defining and documenting data architecture to support new enterprise capabilities, developing process maps and capability models, and collaborating with architects and engineering teams to propose technology solutions.

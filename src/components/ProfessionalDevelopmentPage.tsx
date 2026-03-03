@@ -1,27 +1,28 @@
-import { Heart, Users, Code, Lightbulb, Target, TrendingUp, Award, Calendar, ExternalLink, Github, Rocket, DollarSign, BarChart3 } from "lucide-react";
+import { Heart, Users, Code, Target, TrendingUp, Award, Rocket, DollarSign, BarChart3 } from "lucide-react";
+import { StatusBadge } from "./StatusBadge";
 
 export function ProfessionalDevelopmentPage() {
   return (
     <div className="min-h-screen relative">
       {/* Hero Section */}
-      <section className="relative py-12 sm:py-16 px-4 sm:px-6">
+      <section className="relative py-8 sm:py-10 md:py-12 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto text-center">
-          <div className="inline-block mb-6 sm:mb-8">
+          <div className="inline-block mb-5 sm:mb-6">
             <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl shadow-xl shadow-emerald-500/50 flex items-center justify-center">
               <Heart className="w-8 h-8 sm:w-10 sm:h-10 text-white" />
             </div>
           </div>
           <h1 className="text-gray-100 mb-3 sm:mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl">Professional Development</h1>
-          <p className="text-gray-400 max-w-3xl mx-auto text-sm sm:text-base">
+          <p className="text-gray-300 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed bg-black/25 border border-emerald-500/20 backdrop-blur-sm rounded-xl p-4 sm:p-5">
             Beyond my professional career, I'm deeply committed to giving back to the community, contributing to meaningful projects, and serving on boards that drive positive change.
           </p>
         </div>
       </section>
 
       {/* Startup Ventures */}
-      <section className="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6">
+      <section className="relative py-10 sm:py-12 md:py-14 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="mb-12 sm:mb-16">
+          <div className="mb-8 sm:mb-10 md:mb-12">
             <h2 className="text-gray-100 mb-2 text-2xl sm:text-3xl md:text-4xl">Startup Ventures</h2>
             <p className="text-gray-400 text-sm sm:text-base">Building innovative solutions from the ground up</p>
           </div>
@@ -36,6 +37,10 @@ export function ProfessionalDevelopmentPage() {
                   <img 
                     src="/icons/work/NovaOne_icon.png" 
                     alt="NovaOne Technology" 
+                    width={128}
+                    height={128}
+                    loading="lazy"
+                    decoding="async"
                     className="w-24 h-24 sm:w-32 sm:h-32 object-contain relative z-10 rounded-lg" 
                   />
                 </div>
@@ -48,7 +53,7 @@ export function ProfessionalDevelopmentPage() {
                       <p className="text-emerald-400 mb-4 text-sm sm:text-base">Co-Founder & Technology Lead</p>
                     </div>
                     <div className="flex gap-2">
-                      <span className="px-2 sm:px-3 py-1 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full text-xs sm:text-sm whitespace-nowrap">Active</span>
+                      <StatusBadge className="whitespace-nowrap">Active</StatusBadge>
                     </div>
                   </div>
                   
@@ -125,6 +130,10 @@ export function ProfessionalDevelopmentPage() {
                   <img 
                     src="/icons/work/BT_icon.jpeg" 
                     alt="Bytonomy Tech" 
+                    width={128}
+                    height={128}
+                    loading="lazy"
+                    decoding="async"
                     className="w-32 h-32 object-contain relative z-10 rounded-lg" 
                   />
                 </div>
@@ -137,7 +146,7 @@ export function ProfessionalDevelopmentPage() {
                       <p className="text-emerald-400 mb-4">Co-Founder & Product Lead</p>
                     </div>
                     <div className="flex gap-2">
-                      <span className="px-3 py-1 bg-blue-500/20 text-blue-400 border border-blue-500/30 rounded-full">Active</span>
+                      <StatusBadge>Active</StatusBadge>
                     </div>
                   </div>
                   
@@ -216,9 +225,9 @@ export function ProfessionalDevelopmentPage() {
       </section>
 
       {/* Board & Community Service */}
-      <section className="relative bg-gradient-to-b from-gray-900 to-[#0a0e1a] py-12 sm:py-16 md:py-20 px-4 sm:px-6">
+      <section className="relative bg-gradient-to-b from-gray-900 to-[#0a0e1a] py-10 sm:py-12 md:py-14 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="mb-16">
+          <div className="mb-8 sm:mb-10 md:mb-12">
             <h2 className="text-gray-100 mb-2">Board & Community Service</h2>
             <p className="text-gray-400">Giving back through leadership and community engagement</p>
           </div>
@@ -232,6 +241,10 @@ export function ProfessionalDevelopmentPage() {
                   <img 
                     src="/icons/work/HFH_icon.jpeg" 
                     alt="Habitat for Humanity" 
+                    width={128}
+                    height={128}
+                    loading="lazy"
+                    decoding="async"
                     className="w-32 h-32 object-contain relative z-10 rounded-lg" 
                   />
                 </div>
@@ -313,9 +326,9 @@ export function ProfessionalDevelopmentPage() {
       </section>
 
       {/* Impact Metrics */}
-      <section className="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6">
+      <section className="relative py-10 sm:py-12 md:py-14 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-8 sm:mb-10 md:mb-12">
             <h2 className="text-gray-100 mb-4">Community Impact</h2>
             <p className="text-gray-400">Measurable contributions to communities and organizations</p>
           </div>

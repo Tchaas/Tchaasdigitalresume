@@ -1,25 +1,26 @@
 import { GraduationCap, BookOpen, Award, Calendar, MapPin, Users } from "lucide-react";
+import { StatusBadge } from "./StatusBadge";
 
 export function EducationPage() {
   return (
     <div className="min-h-screen relative">
       {/* Hero Section */}
-      <section className="relative py-12 sm:py-16 px-4 sm:px-6">
+      <section className="relative py-8 sm:py-10 md:py-12 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-block mb-6 sm:mb-8">
+          <div className="inline-block mb-5 sm:mb-6">
             <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl shadow-xl shadow-emerald-500/50 flex items-center justify-center p-3 sm:p-4">
               <GraduationCap className="w-14 h-14 sm:w-16 sm:h-16 text-white" />
             </div>
           </div>
           <h1 className="text-gray-100 mb-3 sm:mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl">Educational Journey</h1>
-          <p className="text-gray-400 max-w-3xl mx-auto text-sm sm:text-base">
+          <p className="text-gray-300 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed bg-black/25 border border-emerald-500/20 backdrop-blur-sm rounded-xl p-4 sm:p-5">
             A decade-long academic progression from IT networking fundamentals to advanced computer science. My educational foundation spans technical infrastructure, information systems management, business strategy, and human-computer interaction—equipping me with a unique blend of technical expertise and business acumen.
           </p>
         </div>
       </section>
 
       {/* Timeline Section */}
-      <section className="relative py-8 sm:py-12 px-4 sm:px-6">
+      <section className="relative py-8 sm:py-10 md:py-12 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto relative">
           {/* Timeline connector line */}
           <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-500 via-emerald-500/50 to-transparent hidden lg:block" />
@@ -32,7 +33,7 @@ export function EducationPage() {
                   <div className="inline-block bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 rounded-xl shadow-lg shadow-emerald-500/10 p-6 sm:p-8 text-left max-w-md w-full hover:border-emerald-500/50 transition-all">
                     <div className="flex items-start gap-3 sm:gap-4 mb-4">
                       <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#B3A369] rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg shadow-emerald-500/30 p-1.5">
-                        <img src="/icons/education/gt-logo.jpeg" alt="Georgia Tech" className="w-full h-full object-contain" />
+                        <img src="/icons/education/gt-logo.jpeg" alt="Georgia Tech" width={48} height={48} loading="lazy" decoding="async" className="w-full h-full object-contain" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <h3 className="text-gray-100 mb-1 text-base sm:text-lg">Georgia Institute of Technology</h3>
@@ -46,7 +47,7 @@ export function EducationPage() {
                         <span>2025-Present</span>
                       </div>
                       <div className="flex items-center gap-1">
-                        <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full">In Progress</span>
+                        <StatusBadge>In Progress</StatusBadge>
                       </div>
                     </div>
 
@@ -79,7 +80,7 @@ export function EducationPage() {
                   <div className="inline-block bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 rounded-xl shadow-lg shadow-emerald-500/10 p-6 sm:p-8 text-left max-w-md w-full hover:border-emerald-500/50 transition-all">
                     <div className="flex items-start gap-4 mb-4">
                       <div className="w-12 h-12 bg-[#003A70] rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue-500/30 p-2">
-                        <img src="/icons/education/ud-logo.webp" alt="University of Dayton" className="w-full h-full object-contain" />
+                        <img src="/icons/education/ud-logo.webp" alt="University of Dayton" width={48} height={48} loading="lazy" decoding="async" className="w-full h-full object-contain" />
                       </div>
                       <div className="flex-1">
                         <h3 className="text-gray-100 mb-1">University of Dayton</h3>
@@ -123,7 +124,7 @@ export function EducationPage() {
                   <div className="inline-block bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 rounded-xl shadow-lg shadow-emerald-500/10 p-6 sm:p-8 text-left max-w-md w-full hover:border-emerald-500/50 transition-all">
                     <div className="flex items-start gap-4 mb-4">
                       <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg shadow-red-500/30 p-1.5">
-                        <img src="/icons/education/msoe-logo.png" alt="Milwaukee School of Engineering" className="w-full h-full object-contain" />
+                        <img src="/icons/education/msoe-logo.png" alt="Milwaukee School of Engineering" width={48} height={48} loading="lazy" decoding="async" className="w-full h-full object-contain" />
                       </div>
                       <div className="flex-1">
                         <h3 className="text-gray-100 mb-1">Milwaukee School of Engineering</h3>
@@ -175,7 +176,7 @@ export function EducationPage() {
                   <div className="inline-block bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 rounded-xl shadow-lg shadow-emerald-500/10 p-6 sm:p-8 text-left max-w-md w-full hover:border-emerald-500/50 transition-all">
                     <div className="flex items-start gap-4 mb-4">
                       <div className="w-12 h-12 bg-[#0066B3] rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue-500/30 p-1.5">
-                        <img src="/icons/education/matc-logo.jpg" alt="Milwaukee Area Technical College" className="w-full h-full object-contain" />
+                        <img src="/icons/education/matc-logo.jpg" alt="Milwaukee Area Technical College" width={48} height={48} loading="lazy" decoding="async" className="w-full h-full object-contain" />
                       </div>
                       <div className="flex-1">
                         <h3 className="text-gray-100 mb-1">Milwaukee Area Technical College</h3>
@@ -216,7 +217,7 @@ export function EducationPage() {
       </section>
 
       {/* Education at a Glance */}
-      <section className="py-12 sm:py-16 px-4 sm:px-6">
+      <section className="py-10 sm:py-12 md:py-14 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="bg-gradient-to-br from-emerald-600 to-emerald-700 rounded-2xl p-6 sm:p-8 md:p-12 shadow-xl">
             <h2 className="text-white text-center mb-12">Education at a Glance</h2>

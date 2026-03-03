@@ -4,17 +4,17 @@ export function WorkHistoryPage() {
   return (
     <div className="min-h-screen relative">
       {/* Hero Section */}
-      <section className="relative py-12 sm:py-16 px-4 sm:px-6">
+      <section className="relative py-8 sm:py-10 md:py-12 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto text-center">
           <h1 className="text-gray-100 mb-3 sm:mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl">Professional Experience</h1>
-          <p className="text-gray-400 max-w-3xl mx-auto text-sm sm:text-base">
+          <p className="text-gray-300 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed bg-black/25 border border-emerald-500/20 backdrop-blur-sm rounded-xl p-4 sm:p-5">
             A 9+ year journey from quality assurance to business architecture, spanning fintech, retail, financial services, and logistics. My career showcases progressive growth in product ownership, enterprise architecture, and leading digital transformation initiatives that deliver strategic value across global organizations.
           </p>
         </div>
       </section>
 
       {/* Timeline Section */}
-      <section className="relative py-8 sm:py-12 px-4 sm:px-6">
+      <section className="relative py-8 sm:py-10 md:py-12 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto relative">
           {/* Center line */}
           <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-500 via-emerald-500/50 to-transparent hidden lg:block" />
@@ -592,7 +592,7 @@ export function WorkHistoryPage() {
       </section>
 
       {/* Career Journey Summary */}
-      <section className="py-12 sm:py-16 px-4 sm:px-6 bg-white">
+      <section className="py-10 sm:py-12 md:py-14 px-4 sm:px-6 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-gray-900 mb-4">Career Journey Summary</h2>

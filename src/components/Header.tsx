@@ -33,7 +33,7 @@ export function Header() {
 
           <button
             type="button"
-            className="lg:hidden w-11 h-11 inline-flex items-center justify-center rounded-lg border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/10 transition-colors"
+            className="md:hidden w-11 h-11 inline-flex items-center justify-center rounded-lg border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0e1a]"
             onClick={() => setIsMenuOpen((prev) => !prev)}
             aria-expanded={isMenuOpen}
             aria-controls="mobile-nav"
@@ -42,7 +42,7 @@ export function Header() {
             {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
 
-          <nav className="hidden lg:flex items-center gap-x-5 gap-y-2 sm:gap-x-7 flex-wrap">
+          <nav className="hidden md:flex items-center gap-2 lg:gap-3 flex-wrap" aria-label="Primary">
             {navItems.map((item) => (
               <motion.div
                 key={item.to}
@@ -52,10 +52,10 @@ export function Header() {
                 <NavLink
                   to={item.to}
                   className={({ isActive }) =>
-                    `text-sm xl:text-base font-medium transition-colors whitespace-nowrap block py-1 ${
+                    `text-sm xl:text-base font-medium transition-colors whitespace-nowrap block rounded-lg px-3 py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0e1a] ${
                       isActive
-                        ? "text-emerald-400"
-                        : "text-gray-400 hover:text-emerald-300"
+                        ? "text-emerald-300 bg-emerald-500/20 border border-emerald-500/30"
+                        : "text-gray-300 hover:text-emerald-300 hover:bg-emerald-500/10 border border-transparent"
                     }`
                   }
                 >
@@ -68,7 +68,8 @@ export function Header() {
 
         <nav
           id="mobile-nav"
-          className={`${isMenuOpen ? "flex" : "hidden"} lg:hidden flex-col gap-2 pt-4 pb-1 mt-3 border-t border-emerald-500/20`}
+          className={`${isMenuOpen ? "flex" : "hidden"} md:hidden flex-col gap-2 pt-4 pb-1 mt-3 border-t border-emerald-500/20`}
+          aria-label="Mobile"
         >
           {navItems.map((item) => (
             <NavLink
@@ -76,9 +77,9 @@ export function Header() {
               to={item.to}
               onClick={() => setIsMenuOpen(false)}
               className={({ isActive }) =>
-                `px-4 py-3 min-h-[48px] rounded-lg text-sm font-medium transition-colors flex items-center ${
+                `px-4 py-3 min-h-[48px] rounded-lg text-sm font-medium transition-colors flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0e1a] ${
                   isActive
-                    ? "text-emerald-400 bg-emerald-500/10 border border-emerald-500/30"
+                    ? "text-emerald-300 bg-emerald-500/20 border border-emerald-500/30"
                     : "text-gray-300 hover:text-emerald-300 hover:bg-emerald-500/10"
                 }`
               }

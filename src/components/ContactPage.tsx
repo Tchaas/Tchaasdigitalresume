@@ -5,7 +5,7 @@ export function ContactPage() {
   return (
     <div className="min-h-screen relative">
       {/* Hero Section */}
-      <section className="relative py-8 sm:py-12 md:py-16 px-4 sm:px-6">
+      <section className="relative py-8 sm:py-10 md:py-12 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
             {/* Left Side - Image */}
@@ -18,6 +18,11 @@ export function ContactPage() {
                   <img 
                     src={contactImg} 
                     alt="Tchaas Alexander-Wright" 
+                    width={1200}
+                    height={1200}
+                    loading="lazy"
+                    decoding="async"
+                    sizes="(max-width: 640px) 280px, (max-width: 768px) 400px, (max-width: 1024px) 500px, 600px"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -31,10 +36,10 @@ export function ContactPage() {
             <div className="space-y-6 sm:space-y-8 order-1 lg:order-2">
               <div>
                 <h1 className="text-gray-100 mb-3 sm:mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl">Let's Connect</h1>
-                <p className="text-gray-400 mb-4 sm:mb-6 text-sm sm:text-base">
+                <p className="text-gray-300 mb-4 sm:mb-6 text-sm sm:text-base leading-relaxed max-w-2xl">
                   I'm always excited to connect with professionals, discuss new opportunities, or explore potential collaborations. Whether you have a project in mind, want to discuss logistics innovation, or just want to say hello, I'd love to hear from you.
                 </p>
-                <p className="text-gray-400 text-sm sm:text-base">
+                <p className="text-gray-300 text-sm sm:text-base leading-relaxed max-w-2xl">
                   Feel free to reach out through any of the channels below, and I'll get back to you as soon as possible.
                 </p>
               </div>
@@ -43,7 +48,7 @@ export function ContactPage() {
               <div className="space-y-3 sm:space-y-4">
                 <a
                   href="mailto:tchaasawright@gmail.com"
-                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-900/50 backdrop-blur-sm rounded-xl border border-emerald-500/20 hover:border-emerald-500/50 transition-all group"
+                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-900/50 backdrop-blur-sm rounded-xl border border-emerald-500/20 hover:border-emerald-500/50 transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0e1a]"
                 >
                   <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center group-hover:shadow-lg group-hover:shadow-emerald-500/50 transition-all flex-shrink-0">
                     <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
@@ -57,8 +62,8 @@ export function ContactPage() {
                 <a
                   href="https://www.linkedin.com/in/tchaas-alexander-wright/"
                   target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-900/50 backdrop-blur-sm rounded-xl border border-emerald-500/20 hover:border-emerald-500/50 transition-all group"
+                  rel="noreferrer"
+                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-900/50 backdrop-blur-sm rounded-xl border border-emerald-500/20 hover:border-emerald-500/50 transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0e1a]"
                 >
                   <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center group-hover:shadow-lg group-hover:shadow-emerald-500/50 transition-all flex-shrink-0">
                     <Linkedin className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
@@ -72,8 +77,8 @@ export function ContactPage() {
                 <a
                   href="https://github.com/Tchaas"
                   target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-900/50 backdrop-blur-sm rounded-xl border border-emerald-500/20 hover:border-emerald-500/50 transition-all group"
+                  rel="noreferrer"
+                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-900/50 backdrop-blur-sm rounded-xl border border-emerald-500/20 hover:border-emerald-500/50 transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0e1a]"
                 >
                   <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center group-hover:shadow-lg group-hover:shadow-emerald-500/50 transition-all flex-shrink-0">
                     <Github className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
@@ -90,7 +95,7 @@ export function ContactPage() {
                 <a 
                   href="/TchaasHAlexanderWright_Resume.pdf"
                   download="TchaasHAlexanderWright_Resume.pdf"
-                  className="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:from-emerald-600 hover:to-emerald-700 transition-all flex items-center justify-center gap-2 sm:gap-3 shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 hover:scale-105 text-sm sm:text-base"
+                  className="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:from-emerald-600 hover:to-emerald-700 transition-all flex items-center justify-center gap-2 sm:gap-3 shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 hover:scale-105 text-sm sm:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0e1a]"
                 >
                   <Download className="w-4 h-4 sm:w-5 sm:h-5" />
                   <span>Download My Resume</span>
@@ -102,7 +107,7 @@ export function ContactPage() {
       </section>
 
       {/* Additional Info Section */}
-      <section className="py-12 sm:py-16 px-4 sm:px-6">
+      <section className="py-10 sm:py-12 md:py-14 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 md:p-12">
             <div className="text-center mb-12">
@@ -145,7 +150,7 @@ export function ContactPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 sm:py-16 px-4 sm:px-6">
+      <section className="py-10 sm:py-12 md:py-14 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
           <div className="bg-gradient-to-br from-emerald-600 to-emerald-700 rounded-2xl p-6 sm:p-8 md:p-12 shadow-xl text-center">
             <h2 className="text-white mb-4">Ready to Start a Conversation?</h2>
@@ -155,17 +160,17 @@ export function ContactPage() {
             <div className="flex flex-wrap gap-4 justify-center">
               <a
                 href="mailto:tchaasawright@gmail.com"
-                className="w-full sm:w-auto bg-white text-emerald-600 px-8 py-4 rounded-xl hover:bg-emerald-50 transition-colors inline-flex items-center justify-center gap-2"
+                className="w-full sm:w-auto bg-white text-emerald-600 px-8 py-4 rounded-xl hover:bg-emerald-50 transition-colors inline-flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-emerald-700"
               >
                 <Mail className="w-5 h-5" />
                 Send Me an Email
               </a>
-              <a
-                href="https://www.linkedin.com/in/tchaas-alexander-wright/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto bg-emerald-800 text-white px-8 py-4 rounded-xl hover:bg-emerald-900 transition-colors inline-flex items-center justify-center gap-2"
-              >
+                <a
+                  href="https://www.linkedin.com/in/tchaas-alexander-wright/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-full sm:w-auto bg-emerald-800 text-white px-8 py-4 rounded-xl hover:bg-emerald-900 transition-colors inline-flex items-center justify-center gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-emerald-700"
+                >
                 <Linkedin className="w-5 h-5" />
                 Connect on LinkedIn
               </a>

@@ -19,7 +19,7 @@ export function Footer() {
               href="https://www.linkedin.com/in/tchaas-alexander-wright/"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-11 h-11 bg-emerald-500/10 hover:bg-emerald-500 rounded-lg flex items-center justify-center text-emerald-400 hover:text-white transition-all"
+              className="w-11 h-11 bg-emerald-500/10 hover:bg-emerald-500 rounded-lg flex items-center justify-center text-emerald-400 hover:text-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0e1a]"
               aria-label="LinkedIn"
             >
               <Linkedin className="w-4 h-4" />
@@ -29,7 +29,7 @@ export function Footer() {
               whileHover={{ scale: 1.15, y: -2 }}
               whileTap={{ scale: 0.95 }}
               href="mailto:tchaasawright@gmail.com"
-              className="w-11 h-11 bg-emerald-500/10 hover:bg-emerald-500 rounded-lg flex items-center justify-center text-emerald-400 hover:text-white transition-all"
+              className="w-11 h-11 bg-emerald-500/10 hover:bg-emerald-500 rounded-lg flex items-center justify-center text-emerald-400 hover:text-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0e1a]"
               aria-label="Email"
             >
               <Mail className="w-4 h-4" />
@@ -41,7 +41,7 @@ export function Footer() {
               href="https://github.com/Tchaas"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-11 h-11 bg-emerald-500/10 hover:bg-emerald-500 rounded-lg flex items-center justify-center text-emerald-400 hover:text-white transition-all"
+              className="w-11 h-11 bg-emerald-500/10 hover:bg-emerald-500 rounded-lg flex items-center justify-center text-emerald-400 hover:text-white transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0e1a]"
               aria-label="GitHub"
             >
               <Github className="w-4 h-4" />
