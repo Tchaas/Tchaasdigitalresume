@@ -37,7 +37,7 @@ export function Header() {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center justify-end gap-1 xl:gap-2 flex-wrap">
+          <nav className="hidden lg:flex items-center justify-end gap-4 xl:gap-6 flex-wrap">
             {navItems.map((item) => (
               <motion.div
                 key={item.to}
@@ -47,10 +47,10 @@ export function Header() {
                 <NavLink
                   to={item.to}
                   className={({ isActive }) =>
-                    `px-2.5 xl:px-4 py-2 rounded-lg text-xs xl:text-sm font-medium transition-all whitespace-nowrap block ${
+                    `text-sm xl:text-base font-medium transition-colors whitespace-nowrap block ${
                       isActive
-                        ? "text-emerald-400 bg-emerald-500/10 border border-emerald-500/30"
-                        : "text-gray-400 hover:text-emerald-400 hover:bg-emerald-500/5"
+                        ? "text-emerald-400"
+                        : "text-gray-400 hover:text-emerald-300"
                     }`
                   }
                 >
@@ -81,7 +81,7 @@ export function Header() {
               transition={{ duration: 0.2 }}
               className="lg:hidden overflow-hidden"
             >
-              <div className="mt-4 pb-4 space-y-2">
+              <div className="mt-4 pb-4 space-y-1">
                 {navItems.map((item, index) => (
                   <motion.div
                     key={item.to}
@@ -94,10 +94,10 @@ export function Header() {
                       to={item.to}
                       onClick={handleNavClick}
                       className={({ isActive }) =>
-                        `w-full px-4 py-3 rounded-lg text-left font-medium transition-all block ${
+                        `w-full px-2 py-2 text-left font-medium transition-colors block ${
                           isActive
-                            ? "text-emerald-400 bg-emerald-500/10 border border-emerald-500/30"
-                            : "text-gray-400 hover:text-emerald-400 hover:bg-emerald-500/5 border border-transparent"
+                            ? "text-emerald-400"
+                            : "text-gray-400 hover:text-emerald-300"
                         }`
                       }
                     >
