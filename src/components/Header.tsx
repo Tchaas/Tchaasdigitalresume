@@ -68,7 +68,7 @@ export function Header() {
 
         <nav
           id="mobile-nav"
-          className={`${isMenuOpen ? "flex" : "hidden"} lg:hidden flex-col gap-1 pt-3`}
+          className={`${isMenuOpen ? "flex" : "hidden"} lg:hidden flex-col gap-2 pt-4 pb-1 mt-3 border-t border-emerald-500/20`}
         >
           {navItems.map((item) => (
             <NavLink
@@ -76,7 +76,7 @@ export function Header() {
               to={item.to}
               onClick={() => setIsMenuOpen(false)}
               className={({ isActive }) =>
-                `px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                `px-4 py-3 min-h-[48px] rounded-lg text-sm font-medium transition-colors flex items-center ${
                   isActive
                     ? "text-emerald-400 bg-emerald-500/10 border border-emerald-500/30"
                     : "text-gray-300 hover:text-emerald-300 hover:bg-emerald-500/10"
