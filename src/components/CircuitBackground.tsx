@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { useReducedMotion } from "framer-motion";
 
 interface CircuitBackgroundProps {
   className?: string;
@@ -9,8 +10,11 @@ type Pulse = { pathIndex: number; t: number; speed: number };
 
 export function CircuitBackground({ className = "" }: CircuitBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
+    if (prefersReducedMotion) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -22,8 +26,8 @@ export function CircuitBackground({ className = "" }: CircuitBackgroundProps) {
     const pads: { x: number; y: number }[] = [];
 
     const GRID = 42;           // spacing between “tracks”
-    const PATH_COUNT = 26;     // how many distinct routed traces
-    const PULSES_PER_PATH = 3;
+    const PATH_COUNT = 16;     // reduced for lower render cost
+    const PULSES_PER_PATH = 2;
     const TRACE_WIDTH = 1.4;
 
     const resize = () => {
@@ -119,17 +123,6 @@ export function CircuitBackground({ className = "" }: CircuitBackgroundProps) {
 
     resize();
     window.addEventListener("resize", resize);
-
-    // subtle parallax
-    let mouseX = 0.5;
-    let mouseY = 0.5;
-
-    const handlePointerMove = (e: PointerEvent) => {
-      mouseX = e.clientX / window.innerWidth;
-      mouseY = e.clientY / window.innerHeight;
-    };
-
-    window.addEventListener("pointermove", handlePointerMove);
 
     let animationFrameId: number;
 
@@ -233,10 +226,9 @@ export function CircuitBackground({ className = "" }: CircuitBackgroundProps) {
 
     return () => {
       window.removeEventListener("resize", resize);
-      window.removeEventListener("pointermove", handlePointerMove);
       cancelAnimationFrame(animationFrameId);
     };
-  }, []);
+  }, [prefersReducedMotion]);
 
   return (
     <canvas

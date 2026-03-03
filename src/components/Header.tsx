@@ -1,25 +1,20 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { NavLink } from "react-router-dom";
 
-interface HeaderProps {
-  currentPage: string;
-  onPageChange: (page: string) => void;
-}
-
-export function Header({ currentPage, onPageChange }: HeaderProps) {
+export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
   const navItems = [
-    { id: 'overview', label: 'Overview' },
-    { id: 'education', label: 'Education' },
-    { id: 'experience', label: 'Experience' },
-    { id: 'skills', label: 'Professional Development' },
-    { id: 'contact', label: 'Contact' }
+    { to: "/", label: "Overview" },
+    { to: "/education", label: "Education" },
+    { to: "/experience", label: "Experience" },
+    { to: "/professional-development", label: "Professional Development" },
+    { to: "/contact", label: "Contact" },
   ];
 
-  const handleNavClick = (page: string) => {
-    onPageChange(page);
+  const handleNavClick = () => {
     setMobileMenuOpen(false);
   };
 
@@ -28,33 +23,40 @@ export function Header({ currentPage, onPageChange }: HeaderProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
         <div className="flex items-center justify-between">
           {/* Logo/Name - Left Side */}
-          <motion.button
+          <motion.div
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            onClick={() => handleNavClick('overview')}
-            className="text-gray-100 font-semibold text-base sm:text-lg truncate max-w-[180px] sm:max-w-none"
           >
-            Tchaas Alexander-Wright
-          </motion.button>
+            <NavLink
+              to="/"
+              onClick={handleNavClick}
+              className="text-gray-100 font-semibold text-base sm:text-lg truncate max-w-[180px] sm:max-w-none block"
+            >
+              Tchaas Alexander-Wright
+            </NavLink>
+          </motion.div>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
             {navItems.map((item) => (
-              <motion.button
-                key={item.id}
+              <motion.div
+                key={item.to}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => handleNavClick(item.id)}
-                className={`
-                  px-3 xl:px-4 py-2 rounded-lg text-sm xl:text-base font-medium transition-all whitespace-nowrap
-                  ${currentPage === item.id 
-                    ? 'text-emerald-400 bg-emerald-500/10 border border-emerald-500/30' 
-                    : 'text-gray-400 hover:text-emerald-400 hover:bg-emerald-500/5'
-                  }
-                `}
               >
-                {item.label}
-              </motion.button>
+                <NavLink
+                  to={item.to}
+                  className={({ isActive }) =>
+                    `px-3 xl:px-4 py-2 rounded-lg text-sm xl:text-base font-medium transition-all whitespace-nowrap block ${
+                      isActive
+                        ? "text-emerald-400 bg-emerald-500/10 border border-emerald-500/30"
+                        : "text-gray-400 hover:text-emerald-400 hover:bg-emerald-500/5"
+                    }`
+                  }
+                >
+                  {item.label}
+                </NavLink>
+              </motion.div>
             ))}
           </nav>
 
@@ -81,23 +83,27 @@ export function Header({ currentPage, onPageChange }: HeaderProps) {
             >
               <div className="mt-4 pb-4 space-y-2">
                 {navItems.map((item, index) => (
-                  <motion.button
-                    key={item.id}
+                  <motion.div
+                    key={item.to}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.05 }}
                     whileTap={{ scale: 0.98 }}
-                    onClick={() => handleNavClick(item.id)}
-                    className={`
-                      w-full px-4 py-3 rounded-lg text-left font-medium transition-all
-                      ${currentPage === item.id 
-                        ? 'text-emerald-400 bg-emerald-500/10 border border-emerald-500/30' 
-                        : 'text-gray-400 hover:text-emerald-400 hover:bg-emerald-500/5 border border-transparent'
-                      }
-                    `}
                   >
-                    {item.label}
-                  </motion.button>
+                    <NavLink
+                      to={item.to}
+                      onClick={handleNavClick}
+                      className={({ isActive }) =>
+                        `w-full px-4 py-3 rounded-lg text-left font-medium transition-all block ${
+                          isActive
+                            ? "text-emerald-400 bg-emerald-500/10 border border-emerald-500/30"
+                            : "text-gray-400 hover:text-emerald-400 hover:bg-emerald-500/5 border border-transparent"
+                        }`
+                      }
+                    >
+                      {item.label}
+                    </NavLink>
+                  </motion.div>
                 ))}
               </div>
             </motion.nav>

@@ -1,9 +1,10 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import svgPaths from "./imports/svg-o41sg7fn0u";
 import profileImg from "./assets/profile-headshot.png";
 import circuitBg from "figma:asset/d1e24e304bd08c8dad5c534cb5493c70e5febc79.png";
-import { GraduationCap, Rocket, Code, Users, TrendingUp, Award } from "lucide-react";
+import { GraduationCap, Rocket, Code, Users } from "lucide-react";
 import { AnimatedCounter } from "./components/AnimatedCounter";
 import { SkillTag } from "./components/SkillTag";
 import { CircuitBackground } from "./components/CircuitBackground";
@@ -13,7 +14,16 @@ import { EducationPage } from "./components/EducationPage";
 import { WorkHistoryPage } from "./components/WorkHistoryPage";
 import { ContactPage } from "./components/ContactPage";
 import { ProfessionalDevelopmentPage } from "./components/ProfessionalDevelopmentPage";
-import { Footer } from "./components/Footer";
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [pathname]);
+
+  return null;
+}
 
 function OverviewPage() {
   const [selectedSkill, setSelectedSkill] = useState<string | null>(null);
@@ -757,26 +767,32 @@ function OverviewPage() {
 }
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<string>('overview');
+  const prefersReducedMotion = useReducedMotion();
 
   return (
     <div className="h-screen relative bg-[#050608] overflow-hidden flex flex-col">
+      <ScrollToTop />
+
       {/* Global animated circuit background */}
-      <CircuitBackground />
+      {!prefersReducedMotion && <CircuitBackground />}
 
       {/* Interactive sparks */}
-      <InteractiveSparks />
+      {!prefersReducedMotion && <InteractiveSparks />}
 
       {/* Foreground content */}
       <div className="relative z-20 flex flex-col h-full">
-        <Header currentPage={currentPage} onPageChange={setCurrentPage} />
+        <Header />
         
         <main className="flex-1 overflow-y-auto overflow-x-hidden">
-          {currentPage === 'overview' && <OverviewPage />}
-          {currentPage === 'education' && <EducationPage />}
-          {currentPage === 'experience' && <WorkHistoryPage />}
-          {currentPage === 'skills' && <ProfessionalDevelopmentPage />}
-          {currentPage === 'contact' && <ContactPage />}
+          <Routes>
+            <Route path="/" element={<OverviewPage />} />
+            <Route path="/overview" element={<Navigate to="/" replace />} />
+            <Route path="/education" element={<EducationPage />} />
+            <Route path="/experience" element={<WorkHistoryPage />} />
+            <Route path="/professional-development" element={<ProfessionalDevelopmentPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
         </main>
       </div>
     </div>

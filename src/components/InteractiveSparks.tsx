@@ -1,13 +1,23 @@
 import { useEffect, useRef } from "react";
+import { useReducedMotion } from "framer-motion";
 
 export function InteractiveSparks() {
   const containerRef = useRef<HTMLDivElement | null>(null);
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
+    if (prefersReducedMotion) return;
+
     const container = containerRef.current;
     if (!container) return;
+    let lastEmit = 0;
 
     const createSpark = (x: number, y: number) => {
+      // Keep DOM pressure bounded during high pointer activity.
+      while (container.children.length > 120) {
+        container.firstChild?.remove();
+      }
+
       const spark = document.createElement("div");
 
       const size = 4 + Math.random() * 8; // small but varied
@@ -43,6 +53,9 @@ export function InteractiveSparks() {
     };
 
     const handleMove = (e: PointerEvent) => {
+      const now = performance.now();
+      if (now - lastEmit < 40) return;
+      lastEmit = now;
       createSpark(e.clientX, e.clientY);
     };
 
@@ -51,7 +64,7 @@ export function InteractiveSparks() {
     return () => {
       window.removeEventListener("pointermove", handleMove);
     };
-  }, []);
+  }, [prefersReducedMotion]);
 
   return <div ref={containerRef} className="fixed inset-0 pointer-events-none z-0" />;
 }
