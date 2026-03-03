@@ -1962,6 +1962,10 @@
   --sidebar-accent-foreground: #e2e8f0;
   --sidebar-border: #10b98133;
   --sidebar-ring: #10b981;
+  --safe-area-top: env(safe-area-inset-top, 0px);
+  --safe-area-right: env(safe-area-inset-right, 0px);
+  --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-area-left: env(safe-area-inset-left, 0px);
 }
 
 .dark {
@@ -2003,6 +2007,13 @@
 
 html {
   font-size: var(--font-size);
+  min-height: 100%;
+  overscroll-behavior-y: auto;
+}
+
+body {
+  min-height: 100%;
+  overscroll-behavior-y: auto;
 }
 
 @property --tw-space-y-reverse {

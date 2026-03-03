@@ -19,20 +19,20 @@ export function Footer() {
               href="https://www.linkedin.com/in/tchaas-alexander-wright/"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 sm:w-9 sm:h-9 bg-emerald-500/10 hover:bg-emerald-500 rounded-lg flex items-center justify-center text-emerald-400 hover:text-white transition-all"
+              className="w-11 h-11 bg-emerald-500/10 hover:bg-emerald-500 rounded-lg flex items-center justify-center text-emerald-400 hover:text-white transition-all"
               aria-label="LinkedIn"
             >
-              <Linkedin className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <Linkedin className="w-4 h-4" />
             </motion.a>
             
             <motion.a
               whileHover={{ scale: 1.15, y: -2 }}
               whileTap={{ scale: 0.95 }}
               href="mailto:tchaasawright@gmail.com"
-              className="w-8 h-8 sm:w-9 sm:h-9 bg-emerald-500/10 hover:bg-emerald-500 rounded-lg flex items-center justify-center text-emerald-400 hover:text-white transition-all"
+              className="w-11 h-11 bg-emerald-500/10 hover:bg-emerald-500 rounded-lg flex items-center justify-center text-emerald-400 hover:text-white transition-all"
               aria-label="Email"
             >
-              <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <Mail className="w-4 h-4" />
             </motion.a>
             
             <motion.a
@@ -41,10 +41,10 @@ export function Footer() {
               href="https://github.com/Tchaas"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-8 h-8 sm:w-9 sm:h-9 bg-emerald-500/10 hover:bg-emerald-500 rounded-lg flex items-center justify-center text-emerald-400 hover:text-white transition-all"
+              className="w-11 h-11 bg-emerald-500/10 hover:bg-emerald-500 rounded-lg flex items-center justify-center text-emerald-400 hover:text-white transition-all"
               aria-label="GitHub"
             >
-              <Github className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              <Github className="w-4 h-4" />
             </motion.a>
           </div>
         </div>

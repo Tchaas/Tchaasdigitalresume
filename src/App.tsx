@@ -329,7 +329,7 @@ function OverviewPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 1 * 0.2 }}
               whileHover={{ y: -10, scale: 1.02 }}
-              className="bg-gray-900/50 backdrop-blur-sm p-8 rounded-xl border border-emerald-500/20 hover:border-emerald-500/50 transition-all hover:shadow-lg hover:shadow-emerald-500/10 cursor-pointer"
+              className="bg-gray-900/50 backdrop-blur-sm p-6 sm:p-8 rounded-xl border border-emerald-500/20 hover:border-emerald-500/50 transition-all hover:shadow-lg hover:shadow-emerald-500/10 cursor-pointer"
             >
               <motion.div 
                 whileHover={{ rotate: 360 }}
@@ -373,7 +373,7 @@ function OverviewPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 2 * 0.2 }}
               whileHover={{ y: -10, scale: 1.02 }}
-              className="bg-gray-900/50 backdrop-blur-sm p-8 rounded-xl border border-emerald-500/20 hover:border-emerald-500/50 transition-all hover:shadow-lg hover:shadow-emerald-500/10 cursor-pointer"
+              className="bg-gray-900/50 backdrop-blur-sm p-6 sm:p-8 rounded-xl border border-emerald-500/20 hover:border-emerald-500/50 transition-all hover:shadow-lg hover:shadow-emerald-500/10 cursor-pointer"
             >
               <motion.div 
                 whileHover={{ rotate: 360 }}
@@ -419,7 +419,7 @@ function OverviewPage() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6 }}
-        className="relative bg-gradient-to-b from-gray-900 to-[#0a0e1a] py-20 px-6"
+        className="relative bg-gradient-to-b from-gray-900 to-[#0a0e1a] py-12 sm:py-16 md:py-20 px-4 sm:px-6"
       >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -532,7 +532,7 @@ function OverviewPage() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6 }}
-        className="relative bg-[#0a0e1a] py-20 px-6"
+        className="relative bg-[#0a0e1a] py-12 sm:py-16 md:py-20 px-4 sm:px-6"
       >
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -578,7 +578,7 @@ function OverviewPage() {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-                className="bg-gray-900/50 backdrop-blur-sm rounded-xl border border-emerald-500/30 p-8 mt-8"
+                className="bg-gray-900/50 backdrop-blur-sm rounded-xl border border-emerald-500/30 p-5 sm:p-6 md:p-8 mt-8"
               >
                 <div className="flex items-start justify-between mb-6">
                   <div>
@@ -630,7 +630,7 @@ function OverviewPage() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6 }}
-        className="relative bg-gradient-to-b from-gray-900 to-[#0a0e1a] py-20 px-6"
+        className="relative bg-gradient-to-b from-gray-900 to-[#0a0e1a] py-12 sm:py-16 md:py-20 px-4 sm:px-6"
       >
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
@@ -653,7 +653,7 @@ function OverviewPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
               whileHover={{ scale: 1.02, x: 10 }}
-              className="bg-gray-900/50 backdrop-blur-sm p-8 rounded-xl border-l-4 border-emerald-500 relative hover:bg-gray-900/70 transition-all cursor-pointer"
+              className="bg-gray-900/50 backdrop-blur-sm p-5 sm:p-6 md:p-8 rounded-xl border-l-4 border-emerald-500 relative hover:bg-gray-900/70 transition-all cursor-pointer"
             >
               <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                 <div className="flex-1">
@@ -689,7 +689,7 @@ function OverviewPage() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6 }}
-        className="relative bg-[#0a0e1a] py-20 px-6"
+        className="relative bg-[#0a0e1a] py-12 sm:py-16 md:py-20 px-4 sm:px-6"
       >
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
@@ -729,7 +729,7 @@ function OverviewPage() {
                   </motion.div>
                   <motion.div
                     whileHover={{ y: -5, scale: 1.01 }}
-                    className="flex-1 bg-gray-900/50 backdrop-blur-sm p-8 rounded-xl border border-emerald-500/20 hover:border-emerald-500/50 transition-all"
+                    className="flex-1 bg-gray-900/50 backdrop-blur-sm p-5 sm:p-6 md:p-8 rounded-xl border border-emerald-500/20 hover:border-emerald-500/50 transition-all"
                   >
                     <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
                       <div>
@@ -768,22 +768,33 @@ function OverviewPage() {
 
 export default function App() {
   const prefersReducedMotion = useReducedMotion();
+  const [isCoarsePointer, setIsCoarsePointer] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(pointer: coarse)");
+    const updatePointerType = () => setIsCoarsePointer(mediaQuery.matches);
+
+    updatePointerType();
+    mediaQuery.addEventListener("change", updatePointerType);
+
+    return () => mediaQuery.removeEventListener("change", updatePointerType);
+  }, []);
 
   return (
-    <div className="h-screen relative bg-[#050608] overflow-hidden flex flex-col">
+    <div className="min-h-dvh relative bg-[#050608] overflow-x-hidden flex flex-col">
       <ScrollToTop />
 
       {/* Global animated circuit background */}
-      {!prefersReducedMotion && <CircuitBackground />}
+      {!prefersReducedMotion && !isCoarsePointer && <CircuitBackground />}
 
       {/* Interactive sparks */}
-      {!prefersReducedMotion && <InteractiveSparks />}
+      {!prefersReducedMotion && !isCoarsePointer && <InteractiveSparks />}
 
       {/* Foreground content */}
-      <div className="relative z-20 flex flex-col h-full">
+      <div className="relative z-20 flex flex-col min-h-dvh">
         <Header />
         
-        <main className="flex-1 overflow-y-auto overflow-x-hidden">
+        <main className="flex-1 overflow-x-hidden">
           <Routes>
             <Route path="/" element={<OverviewPage />} />
             <Route path="/overview" element={<Navigate to="/" replace />} />

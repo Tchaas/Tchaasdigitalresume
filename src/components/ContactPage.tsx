@@ -50,7 +50,7 @@ export function ContactPage() {
                   </div>
                   <div className="min-w-0">
                     <p className="text-gray-500 text-xs sm:text-sm">Email</p>
-                    <p className="text-gray-200 text-sm sm:text-base truncate">tchaasawright@gmail.com</p>
+                    <p className="text-gray-200 text-sm sm:text-base break-all sm:break-normal">tchaasawright@gmail.com</p>
                   </div>
                 </a>
 
@@ -102,9 +102,9 @@ export function ContactPage() {
       </section>
 
       {/* Additional Info Section */}
-      <section className="py-16 px-6">
+      <section className="py-12 sm:py-16 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="bg-white rounded-2xl shadow-xl p-12">
+          <div className="bg-white rounded-2xl shadow-xl p-6 sm:p-8 md:p-12">
             <div className="text-center mb-12">
               <h2 className="text-gray-900 mb-4">What I Bring to the Table</h2>
               <p className="text-gray-600 max-w-3xl mx-auto">
@@ -145,9 +145,9 @@ export function ContactPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 px-6">
+      <section className="py-12 sm:py-16 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-to-br from-emerald-600 to-emerald-700 rounded-2xl p-12 shadow-xl text-center">
+          <div className="bg-gradient-to-br from-emerald-600 to-emerald-700 rounded-2xl p-6 sm:p-8 md:p-12 shadow-xl text-center">
             <h2 className="text-white mb-4">Ready to Start a Conversation?</h2>
             <p className="text-emerald-100 mb-8 max-w-2xl mx-auto">
               Whether you're looking to collaborate on a project, explore job opportunities, or simply connect, I'm here and eager to hear from you.
@@ -155,7 +155,7 @@ export function ContactPage() {
             <div className="flex flex-wrap gap-4 justify-center">
               <a
                 href="mailto:tchaasawright@gmail.com"
-                className="bg-white text-emerald-600 px-8 py-4 rounded-xl hover:bg-emerald-50 transition-colors inline-flex items-center gap-2"
+                className="w-full sm:w-auto bg-white text-emerald-600 px-8 py-4 rounded-xl hover:bg-emerald-50 transition-colors inline-flex items-center justify-center gap-2"
               >
                 <Mail className="w-5 h-5" />
                 Send Me an Email
@@ -164,7 +164,7 @@ export function ContactPage() {
                 href="https://www.linkedin.com/in/tchaas-alexander-wright/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-emerald-800 text-white px-8 py-4 rounded-xl hover:bg-emerald-900 transition-colors inline-flex items-center gap-2"
+                className="w-full sm:w-auto bg-emerald-800 text-white px-8 py-4 rounded-xl hover:bg-emerald-900 transition-colors inline-flex items-center justify-center gap-2"
               >
                 <Linkedin className="w-5 h-5" />
                 Connect on LinkedIn

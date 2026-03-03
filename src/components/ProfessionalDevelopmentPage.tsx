@@ -31,7 +31,7 @@ export function ProfessionalDevelopmentPage() {
             <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 rounded-xl overflow-hidden hover:border-emerald-500/50 transition-all">
               <div className="grid lg:grid-cols-3 gap-0">
                 {/* Icon Area */}
-                <div className="bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 p-8 sm:p-12 flex items-center justify-center relative overflow-hidden lg:col-span-1">
+                <div className="bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 p-6 sm:p-8 lg:p-12 flex items-center justify-center relative overflow-hidden lg:col-span-1">
                   <div className="absolute inset-0 opacity-10 bg-gradient-to-br from-emerald-500/20 to-emerald-600/10"></div>
                   <img 
                     src="/icons/work/NovaOne_icon.png" 
@@ -120,7 +120,7 @@ export function ProfessionalDevelopmentPage() {
             <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 rounded-xl overflow-hidden hover:border-emerald-500/50 transition-all">
               <div className="grid lg:grid-cols-3 gap-0">
                 {/* Icon Area */}
-                <div className="bg-gradient-to-br from-blue-500/20 to-blue-600/10 p-12 flex items-center justify-center relative overflow-hidden lg:col-span-1">
+                <div className="bg-gradient-to-br from-blue-500/20 to-blue-600/10 p-6 sm:p-8 lg:p-12 flex items-center justify-center relative overflow-hidden lg:col-span-1">
                   <div className="absolute inset-0 opacity-10 bg-gradient-to-br from-blue-500/20 to-blue-600/10"></div>
                   <img 
                     src="/icons/work/BT_icon.jpeg" 
@@ -130,7 +130,7 @@ export function ProfessionalDevelopmentPage() {
                 </div>
                 
                 {/* Details */}
-                <div className="p-8 lg:col-span-2">
+                <div className="p-6 sm:p-8 lg:col-span-2">
                   <div className="flex items-start justify-between gap-4 mb-4">
                     <div>
                       <h3 className="text-gray-100 mb-2">Bytonomy Tech</h3>
@@ -216,7 +216,7 @@ export function ProfessionalDevelopmentPage() {
       </section>
 
       {/* Board & Community Service */}
-      <section className="relative bg-gradient-to-b from-gray-900 to-[#0a0e1a] py-20 px-6">
+      <section className="relative bg-gradient-to-b from-gray-900 to-[#0a0e1a] py-12 sm:py-16 md:py-20 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="mb-16">
             <h2 className="text-gray-100 mb-2">Board & Community Service</h2>
@@ -228,7 +228,7 @@ export function ProfessionalDevelopmentPage() {
             <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 rounded-xl overflow-hidden hover:border-emerald-500/50 transition-all">
               <div className="grid lg:grid-cols-3 gap-0">
                 {/* Icon Area */}
-                <div className="bg-gradient-to-br from-red-500/20 to-red-600/10 p-12 flex items-center justify-center relative overflow-hidden lg:col-span-1">
+                <div className="bg-gradient-to-br from-red-500/20 to-red-600/10 p-6 sm:p-8 lg:p-12 flex items-center justify-center relative overflow-hidden lg:col-span-1">
                   <img 
                     src="/icons/work/HFH_icon.jpeg" 
                     alt="Habitat for Humanity" 
@@ -237,7 +237,7 @@ export function ProfessionalDevelopmentPage() {
                 </div>
                 
                 {/* Details */}
-                <div className="p-8 lg:col-span-2">
+                <div className="p-6 sm:p-8 lg:col-span-2">
                   <div className="flex items-start justify-between gap-4 mb-4">
                     <div>
                       <h3 className="text-gray-100 mb-2">Habitat for Humanity International</h3>
@@ -313,7 +313,7 @@ export function ProfessionalDevelopmentPage() {
       </section>
 
       {/* Impact Metrics */}
-      <section className="relative py-20 px-6">
+      <section className="relative py-12 sm:py-16 md:py-20 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-gray-100 mb-4">Community Impact</h2>
@@ -321,33 +321,33 @@ export function ProfessionalDevelopmentPage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-gray-900/50 backdrop-blur-sm p-8 rounded-xl border border-emerald-500/20 text-center">
+            <div className="bg-gray-900/50 backdrop-blur-sm p-6 sm:p-8 rounded-xl border border-emerald-500/20 text-center">
               <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-lg shadow-emerald-500/30">
                 <Rocket className="w-8 h-8 text-white" />
               </div>
-              <div className="text-5xl font-bold text-emerald-400 mb-3">2</div>
+              <div className="text-4xl sm:text-5xl font-bold text-emerald-400 mb-3">2</div>
               <h3 className="text-gray-100 mb-2">Startups Founded</h3>
               <p className="text-gray-400">
                 Co-founded and led technology ventures from inception
               </p>
             </div>
 
-            <div className="bg-gray-900/50 backdrop-blur-sm p-8 rounded-xl border border-emerald-500/20 text-center">
+            <div className="bg-gray-900/50 backdrop-blur-sm p-6 sm:p-8 rounded-xl border border-emerald-500/20 text-center">
               <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-lg shadow-emerald-500/30">
                 <Code className="w-8 h-8 text-white" />
               </div>
-              <div className="text-5xl font-bold text-emerald-400 mb-3">10+</div>
+              <div className="text-4xl sm:text-5xl font-bold text-emerald-400 mb-3">10+</div>
               <h3 className="text-gray-100 mb-2">Technologies Deployed</h3>
               <p className="text-gray-400">
                 Implemented cutting-edge tech stacks and platforms
               </p>
             </div>
 
-            <div className="bg-gray-900/50 backdrop-blur-sm p-8 rounded-xl border border-emerald-500/20 text-center">
+            <div className="bg-gray-900/50 backdrop-blur-sm p-6 sm:p-8 rounded-xl border border-emerald-500/20 text-center">
               <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-lg shadow-emerald-500/30">
                 <Award className="w-8 h-8 text-white" />
               </div>
-              <div className="text-5xl font-bold text-emerald-400 mb-3">100%</div>
+              <div className="text-4xl sm:text-5xl font-bold text-emerald-400 mb-3">100%</div>
               <h3 className="text-gray-100 mb-2">Board Commitment</h3>
               <p className="text-gray-400">
                 Dedicated leadership in community development initiatives

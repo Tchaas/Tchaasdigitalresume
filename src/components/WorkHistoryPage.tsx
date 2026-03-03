@@ -49,7 +49,7 @@ export function WorkHistoryPage() {
                 {/* Right side - Job Details */}
                 <div className="order-1 lg:order-2 space-y-4 sm:space-y-6">
                   <div>
-                    <span className="px-3 sm:px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex items-center gap-2 text-xs sm:text-sm">
+                    <span className="px-3 sm:px-3 sm:px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex flex-wrap items-center gap-2 text-xs sm:text-sm text-xs sm:text-sm">
                       <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
                       Mar 2025 - Present
                     </span>
@@ -123,7 +123,7 @@ export function WorkHistoryPage() {
                 {/* Right side - Job Details */}
                 <div className="order-1 lg:order-2 space-y-6">
                   <div>
-                    <span className="px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex items-center gap-2">
+                    <span className="px-3 sm:px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex flex-wrap items-center gap-2 text-xs sm:text-sm">
                       Oct 2023 - Mar 2025
                       <MapPin className="w-4 h-4 flex-shrink-0" />
                     </span>
@@ -200,7 +200,7 @@ export function WorkHistoryPage() {
                 {/* Right side - Job Details */}
                 <div className="order-1 lg:order-2 space-y-6">
                   <div>
-                    <span className="px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex items-center gap-2">
+                    <span className="px-3 sm:px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex flex-wrap items-center gap-2 text-xs sm:text-sm">
                       Mar 2021 - Sep 2023
                       <MapPin className="w-4 h-4 flex-shrink-0" />
                     </span>
@@ -280,7 +280,7 @@ export function WorkHistoryPage() {
                 {/* Right side - Job Details */}
                 <div className="order-1 lg:order-2 space-y-6">
                   <div>
-                    <span className="px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex items-center gap-2">
+                    <span className="px-3 sm:px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex flex-wrap items-center gap-2 text-xs sm:text-sm">
                       Jan 2020 - Oct 2020
                       <MapPin className="w-4 h-4 flex-shrink-0" />
                     </span>
@@ -375,7 +375,7 @@ export function WorkHistoryPage() {
                 {/* Right side - Job Details */}
                 <div className="order-1 lg:order-2 space-y-6">
                   <div>
-                    <span className="px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex items-center gap-2">
+                    <span className="px-3 sm:px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex flex-wrap items-center gap-2 text-xs sm:text-sm">
                       Oct 2019 - Dec 2019
                       <MapPin className="w-4 h-4 flex-shrink-0" />
                     </span>
@@ -462,7 +462,7 @@ export function WorkHistoryPage() {
                 {/* Right side - Job Details */}
                 <div className="order-1 lg:order-2 space-y-6">
                   <div>
-                    <span className="px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex items-center gap-2">
+                    <span className="px-3 sm:px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex flex-wrap items-center gap-2 text-xs sm:text-sm">
                       Jul 2017 - Oct 2019
                       <MapPin className="w-4 h-4 flex-shrink-0" />
                     </span>
@@ -549,7 +549,7 @@ export function WorkHistoryPage() {
                 {/* Right side - Job Details */}
                 <div className="order-1 lg:order-2 space-y-6">
                   <div>
-                    <span className="px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex items-center gap-2">
+                    <span className="px-3 sm:px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex flex-wrap items-center gap-2 text-xs sm:text-sm">
                       Jun 2015 - Jul 2017
                       <MapPin className="w-4 h-4 flex-shrink-0" />
                     </span>
@@ -592,7 +592,7 @@ export function WorkHistoryPage() {
       </section>
 
       {/* Career Journey Summary */}
-      <section className="py-16 px-6 bg-white">
+      <section className="py-12 sm:py-16 px-4 sm:px-6 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-gray-900 mb-4">Career Journey Summary</h2>
@@ -601,7 +601,7 @@ export function WorkHistoryPage() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             <div className="text-center">
               <div className="w-16 h-16 bg-green-100 rounded-xl mx-auto mb-4 flex items-center justify-center">
                 <TrendingUp className="w-8 h-8 text-green-600" />

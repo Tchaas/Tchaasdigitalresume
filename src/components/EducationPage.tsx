@@ -76,7 +76,7 @@ export function EducationPage() {
                 </div>
 
                 <div className="mb-8 lg:mb-0">
-                  <div className="inline-block bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 rounded-xl shadow-lg shadow-emerald-500/10 p-8 text-left max-w-md w-full hover:border-emerald-500/50 transition-all">
+                  <div className="inline-block bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 rounded-xl shadow-lg shadow-emerald-500/10 p-6 sm:p-8 text-left max-w-md w-full hover:border-emerald-500/50 transition-all">
                     <div className="flex items-start gap-4 mb-4">
                       <div className="w-12 h-12 bg-[#003A70] rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue-500/30 p-2">
                         <img src="/icons/education/ud-logo.webp" alt="University of Dayton" className="w-full h-full object-contain" />
@@ -120,7 +120,7 @@ export function EducationPage() {
             <div className="relative">
               <div className="lg:grid lg:grid-cols-2 lg:gap-8 items-start">
                 <div className="lg:text-right mb-8 lg:mb-0">
-                  <div className="inline-block bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 rounded-xl shadow-lg shadow-emerald-500/10 p-8 text-left max-w-md w-full hover:border-emerald-500/50 transition-all">
+                  <div className="inline-block bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 rounded-xl shadow-lg shadow-emerald-500/10 p-6 sm:p-8 text-left max-w-md w-full hover:border-emerald-500/50 transition-all">
                     <div className="flex items-start gap-4 mb-4">
                       <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg shadow-red-500/30 p-1.5">
                         <img src="/icons/education/msoe-logo.png" alt="Milwaukee School of Engineering" className="w-full h-full object-contain" />
@@ -172,7 +172,7 @@ export function EducationPage() {
                 </div>
 
                 <div className="mb-8 lg:mb-0">
-                  <div className="inline-block bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 rounded-xl shadow-lg shadow-emerald-500/10 p-8 text-left max-w-md w-full hover:border-emerald-500/50 transition-all">
+                  <div className="inline-block bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 rounded-xl shadow-lg shadow-emerald-500/10 p-6 sm:p-8 text-left max-w-md w-full hover:border-emerald-500/50 transition-all">
                     <div className="flex items-start gap-4 mb-4">
                       <div className="w-12 h-12 bg-[#0066B3] rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue-500/30 p-1.5">
                         <img src="/icons/education/matc-logo.jpg" alt="Milwaukee Area Technical College" className="w-full h-full object-contain" />
@@ -216,9 +216,9 @@ export function EducationPage() {
       </section>
 
       {/* Education at a Glance */}
-      <section className="py-16 px-6">
+      <section className="py-12 sm:py-16 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="bg-gradient-to-br from-emerald-600 to-emerald-700 rounded-2xl p-12 shadow-xl">
+          <div className="bg-gradient-to-br from-emerald-600 to-emerald-700 rounded-2xl p-6 sm:p-8 md:p-12 shadow-xl">
             <h2 className="text-white text-center mb-12">Education at a Glance</h2>
             
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">

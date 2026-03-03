@@ -8,12 +8,13 @@ interface SkillTagProps {
 
 export function SkillTag({ skill, isSelected, onClick }: SkillTagProps) {
   return (
-    <motion.span
+    <motion.button
+      type="button"
       whileHover={{ scale: 1.05, y: -2 }}
       whileTap={{ scale: 0.95 }}
       onClick={onClick}
       className={`
-        inline-block px-3 py-1.5 rounded-lg text-sm cursor-pointer
+        inline-flex items-center justify-center min-h-[44px] px-4 py-2 rounded-lg text-sm cursor-pointer
         transition-all duration-300 border
         ${isSelected 
           ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/50 border-emerald-400' 
@@ -22,6 +23,6 @@ export function SkillTag({ skill, isSelected, onClick }: SkillTagProps) {
       `}
     >
       {skill}
-    </motion.span>
+    </motion.button>
   );
 }
