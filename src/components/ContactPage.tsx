@@ -1,4 +1,4 @@
-import profileImg from "../assets/profile-headshot.png";
+import contactImg from "../assets/TchaasCartoon.png";
 import { Mail, Linkedin, Github, MapPin, Download } from "lucide-react";
 
 export function ContactPage() {
@@ -16,7 +16,7 @@ export function ContactPage() {
                 
                 <div className="relative aspect-square rounded-2xl overflow-hidden border-2 border-emerald-500/30 shadow-2xl shadow-emerald-500/20">
                   <img 
-                    src={profileImg} 
+                    src={contactImg} 
                     alt="Tchaas Alexander-Wright" 
                     className="w-full h-full object-cover"
                   />
