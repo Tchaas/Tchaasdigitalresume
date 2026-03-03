@@ -21,7 +21,7 @@ export function Header() {
   return (
     <header className="bg-[#0a0e1a]/95 backdrop-blur-sm border-b border-emerald-500/20 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-3">
           {/* Logo/Name - Left Side */}
           <motion.div
             whileHover={{ scale: 1.02 }}
@@ -37,17 +37,17 @@ export function Header() {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
+          <nav className="hidden lg:flex items-center justify-end gap-1 xl:gap-2 flex-wrap">
             {navItems.map((item) => (
               <motion.div
                 key={item.to}
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ y: -1 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <NavLink
                   to={item.to}
                   className={({ isActive }) =>
-                    `px-3 xl:px-4 py-2 rounded-lg text-sm xl:text-base font-medium transition-all whitespace-nowrap block ${
+                    `px-2.5 xl:px-4 py-2 rounded-lg text-xs xl:text-sm font-medium transition-all whitespace-nowrap block ${
                       isActive
                         ? "text-emerald-400 bg-emerald-500/10 border border-emerald-500/30"
                         : "text-gray-400 hover:text-emerald-400 hover:bg-emerald-500/5"
