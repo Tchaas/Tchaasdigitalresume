@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { FileText, Play, ExternalLink } from "lucide-react";
 import { FrameworkStack } from "./FrameworkStack";
@@ -93,6 +94,7 @@ const VIDEO_URL = "https://youtu.be/ssSpAGB72aw?si=F0Segym8-inQRjA3";
 
 export function ResearchPage() {
   const reduceMotion = useReducedMotion();
+  const [isVideoActive, setIsVideoActive] = useState(false);
 
   const fade = (delay = 0) =>
     reduceMotion
@@ -211,14 +213,30 @@ export function ResearchPage() {
                 <figure className="mt-8 overflow-hidden rounded-lg border border-[var(--color-line)]">
                   <div className="relative aspect-video w-full bg-black">
                     <iframe
-                      className="pointer-events-none absolute inset-0 h-full w-full"
-                      src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}`}
+                      className={`absolute inset-0 h-full w-full ${
+                        isVideoActive ? "pointer-events-auto" : "pointer-events-none"
+                      }`}
+                      src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}${
+                        isVideoActive ? "?autoplay=1" : ""
+                      }`}
                       title="Project presentation — schema-driven scaffolds in OOP for neurodivergent learners"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                       allowFullScreen
                       loading="lazy"
                       frameBorder="0"
                     />
+                    {!isVideoActive && (
+                      <button
+                        type="button"
+                        className="absolute inset-0 flex items-center justify-center bg-black/35 text-[var(--color-bone)] transition-colors hover:bg-black/20"
+                        onClick={() => setIsVideoActive(true)}
+                        aria-label="Play project presentation video"
+                      >
+                        <span className="inline-flex h-16 w-16 items-center justify-center rounded-full border border-white/40 bg-[var(--color-signal-500)] shadow-[0_0_32px_rgba(91,108,255,0.42)] transition-transform hover:scale-105">
+                          <Play className="ml-1 h-7 w-7 fill-current" aria-hidden="true" />
+                        </span>
+                      </button>
+                    )}
                   </div>
                   <figcaption className="u-eyebrow border-t border-[var(--color-line)] px-4 py-3">
                     Project presentation · CS 6795 · Summer 2026
