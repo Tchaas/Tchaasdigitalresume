@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Navigate, NavLink, Route, Routes, useLocation } from "react-router-dom";
-import { ArrowRight, FileText, Linkedin, Play } from "lucide-react";
+import { ArrowRight, ExternalLink, FileText, Linkedin, Play } from "lucide-react";
 
 import profileImg from "./assets/profile-headshot.webp";
 import { SkillTag } from "./components/SkillTag";
@@ -46,6 +46,7 @@ const RESEARCH_TEASERS = [
     title: "AI-Augmented Business Architecture",
     body: "A five-layer framework connecting executive strategy to confirmed financial value, anchored in the FedEx DRIVE, Walmart, and Amazon transformations.",
     pdf: "/papers/AI-Augmented-Business-Architecture.pdf",
+    appUrl: "https://tchaas.github.io/strategic-lifecycle-ai-framework/#/",
     hasVideo: false,
   },
   {
@@ -54,6 +55,13 @@ const RESEARCH_TEASERS = [
     body: "A systematic review of fifteen sources on how visual, schema-based supports change comprehension, implementation, and debugging for learners with ADHD and autism.",
     pdf: "/papers/Schema-Driven-Scaffolds-OOP-Neurodivergent-Learners.pdf",
     hasVideo: true,
+  },
+  {
+    eyebrow: "HCI · Individual project",
+    title: "Trucking Dispatching System Price Transparency Tool",
+    body: "An HCI process paper documenting discovery, user interviews, and heuristic evaluation for a freight pricing transparency concept serving shippers and truckers.",
+    pdf: "/papers/HCI-Individual-Project-Final.pdf",
+    hasVideo: false,
   },
 ];
 
@@ -389,7 +397,7 @@ function OverviewPage() {
             />
           </motion.div>
 
-          <div className="mt-10 grid gap-5 md:grid-cols-2">
+          <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {RESEARCH_TEASERS.map((paper, i) => (
               <motion.article
                 key={paper.title}
@@ -419,6 +427,17 @@ function OverviewPage() {
                     >
                       <Play className="h-3.5 w-3.5" aria-hidden="true" />
                       Presentation
+                    </a>
+                  )}
+                  {paper.appUrl && (
+                    <a
+                      className="u-btn"
+                      href={paper.appUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                      Web app
                     </a>
                   )}
                 </div>

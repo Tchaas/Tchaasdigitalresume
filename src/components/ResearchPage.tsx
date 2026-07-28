@@ -2,6 +2,9 @@ import { motion, useReducedMotion } from "framer-motion";
 import { FileText, Play, ExternalLink } from "lucide-react";
 import { FrameworkStack } from "./FrameworkStack";
 
+const STRATEGIC_LIFECYCLE_APP_URL =
+  "https://tchaas.github.io/strategic-lifecycle-ai-framework/#/";
+
 type Paper = {
   slug: string;
   eyebrow: string;
@@ -10,6 +13,7 @@ type Paper = {
   findings: string[];
   tags: string[];
   pdf: string;
+  appUrl?: string;
 };
 
 const PAPERS: Paper[] = [
@@ -35,6 +39,7 @@ const PAPERS: Paper[] = [
       "Value measurement",
     ],
     pdf: "/papers/AI-Augmented-Business-Architecture.pdf",
+    appUrl: STRATEGIC_LIFECYCLE_APP_URL,
   },
   {
     slug: "schema-driven-scaffolds",
@@ -58,6 +63,28 @@ const PAPERS: Paper[] = [
       "CS education",
     ],
     pdf: "/papers/Schema-Driven-Scaffolds-OOP-Neurodivergent-Learners.pdf",
+  },
+  {
+    slug: "trucking-dispatch-price-transparency",
+    eyebrow: "HCI process paper · Georgia Institute of Technology",
+    title: "Trucking Dispatching System Price Transparency Tool",
+    summary:
+      "An HCI project documenting early discovery for a peer-to-peer freight pricing transparency tool. The work frames the problem from both shipper and trucker perspectives, then uses needfinding, interviews, and heuristic evaluation to shape the product direction.",
+    findings: [
+      "Defines the transparency gap in freight pricing for shippers, owner-operators, and dispatch-dependent trucking businesses.",
+      "Builds a discovery plan around truckers, logistics professionals, shippers, carriers, and technical contributors.",
+      "Uses HCI heuristics including visibility of system status, recognition rather than recall, and error prevention.",
+      "Connects product motivation to real logistics operations, cost fluctuation, route profitability, and freight decision-making.",
+    ],
+    tags: [
+      "HCI",
+      "Needfinding",
+      "User interviews",
+      "Heuristic evaluation",
+      "Logistics",
+      "Pricing transparency",
+    ],
+    pdf: "/papers/HCI-Individual-Project-Final.pdf",
   },
 ];
 
@@ -87,9 +114,9 @@ export function ResearchPage() {
             Research &amp; writing
           </h1>
           <p className="mt-6 max-w-[58ch] text-lg text-[var(--color-fog)]">
-            Graduate work written to publication format — one grounded in enterprise
-            transformation cases, one in peer-reviewed cognitive science. Both are
-            available in full below.
+            Graduate work written to publication format — spanning enterprise
+            transformation, peer-reviewed cognitive science, and HCI product
+            discovery. Each paper is available in full below.
           </p>
         </motion.div>
       </section>
@@ -157,6 +184,18 @@ export function ResearchPage() {
                     <ExternalLink className="h-3 w-3 opacity-60" aria-hidden="true" />
                   </a>
                 )}
+
+                {paper.appUrl && (
+                  <a
+                    className="u-btn"
+                    href={paper.appUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                    Launch web app
+                  </a>
+                )}
               </div>
 
               {/* the framework this paper proposes */}
@@ -172,7 +211,7 @@ export function ResearchPage() {
                 <figure className="mt-8 overflow-hidden rounded-lg border border-[var(--color-line)]">
                   <div className="relative aspect-video w-full bg-black">
                     <iframe
-                      className="absolute inset-0 h-full w-full"
+                      className="pointer-events-none absolute inset-0 h-full w-full"
                       src={`https://www.youtube-nocookie.com/embed/${VIDEO_ID}`}
                       title="Project presentation — schema-driven scaffolds in OOP for neurodivergent learners"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
