@@ -1,4 +1,4 @@
-import contactImg from "../assets/TchaasCartoon.png";
+import contactImg from "../assets/TchaasCartoon.webp";
 import { Mail, Linkedin, Github, MapPin, Download } from "lucide-react";
 
 export function ContactPage() {
@@ -48,7 +48,7 @@ export function ContactPage() {
               <div className="space-y-3 sm:space-y-4">
                 <a
                   href="mailto:tchaasawright@gmail.com"
-                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-900/50 backdrop-blur-sm rounded-xl border border-emerald-500/20 hover:border-emerald-500/50 transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0e1a]"
+                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-900/50 backdrop-blur-sm rounded-xl border border-emerald-500/20 hover:border-emerald-500/50 transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-ink-900)]"
                 >
                   <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center group-hover:shadow-lg group-hover:shadow-emerald-500/50 transition-all flex-shrink-0">
                     <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
@@ -63,7 +63,7 @@ export function ContactPage() {
                   href="https://www.linkedin.com/in/tchaas-alexander-wright/"
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-900/50 backdrop-blur-sm rounded-xl border border-emerald-500/20 hover:border-emerald-500/50 transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0e1a]"
+                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-900/50 backdrop-blur-sm rounded-xl border border-emerald-500/20 hover:border-emerald-500/50 transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-ink-900)]"
                 >
                   <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center group-hover:shadow-lg group-hover:shadow-emerald-500/50 transition-all flex-shrink-0">
                     <Linkedin className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
@@ -78,7 +78,7 @@ export function ContactPage() {
                   href="https://github.com/Tchaas"
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-900/50 backdrop-blur-sm rounded-xl border border-emerald-500/20 hover:border-emerald-500/50 transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0e1a]"
+                  className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-gray-900/50 backdrop-blur-sm rounded-xl border border-emerald-500/20 hover:border-emerald-500/50 transition-all group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-ink-900)]"
                 >
                   <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center group-hover:shadow-lg group-hover:shadow-emerald-500/50 transition-all flex-shrink-0">
                     <Github className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
@@ -95,7 +95,7 @@ export function ContactPage() {
                 <a 
                   href="/TchaasHAlexanderWright_Resume.pdf"
                   download="TchaasHAlexanderWright_Resume.pdf"
-                  className="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:from-emerald-600 hover:to-emerald-700 transition-all flex items-center justify-center gap-2 sm:gap-3 shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 hover:scale-105 text-sm sm:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0e1a]"
+                  className="w-full bg-gradient-to-r from-emerald-500 to-emerald-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl hover:from-emerald-600 hover:to-emerald-700 transition-all flex items-center justify-center gap-2 sm:gap-3 shadow-lg shadow-emerald-500/30 hover:shadow-emerald-500/50 hover:scale-105 text-sm sm:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-ink-900)]"
                 >
                   <Download className="w-4 h-4 sm:w-5 sm:h-5" />
                   <span>Download My Resume</span>

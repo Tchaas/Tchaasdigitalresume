@@ -225,7 +225,7 @@ export function ProfessionalDevelopmentPage() {
       </section>
 
       {/* Board & Community Service */}
-      <section className="relative bg-gradient-to-b from-gray-900 to-[#0a0e1a] py-10 sm:py-12 md:py-14 px-4 sm:px-6">
+      <section className="relative bg-gradient-to-b from-gray-900 to-[var(--color-ink-900)] py-10 sm:py-12 md:py-14 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
           <div className="mb-8 sm:mb-10 md:mb-12">
             <h2 className="text-gray-100 mb-2">Board & Community Service</h2>

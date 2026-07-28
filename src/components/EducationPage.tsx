@@ -1,261 +1,160 @@
-import { GraduationCap, BookOpen, Award, Calendar, MapPin, Users } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
 import { StatusBadge } from "./StatusBadge";
 
+type Credential = {
+  id: string;
+  school: string;
+  abbr?: string;
+  degree: string;
+  location: string;
+  period: string;
+  inProgress?: boolean;
+  logo: string;
+  coursework: string[];
+};
+
+/* Source of truth: TchaasHakeemAlexanderWright_Resume.docx */
+const CREDENTIALS: Credential[] = [
+  {
+    id: "gt",
+    school: "Georgia Institute of Technology",
+    abbr: "Georgia Tech",
+    degree: "Master of Science, Computer Science",
+    location: "Atlanta, GA",
+    period: "2025 — anticipated 2027",
+    inProgress: true,
+    logo: "/icons/education/gt-logo.jpeg",
+    coursework: [
+      "Intro to Cognitive Science",
+      "Human-Computer Interaction",
+    ],
+  },
+  {
+    id: "ud",
+    school: "University of Dayton",
+    abbr: "UD",
+    degree: "Master of Business Administration",
+    location: "Dayton, OH",
+    period: "Completed",
+    logo: "/icons/education/ud-logo.webp",
+    coursework: [
+      "Corporate Finance",
+      "Business Analytics",
+      "Managerial Economics",
+      "Case Studies in Analytics",
+      "Negotiation",
+    ],
+  },
+  {
+    id: "msoe",
+    school: "Milwaukee School of Engineering",
+    abbr: "MSOE",
+    degree: "Bachelor of Science, Management Information Systems",
+    location: "Milwaukee, WI",
+    period: "Completed",
+    logo: "/icons/education/msoe-logo.png",
+    coursework: [
+      "Intro to Java Programming",
+      "Intermediate Java Programming",
+      "Database Management Systems",
+      "Managerial Cost Accounting",
+      "Managerial Finance",
+    ],
+  },
+  {
+    id: "matc",
+    school: "Milwaukee Area Technical College",
+    abbr: "MATC",
+    degree: "Associate of Science, IT Networking Specialist",
+    location: "Milwaukee, WI",
+    period: "Completed",
+    logo: "/icons/education/matc-logo.jpg",
+    coursework: [
+      "Cisco 1 — Network Fundamentals",
+      "Cisco 2 — Routing Protocols",
+      "Cisco 3 — Advanced Routing & Switching",
+      "Cisco 4 — WAN Technologies",
+      "Network Security (Security+)",
+    ],
+  },
+];
+
 export function EducationPage() {
+  const reduceMotion = useReducedMotion();
+
+  const rise = (delay = 0) =>
+    reduceMotion
+      ? {}
+      : {
+          initial: { opacity: 0, y: 18 },
+          whileInView: { opacity: 1, y: 0 },
+          viewport: { once: true, amount: 0.15 },
+          transition: { duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] as const },
+        };
+
   return (
-    <div className="min-h-screen relative">
-      {/* Hero Section */}
-      <section className="relative py-8 sm:py-10 md:py-12 px-4 sm:px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-block mb-5 sm:mb-6">
-            <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl shadow-xl shadow-emerald-500/50 flex items-center justify-center p-3 sm:p-4">
-              <GraduationCap className="w-14 h-14 sm:w-16 sm:h-16 text-white" />
-            </div>
-          </div>
-          <h1 className="text-gray-100 mb-3 sm:mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl">Educational Journey</h1>
-          <p className="text-gray-300 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed bg-black/25 border border-emerald-500/20 backdrop-blur-sm rounded-xl p-4 sm:p-5">
-            A decade-long academic progression from IT networking fundamentals to advanced computer science. My educational foundation spans technical infrastructure, information systems management, business strategy, and human-computer interaction—equipping me with a unique blend of technical expertise and business acumen.
+    <div className="bg-[var(--color-ink-950)]">
+      {/* header */}
+      <section className="u-shell pt-14 pb-10 sm:pt-20 sm:pb-14">
+        <motion.div {...rise()}>
+          <p className="u-eyebrow u-eyebrow-accent mb-4">Foundation</p>
+          <h1 className="u-display max-w-[14ch] text-[clamp(2.25rem,7vw,4.25rem)]">
+            Education
+          </h1>
+          <p className="mt-6 max-w-[58ch] text-lg text-[var(--color-fog)]">
+            Four degrees built in sequence rather than all at once — networking, then
+            information systems, then business, and now computer science. Each one added
+            a layer the previous work needed.
           </p>
-        </div>
+        </motion.div>
       </section>
 
-      {/* Timeline Section */}
-      <section className="relative py-8 sm:py-10 md:py-12 px-4 sm:px-6">
-        <div className="max-w-5xl mx-auto relative">
-          {/* Timeline connector line */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-500 via-emerald-500/50 to-transparent hidden lg:block" />
-
-          <div className="space-y-12 sm:space-y-16">
-            {/* Georgia Institute of Technology */}
-            <div className="relative">
-              <div className="lg:grid lg:grid-cols-2 lg:gap-8 items-start">
-                <div className="lg:text-right mb-6 sm:mb-8 lg:mb-0">
-                  <div className="inline-block bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 rounded-xl shadow-lg shadow-emerald-500/10 p-6 sm:p-8 text-left max-w-md w-full hover:border-emerald-500/50 transition-all">
-                    <div className="flex items-start gap-3 sm:gap-4 mb-4">
-                      <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#B3A369] rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg shadow-emerald-500/30 p-1.5">
-                        <img src="/icons/education/gt-logo.jpeg" alt="Georgia Tech" width={48} height={48} loading="lazy" decoding="async" className="w-full h-full object-contain" />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="text-gray-100 mb-1 text-base sm:text-lg">Georgia Institute of Technology</h3>
-                        <p className="text-emerald-400 mb-2 text-sm sm:text-base">Master of Science in Computer Science</p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-gray-400 mb-4 sm:mb-6 text-xs sm:text-sm">
-                      <div className="flex items-center gap-1">
-                        <Calendar className="w-4 h-4" />
-                        <span>2025-Present</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <StatusBadge>In Progress</StatusBadge>
-                      </div>
-                    </div>
-
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-2">
-                        <BookOpen className="w-4 h-4 text-emerald-400" />
-                        <p className="text-gray-200">Key Courses</p>
-                      </div>
-                      <ul className="space-y-2 ml-6">
-                        <li className="text-gray-400">• Human Computer Interaction</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="hidden lg:flex items-start justify-start pt-8">
-                  <div className="w-6 h-6 bg-emerald-500 rounded-full border-4 border-gray-900 shadow-lg shadow-emerald-500/50 relative -ml-3" />
+      {/* credentials */}
+      <section className="u-shell pb-16 sm:pb-24">
+        <div className="grid gap-5 lg:grid-cols-2">
+          {CREDENTIALS.map((c, i) => (
+            <motion.article
+              key={c.id}
+              {...rise(Math.min(i, 3) * 0.06)}
+              className="u-card u-card-hover flex flex-col p-5 sm:p-7"
+            >
+              <div className="flex items-start gap-4">
+                <img
+                  src={c.logo}
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  className="h-12 w-12 flex-none rounded border border-[var(--color-line)] bg-white/95 object-contain p-1.5"
+                />
+                <div className="min-w-0 flex-1">
+                  <h2 className="text-[1.0625rem] leading-snug">{c.school}</h2>
+                  <p className="u-mono mt-1.5 text-[0.625rem] uppercase tracking-[0.12em] text-[var(--color-dim)]">
+                    {c.location}
+                  </p>
                 </div>
               </div>
-            </div>
 
-            {/* Professional Logistics Institute */}
-            <div className="relative">
-              <div className="lg:grid lg:grid-cols-2 lg:gap-8 items-start">
-                <div className="hidden lg:flex items-start justify-end pt-8">
-                  <div className="w-6 h-6 bg-emerald-500 rounded-full border-4 border-gray-900 shadow-lg shadow-emerald-500/50 relative -mr-3" />
-                </div>
+              <p className="mt-5 text-[var(--color-bone)]">{c.degree}</p>
 
-                <div className="mb-8 lg:mb-0">
-                  <div className="inline-block bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 rounded-xl shadow-lg shadow-emerald-500/10 p-6 sm:p-8 text-left max-w-md w-full hover:border-emerald-500/50 transition-all">
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className="w-12 h-12 bg-[#003A70] rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue-500/30 p-2">
-                        <img src="/icons/education/ud-logo.webp" alt="University of Dayton" width={48} height={48} loading="lazy" decoding="async" className="w-full h-full object-contain" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-gray-100 mb-1">University of Dayton</h3>
-                        <p className="text-emerald-400 mb-2">Masters of Business Administration</p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-center gap-4 text-gray-400 mb-6">
-                      <div className="flex items-center gap-1">
-                        <Calendar className="w-4 h-4" />
-                        <span>2018 - 2020</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <MapPin className="w-4 h-4" />
-                        <span>Dayton, OH</span>
-                      </div>
-                    </div>
-
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-2">
-                        <BookOpen className="w-4 h-4 text-emerald-400" />
-                        <p className="text-gray-200">Key Courses</p>
-                      </div>
-                      <ul className="space-y-2 ml-6">
-                        <li className="text-gray-400">• Corporate Finance</li>
-                        <li className="text-gray-400">• Business Analytics</li>
-                        <li className="text-gray-400">• Negotiation</li>
-                        <li className="text-gray-400">• Case Studies in Analytics</li>
-                        <li className="text-gray-400">• Managerial Economics</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Milwaukee School of Engineering */}
-            <div className="relative">
-              <div className="lg:grid lg:grid-cols-2 lg:gap-8 items-start">
-                <div className="lg:text-right mb-8 lg:mb-0">
-                  <div className="inline-block bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 rounded-xl shadow-lg shadow-emerald-500/10 p-6 sm:p-8 text-left max-w-md w-full hover:border-emerald-500/50 transition-all">
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg shadow-red-500/30 p-1.5">
-                        <img src="/icons/education/msoe-logo.png" alt="Milwaukee School of Engineering" width={48} height={48} loading="lazy" decoding="async" className="w-full h-full object-contain" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-gray-100 mb-1">Milwaukee School of Engineering</h3>
-                        <p className="text-emerald-400 mb-2">Bachelor of Science in Management Information Systems</p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-center gap-4 text-gray-400 mb-6">
-                      <div className="flex items-center gap-1">
-                        <Calendar className="w-4 h-4" />
-                        <span>2015 - 2017</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <MapPin className="w-4 h-4" />
-                        <span>Milwaukee, WI</span>
-                      </div>
-                    </div>
-
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-2">
-                        <BookOpen className="w-4 h-4 text-emerald-400" />
-                        <p className="text-gray-200">Key Courses</p>
-                      </div>
-                      <ul className="space-y-2 ml-6">
-                        <li className="text-gray-400">• Intro to Java Programming</li>
-                        <li className="text-gray-400">• Intermediate Java Programming</li>
-                        <li className="text-gray-400">• Managerial Cost Accounting</li>
-                        <li className="text-gray-400">• Managerial Finance</li>
-                        <li className="text-gray-400">• Database Management Systems</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="hidden lg:flex items-start justify-start pt-8">
-                  <div className="w-6 h-6 bg-emerald-500 rounded-full border-4 border-gray-900 shadow-lg shadow-emerald-500/50 relative -ml-3" />
-                </div>
-              </div>
-            </div>
-
-            {/* Milwaukee Area Technical College */}
-            <div className="relative">
-              <div className="lg:grid lg:grid-cols-2 lg:gap-8 items-start">
-                <div className="hidden lg:flex items-start justify-end pt-8">
-                  <div className="w-6 h-6 bg-emerald-500 rounded-full border-4 border-gray-900 shadow-lg shadow-emerald-500/50 relative -mr-3" />
-                </div>
-
-                <div className="mb-8 lg:mb-0">
-                  <div className="inline-block bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 rounded-xl shadow-lg shadow-emerald-500/10 p-6 sm:p-8 text-left max-w-md w-full hover:border-emerald-500/50 transition-all">
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className="w-12 h-12 bg-[#0066B3] rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue-500/30 p-1.5">
-                        <img src="/icons/education/matc-logo.jpg" alt="Milwaukee Area Technical College" width={48} height={48} loading="lazy" decoding="async" className="w-full h-full object-contain" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-gray-100 mb-1">Milwaukee Area Technical College</h3>
-                        <p className="text-emerald-400 mb-2">Associate of Science in IT Networking</p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-center gap-4 text-gray-400 mb-6">
-                      <div className="flex items-center gap-1">
-                        <Calendar className="w-4 h-4" />
-                        <span>2012 - 2015</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <MapPin className="w-4 h-4" />
-                        <span>Milwaukee, WI</span>
-                      </div>
-                    </div>
-
-                    <div className="space-y-3">
-                      <div className="flex items-center gap-2">
-                        <BookOpen className="w-4 h-4 text-emerald-400" />
-                        <p className="text-gray-200">Key Courses</p>
-                      </div>
-                      <ul className="space-y-2 ml-6">
-                        <li className="text-gray-400">• Cisco 1 (Network Fundamentals)</li>
-                        <li className="text-gray-400">• Cisco 2 (Routing Protocols)</li>
-                        <li className="text-gray-400">• Cisco 3 (Advance Routing/Switching)</li>
-                        <li className="text-gray-400">• Cisco 4 (WAN Technologies)</li>
-                        <li className="text-gray-400">• Network Security (Security+)</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Education at a Glance */}
-      <section className="py-10 sm:py-12 md:py-14 px-4 sm:px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="bg-gradient-to-br from-emerald-600 to-emerald-700 rounded-2xl p-6 sm:p-8 md:p-12 shadow-xl">
-            <h2 className="text-white text-center mb-12">Education at a Glance</h2>
-            
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-white/20 rounded-xl mx-auto mb-4 flex items-center justify-center">
-                  <GraduationCap className="w-8 h-8 text-white" />
-                </div>
-                <div className="text-white mb-1">4</div>
-                <p className="text-emerald-100">Degrees</p>
+              <div className="mt-3 flex flex-wrap items-center gap-3">
+                <span className="u-mono text-[0.6875rem] tracking-[0.08em] text-[var(--color-dim)]">
+                  {c.period}
+                </span>
+                {c.inProgress && <StatusBadge>In progress</StatusBadge>}
               </div>
 
-              <div className="text-center">
-                <div className="w-16 h-16 bg-white/20 rounded-xl mx-auto mb-4 flex items-center justify-center">
-                  <BookOpen className="w-8 h-8 text-white" />
-                </div>
-                <div className="text-white mb-1">230</div>
-                <p className="text-emerald-100">Completed Credits</p>
+              <div className="mt-6 border-t border-[var(--color-line)] pt-5">
+                <p className="u-eyebrow mb-3">Selected coursework</p>
+                <ul className="flex flex-wrap gap-1.5">
+                  {c.coursework.map((course) => (
+                    <li key={course} className="u-chip">
+                      {course}
+                    </li>
+                  ))}
+                </ul>
               </div>
-
-              <div className="text-center">
-                <div className="w-16 h-16 bg-white/20 rounded-xl mx-auto mb-4 flex items-center justify-center">
-                  <Users className="w-8 h-8 text-white" />
-                </div>
-                <div className="text-white mb-1">2,000+</div>
-                <p className="text-emerald-100">Learning Hours</p>
-              </div>
-
-              <div className="text-center">
-                <div className="w-16 h-16 bg-white/20 rounded-xl mx-auto mb-4 flex items-center justify-center">
-                  <Award className="w-8 h-8 text-white" />
-                </div>
-                <div className="text-white mb-1">3.2</div>
-                <p className="text-emerald-100">Average GPA</p>
-              </div>
-            </div>
-          </div>
+            </motion.article>
+          ))}
         </div>
       </section>
     </div>

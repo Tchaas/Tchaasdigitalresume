@@ -1,815 +1,591 @@
 import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
-import { Navigate, Route, Routes, useLocation } from "react-router-dom";
-import svgPaths from "./imports/svg-o41sg7fn0u";
-import profileImg from "./assets/profile-headshot.png";
-import circuitBg from "figma:asset/d1e24e304bd08c8dad5c534cb5493c70e5febc79.png";
-import { GraduationCap, Rocket, Code, Users } from "lucide-react";
-import { AnimatedCounter } from "./components/AnimatedCounter";
+import { Navigate, NavLink, Route, Routes, useLocation } from "react-router-dom";
+import { ArrowRight, FileText, Linkedin, Play } from "lucide-react";
+
+import profileImg from "./assets/profile-headshot.webp";
 import { SkillTag } from "./components/SkillTag";
-import { CircuitBackground } from "./components/CircuitBackground";
-import { InteractiveSparks } from "./components/InteractiveSparks";
+import { StatusBadge } from "./components/StatusBadge";
+import { FrameworkStack } from "./components/FrameworkStack";
 import { Header } from "./components/Header";
+import { Footer } from "./components/Footer";
 import { EducationPage } from "./components/EducationPage";
 import { WorkHistoryPage } from "./components/WorkHistoryPage";
 import { ContactPage } from "./components/ContactPage";
 import { ProfessionalDevelopmentPage } from "./components/ProfessionalDevelopmentPage";
-import { StatusBadge } from "./components/StatusBadge";
+import { ResearchPage } from "./components/ResearchPage";
+
+/* ============================================================
+   DATA
+   ============================================================ */
+
+const COMPETENCIES = [
+  {
+    id: "01",
+    title: "Enterprise & data architecture",
+    body: "Defining scalable data architectures and capability models that bridge FedEx Express and Ground systems. Leading cross-functional requirements gathering and translating enterprise goals into executable technology solutions.",
+    tags: ["Solution design", "Data architecture", "Process mapping"],
+  },
+  {
+    id: "02",
+    title: "Agile product ownership",
+    body: "Managing demand across five Agile Release Trains and leading backend teams to deliver enterprise-scale APIs. GAP analysis, user story development, and roadmaps aligned to business strategy.",
+    tags: ["Roadmapping", "Agile / SAFe", "API delivery"],
+  },
+  {
+    id: "03",
+    title: "Discovery & business analysis",
+    body: "Conducting user interviews and partnering with UX analysts to define MVP scope. Requirements gathering, technical documentation, and turning business needs into working digital solutions.",
+    tags: ["User research", "Requirements", "UX partnership"],
+  },
+];
+
+const RESEARCH_TEASERS = [
+  {
+    eyebrow: "Framework paper",
+    title: "AI-Augmented Business Architecture",
+    body: "A five-layer framework connecting executive strategy to confirmed financial value, anchored in the FedEx DRIVE, Walmart, and Amazon transformations.",
+    pdf: "/papers/AI-Augmented-Business-Architecture.pdf",
+    hasVideo: false,
+  },
+  {
+    eyebrow: "CS 6795 · Literature review",
+    title: "Schema-Driven Scaffolds in OOP for Neurodivergent Learners",
+    body: "A systematic review of fifteen sources on how visual, schema-based supports change comprehension, implementation, and debugging for learners with ADHD and autism.",
+    pdf: "/papers/Schema-Driven-Scaffolds-OOP-Neurodivergent-Learners.pdf",
+    hasVideo: true,
+  },
+];
+
+const SKILLS = [
+  // Product & delivery
+  "Product Management",
+  "Product Road Mapping",
+  "Agile Methodology",
+  "GAP Analysis",
+  "Requirements Management",
+  "Use Case Definition",
+  "User Acceptance Testing",
+  "Enterprise Projects",
+  "Cross Functional Features",
+  "Project Management",
+  "Risk Management",
+  "Facilitation",
+  // Architecture & analysis
+  "Business Process Identification",
+  "API Development",
+  "Data Mining",
+  "Forecasting",
+  "Technical Reports",
+  "Networking",
+  // Research & design
+  "User Interviews",
+  "User Experience",
+  "User Interface",
+  // Tooling
+  "SQL",
+  "Jira",
+  "Confluence",
+  "Splunk",
+  "Lucidchart",
+  "Nightwatch.js",
+  "Sauce Labs",
+  "Google Cloud",
+  "GitHub Copilot",
+  "JavaScript",
+  "CockroachDB",
+  "Postman",
+  "Fivetran",
+  "OKTA",
+  "Cypress",
+];
+
+const SKILL_EXPERIENCES: Record<string, string[]> = {
+  // --- Product & delivery ---
+  "Product Management": [
+    "FedEx — Business Architect",
+    "FedEx — Senior Product Owner",
+    "FedEx — Product Owner",
+    "Kohl's — Product Manager, Payments",
+    "Bytonomy Tech — Product features and lead developer coordination",
+  ],
+  "Product Road Mapping": [
+    "FedEx — Built roadmaps with the Product Manager aligned to business direction",
+  ],
+  "Agile Methodology": [
+    "FedEx — Demand management across 5 Agile Release Trains",
+    "FIS — Process improvement targeting a 60% reduction in release delays",
+  ],
+  "GAP Analysis": [
+    "FedEx — Discovery for new features and process mapping into digital solutions",
+  ],
+  "Requirements Management": [
+    "FedEx — Cross-functional requirements for volume, routing, and service integration",
+    "FedEx — User stories from stakeholder business requirements",
+  ],
+  "Use Case Definition": ["FedEx — Feature definition with architects and business partners"],
+  "User Acceptance Testing": ["FIS — Release validation across six applications"],
+  "Enterprise Projects": [
+    "FedEx — Solutions bridging FedEx Express and FedEx Ground systems",
+    "FIS — 15 IT development projects delivered",
+  ],
+  "Cross Functional Features": [
+    "FedEx — Working sessions spanning volume, routing, and service integration",
+  ],
+  "Project Management": ["FIS — Managed and completed 15 IT development projects"],
+  "Risk Management": [
+    "Kohl's — Payment security and compliance",
+    "FIS — Compliance impact analysis across four card networks",
+  ],
+  Facilitation: [
+    "FIS — Facilitated and trained 20+ individuals on new software functionality",
+    "FedEx — Led cross-functional requirements working sessions",
+  ],
+
+  // --- Architecture & analysis ---
+  "Business Process Identification": [
+    "FedEx — Process maps and capability models for current and future-state operations",
+  ],
+  "API Development": [
+    "FedEx — Agnostic APIs bridging Express and Ground data",
+    "FedEx — API contracts and business rules for UI applications",
+  ],
+  "Data Mining": ["FedEx — Captured network data feeding the analytics data lake"],
+  Forecasting: ["FedEx — Volume management across U.S. and Canada facilities"],
+  "Technical Reports": [
+    "FIS — In-house manual for system updates and project changes",
+    "Kohl's — Pin-pad performance reporting to upper management",
+  ],
+  Networking: ["MATC — Cisco routing, switching, WAN, and Security+ coursework"],
+
+  // --- Research & design ---
+  "User Interviews": [
+    "FedEx — Interviews with process engineers to identify product gaps",
+  ],
+  "User Experience": ["FedEx — Partnered with the Sr. UX Analyst on MVP features"],
+  "User Interface": ["FedEx — Product Owner for the UX/UI team"],
+
+  // --- Tooling ---
+  SQL: ["Kohl's — Transaction tracing and payment data validation"],
+  Jira: ["Kohl's — User story development for payments products"],
+  Confluence: ["FIS — Change documentation for Production Support"],
+  Splunk: ["Kohl's — Transaction validation and troubleshooting"],
+  Lucidchart: ["Kohl's — Workflow and impact diagrams for new projects"],
+  "Nightwatch.js": [
+    "Northwestern Mutual — Browser automation test cases",
+    "NovaOne Technology — Browser automation and testing",
+  ],
+  "Sauce Labs": ["Northwestern Mutual — Automation test execution"],
+  "Google Cloud": ["NovaOne Technology — Cloud infrastructure and services"],
+  "GitHub Copilot": ["NovaOne Technology — JavaScript development and code generation"],
+  JavaScript: ["NovaOne Technology — Developed JavaScript logic"],
+  CockroachDB: ["NovaOne Technology — Distributed database implementation"],
+  Postman: ["NovaOne Technology — API testing and development"],
+  Fivetran: ["NovaOne Technology — Data pipeline and ETL processes"],
+  OKTA: ["NovaOne Technology — Identity and access management"],
+  Cypress: ["NovaOne Technology — End-to-end testing automation"],
+};
+
+/* ============================================================
+   HELPERS
+   ============================================================ */
 
 function ScrollToTop() {
   const { pathname } = useLocation();
-
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [pathname]);
-
   return null;
 }
 
-function OverviewPage() {
-  const [selectedSkill, setSelectedSkill] = useState<string | null>(null);
-
-  const skills = [
-    // From Professional Development - NovaOne Technology Stack
-    "JavaScript",
-    "GitHub Copilot",
-    "Google Cloud",
-    "CockroachDB",
-    "Postman",
-    "Squarespace",
-    "Fivetran",
-    "OKTA",
-    "Cypress",
-    "Nightwatch.js",
-    // From Professional Development - Bytonomy Core Competencies
-    "Business Strategy",
-    "Financial Modeling",
-    "Product Management",
-    "Client Relations",
-    "Marketing Strategy",
-    "Team Leadership",
-    "Documentation",
-    "Project Prioritization",
-    // From Professional Development - Habitat Skills
-    "Committee Leadership",
-    "Member Recruitment",
-    "Strategic Alignment"
-  ];
-
-  const skillExperiences: Record<string, string[]> = {
-    // NovaOne Technology Stack
-    "JavaScript": ["NovaOne Technology - Developed JavaScript logic using GitHub Copilot"],
-    "GitHub Copilot": ["NovaOne Technology - Utilized for JavaScript development and code generation"],
-    "Google Cloud": ["NovaOne Technology - Deployed cloud infrastructure and services"],
-    "CockroachDB": ["NovaOne Technology - Implemented distributed database solutions"],
-    "Postman": ["NovaOne Technology - API testing and development"],
-    "Squarespace": ["NovaOne Technology - Website and platform integration"],
-    "Fivetran": ["NovaOne Technology - Data pipeline and ETL processes"],
-    "OKTA": ["NovaOne Technology - Identity and access management integration"],
-    "Cypress": ["NovaOne Technology - End-to-end testing automation"],
-    "Nightwatch.js": ["NovaOne Technology - Browser automation and testing"],
-    
-    // Bytonomy Core Competencies
-    "Business Strategy": ["Bytonomy Tech - Established company vision through comprehensive business plan"],
-    "Financial Modeling": ["Bytonomy Tech - Created financial models based on project projections"],
-    "Product Management": ["Bytonomy Tech - Developed product features and coordinated with Lead Developers", "Business Architect - FedEx", "Senior Product Owner - FedEx", "Product Owner - FedEx"],
-    "Client Relations": ["Bytonomy Tech - Networked and established client relationships"],
-    "Marketing Strategy": ["Bytonomy Tech - Developed marketing plan to attract users"],
-    "Team Leadership": ["Bytonomy Tech - Coordinated team building events and work sessions"],
-    "Documentation": ["Bytonomy Tech - Created functional documentation for features", "Habitat for Humanity - Maintained meeting documentation"],
-    "Project Prioritization": ["Bytonomy Tech - Prioritized projects based on timeliness and complexity"],
-    
-    // Habitat for Humanity Skills
-    "Committee Leadership": ["Habitat for Humanity - Led committee operations as Membership Chair"],
-    "Member Recruitment": ["Habitat for Humanity - Recruited and engaged new members"],
-    "Strategic Alignment": ["Habitat for Humanity - Ensured alignment with organizational goals"],
-  };
-
-  const handleSkillClick = (skill: string) => {
-    setSelectedSkill(selectedSkill === skill ? null : skill);
-  };
-
-  const selectedExperiences = selectedSkill ? skillExperiences[selectedSkill] ?? [] : [];
-
+function SectionHeading({
+  index,
+  title,
+  lede,
+}: {
+  index: string;
+  title: string;
+  lede?: string;
+}) {
   return (
-    <div className="min-h-screen relative">
-      {/* Hero Section with Circuit Background */}
-      <motion.section 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="relative min-h-[500px] sm:min-h-[600px] flex items-center justify-center px-4 sm:px-6 py-12 sm:py-20 overflow-hidden"
-      >
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0a0e1a]/90 via-[#0a0e1a]/70 to-emerald-900/20" />
-        
-        {/* Glowing Grid Lines */}
-        <div className="absolute inset-0 opacity-30" style={{
-          backgroundImage: `
-            linear-gradient(rgba(16, 185, 129, 0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(16, 185, 129, 0.1) 1px, transparent 1px)
-          `,
-          backgroundSize: '50px 50px'
-        }} />
-        
-        <div className="max-w-7xl mx-auto w-full relative z-10">
-          <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
-            {/* Left Content */}
-            <motion.div 
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="space-y-4 sm:space-y-6"
-            >
-              <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-emerald-500/10 border border-emerald-500/30 rounded-full mb-2 sm:mb-4">
-                <motion.div 
-                  animate={{ scale: [1, 1.2, 1] }}
-                  transition={{ repeat: Infinity, duration: 2 }}
-                  className="w-2 h-2 bg-emerald-500 rounded-full"
-                />
-                <span className="text-emerald-400 text-xs sm:text-sm">Available for opportunities</span>
-              </div>
-              
-              <h1 className="text-gray-100 text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
-                Hello, I'm <span className="text-emerald-400 drop-shadow-[0_0_10px_rgba(16,185,129,0.5)]">Tchaas</span>
-              </h1>
-              <div className="text-gray-300 max-w-2xl space-y-3 sm:space-y-4 text-sm sm:text-base leading-relaxed bg-black/30 border border-emerald-500/20 backdrop-blur-sm rounded-xl p-4 sm:p-5 shadow-[0_0_30px_rgba(0,0,0,0.2)]">
-                <p>
-                  I design systems, build products, and solve problems that sit at the crossroads of business strategy and technology. My work blends experience across enterprise architecture, product development, and UX research, supported by ongoing study in Computer Science at Georgia Tech.
-                </p>
-                <p>
-                  I'm energized by collaboration—the kind where ideas evolve, problems get untangled, and solutions emerge with clarity and purpose. Learning is a daily practice for me, and I carry that curiosity into every team, product, and initiative I'm part of.
-                </p>
-                <p>
-                  Across my career at FedEx, my startup projects, and my technical studies, one principle guides everything I build: create work that adds value, empowers people, and stands up to real-world complexity.
-                </p>
-                <p>
-                  My goal is to be a reliable problem-solver, a thoughtful teammate, and a maker of things that genuinely help others.
-                </p>
-              </div>
-              
-              {/* Tech Stack Pills */}
-              <div className="flex flex-wrap gap-2 sm:gap-3">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 }}
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-900/50 border border-emerald-500/30 rounded-lg backdrop-blur-sm cursor-pointer hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-all"
-                >
-                  <svg className="w-3 h-3 sm:w-4 sm:h-4 text-emerald-400" fill="none" viewBox="0 0 24 24">
-                    <path d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                  <span className="text-gray-300 text-xs sm:text-sm">Enterprise Architecture</span>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.7 }}
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-900/50 border border-emerald-500/30 rounded-lg backdrop-blur-sm cursor-pointer hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-all"
-                >
-                  <svg className="w-3 h-3 sm:w-4 sm:h-4 text-emerald-400" fill="none" viewBox="0 0 24 24">
-                    <path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                  <span className="text-gray-300 text-xs sm:text-sm">Product Management</span>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.8 }}
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  className="flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-gray-900/50 border border-emerald-500/30 rounded-lg backdrop-blur-sm cursor-pointer hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-all"
-                >
-                  <svg className="w-3 h-3 sm:w-4 sm:h-4 text-emerald-400" fill="none" viewBox="0 0 24 24">
-                    <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                  <span className="text-gray-300 text-xs sm:text-sm">Business Analysis</span>
-                </motion.div>
-              </div>
-
-              {/* CTA Buttons */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.9 }}
-                className="flex flex-wrap gap-3 sm:gap-4 pt-2 sm:pt-4"
-              >
-                <motion.a
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  href="https://www.linkedin.com/in/tchaas-alexander-wright/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-2 text-emerald-300 px-4 sm:px-6 py-2 sm:py-3 border border-emerald-500/30 rounded-lg hover:bg-emerald-500/10 transition-all text-sm sm:text-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0e1a]"
-                >
-                  <svg className="w-4 h-4 sm:w-5 sm:h-6" fill="none" viewBox="0 0 21 24">
-                    <path d={svgPaths.p303ef300} fill="#10B981" />
-                  </svg>
-                  LinkedIn
-                </motion.a>
-              </motion.div>
-            </motion.div>
-
-            {/* Right Content - Profile Image with Tech Frame */}
-            <motion.div 
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="flex justify-center lg:justify-end"
-            >
-              <div className="relative z-20 w-full max-w-[280px] sm:max-w-[350px] md:max-w-[420px]">
-                {/* Outer Glowing Frame */}
-                <motion.div 
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  className="absolute inset-0 bg-gradient-to-br from-emerald-500/30 to-blue-500/30 rounded-full blur-2xl"
-                />
-                
-                <div className="relative aspect-square rounded-full bg-gradient-to-br from-emerald-500/20 to-transparent p-2 sm:p-2.5 backdrop-blur-sm border border-emerald-500/30">
-                  <div className="w-full h-full rounded-full bg-gray-900 p-4 sm:p-6">
-                    <img
-                      src={profileImg}
-                      alt="Tchaas Alexander-Wright"
-                      width={840}
-                      height={840}
-                      sizes="(max-width: 640px) 280px, (max-width: 768px) 350px, 420px"
-                      decoding="async"
-                      fetchPriority="high"
-                      className="w-full h-full rounded-full object-cover border-4 sm:border-[6px] border-emerald-500/60 shadow-xl"
-                    />
-                  </div>
-                </div>
-                
-                {/* Floating Tech Badge */}
-                <motion.div
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  className="absolute bottom-2 sm:bottom-4 -right-2 sm:-right-4 w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full shadow-lg shadow-emerald-500/50 flex items-center justify-center border border-emerald-400/50 cursor-pointer"
-                >
-                  <svg className="w-5 h-5 sm:w-7 sm:h-6" fill="none" viewBox="0 0 27 24">
-                    <path d={svgPaths.p302cc000} fill="white" />
-                  </svg>
-                </motion.div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Core Competencies Section */}
-      <motion.section 
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.6 }}
-        className="relative bg-[#0a0e1a] py-12 sm:py-16 md:py-20 px-4 sm:px-6 overflow-hidden"
-      >
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <img src={circuitBg} alt="" className="w-full h-full object-cover" />
-        </div>
-        
-        <div className="max-w-7xl mx-auto relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-12 sm:mb-16"
-          >
-            <h2 className="text-gray-100 mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">Core Competencies</h2>
-            <p className="text-gray-400 max-w-3xl mx-auto text-sm sm:text-base px-4">
-              Expertise spanning enterprise architecture, agile product development, and strategic technology leadership
-            </p>
-          </motion.div>
-
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
-            {/* Competency Card 1 */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0 * 0.2 }}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="bg-gray-900/50 backdrop-blur-sm p-6 sm:p-8 rounded-xl border border-emerald-500/20 hover:border-emerald-500/50 transition-all hover:shadow-lg hover:shadow-emerald-500/10 cursor-pointer"
-            >
-              <motion.div 
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.6 }}
-                className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center mb-4 sm:mb-6 shadow-lg shadow-emerald-500/30"
-              >
-                <svg className="w-4 h-4 sm:w-4 sm:h-5 flex-shrink-0" fill="none" viewBox="0 0 15 20">
-                  <path d={svgPaths.p594b480} fill="white" />
-                </svg>
-              </motion.div>
-              <h3 className="text-gray-100 mb-3 sm:mb-4 text-lg sm:text-xl">Enterprise Architecture & Data Strategy</h3>
-              <p className="text-gray-400 mb-3 sm:mb-4 text-sm sm:text-base">
-                Defining scalable data architectures and capability models that bridge FedEx Express and Ground systems. Leading cross-functional requirements gathering and translating enterprise goals into executable technology solutions.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <motion.span 
-                  whileHover={{ scale: 1.1 }}
-                  className="text-xs px-2 py-1 bg-emerald-500/10 text-emerald-400 rounded cursor-pointer"
-                >
-                  Solution Design
-                </motion.span>
-                <motion.span 
-                  whileHover={{ scale: 1.1 }}
-                  className="text-xs px-2 py-1 bg-emerald-500/10 text-emerald-400 rounded cursor-pointer"
-                >
-                  Data Architecture
-                </motion.span>
-                <motion.span 
-                  whileHover={{ scale: 1.1 }}
-                  className="text-xs px-2 py-1 bg-emerald-500/10 text-emerald-400 rounded cursor-pointer"
-                >
-                  Process Mapping
-                </motion.span>
-              </div>
-            </motion.div>
-
-            {/* Competency Card 2 */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 1 * 0.2 }}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="bg-gray-900/50 backdrop-blur-sm p-6 sm:p-8 rounded-xl border border-emerald-500/20 hover:border-emerald-500/50 transition-all hover:shadow-lg hover:shadow-emerald-500/10 cursor-pointer"
-            >
-              <motion.div 
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.6 }}
-                className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center mb-6 shadow-lg shadow-emerald-500/30"
-              >
-                <svg className="w-6 h-5 flex-shrink-0" fill="none" viewBox="0 0 25 20">
-                  <path d={svgPaths.p39a88000} fill="white" />
-                </svg>
-              </motion.div>
-              <h3 className="text-gray-100 mb-4">Agile Product Ownership & Delivery</h3>
-              <p className="text-gray-400 mb-4">
-                Managing 5 Agile Release Trains and leading backend development teams to deliver enterprise-scale APIs. Expert in GAP analysis, user story development, and driving product roadmaps aligned with business strategy.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <motion.span 
-                  whileHover={{ scale: 1.1 }}
-                  className="text-xs px-2 py-1 bg-emerald-500/10 text-emerald-400 rounded cursor-pointer"
-                >
-                  Product Roadmapping
-                </motion.span>
-                <motion.span 
-                  whileHover={{ scale: 1.1 }}
-                  className="text-xs px-2 py-1 bg-emerald-500/10 text-emerald-400 rounded cursor-pointer"
-                >
-                  Agile/Scrum
-                </motion.span>
-                <motion.span 
-                  whileHover={{ scale: 1.1 }}
-                  className="text-xs px-2 py-1 bg-emerald-500/10 text-emerald-400 rounded cursor-pointer"
-                >
-                  API Development
-                </motion.span>
-              </div>
-            </motion.div>
-
-            {/* Competency Card 3 */}
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 2 * 0.2 }}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="bg-gray-900/50 backdrop-blur-sm p-6 sm:p-8 rounded-xl border border-emerald-500/20 hover:border-emerald-500/50 transition-all hover:shadow-lg hover:shadow-emerald-500/10 cursor-pointer"
-            >
-              <motion.div 
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.6 }}
-                className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center mb-6 shadow-lg shadow-emerald-500/30"
-              >
-                <svg className="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 20 20">
-                  <path d={svgPaths.p359f3c00} fill="white" />
-                </svg>
-              </motion.div>
-              <h3 className="text-gray-100 mb-4">User Experience & Business Analysis</h3>
-              <p className="text-gray-400 mb-4">
-                Conducting user interviews and partnering with UX analysts to develop MVP features. Specialized in requirements gathering, technical documentation, and transforming business needs into digital solutions.
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <motion.span 
-                  whileHover={{ scale: 1.1 }}
-                  className="text-xs px-2 py-1 bg-emerald-500/10 text-emerald-400 rounded cursor-pointer"
-                >
-                  User Research
-                </motion.span>
-                <motion.span 
-                  whileHover={{ scale: 1.1 }}
-                  className="text-xs px-2 py-1 bg-emerald-500/10 text-emerald-400 rounded cursor-pointer"
-                >
-                  Requirements Analysis
-                </motion.span>
-                <motion.span 
-                  whileHover={{ scale: 1.1 }}
-                  className="text-xs px-2 py-1 bg-emerald-500/10 text-emerald-400 rounded cursor-pointer"
-                >
-                  UX/UI Design
-                </motion.span>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Key Accomplishments Section - ANIMATED WITH COUNTERS */}
-      <motion.section
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.6 }}
-        className="relative bg-gradient-to-b from-gray-900 to-[#0a0e1a] py-12 sm:py-16 md:py-20 px-4 sm:px-6"
-      >
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <motion.h2
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-gray-100 mb-4"
-            >
-              Impact Metrics
-            </motion.h2>
-            <p className="text-gray-400">Data-driven achievements across my professional journey</p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {/* Stat 1 - Years of Experience */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0 * 0.1 }}
-              whileHover={{ scale: 1.1, y: -10 }}
-              className="text-center group cursor-pointer"
-            >
-              <motion.div
-                whileHover={{ rotate: [0, -10, 10, 0] }}
-                transition={{ duration: 0.5 }}
-                className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-lg shadow-emerald-500/30 group-hover:shadow-emerald-500/50 transition-all"
-              >
-                <Users className="w-8 h-8 text-white" />
-              </motion.div>
-              <div className="text-gray-100 mb-2 text-3xl font-semibold">
-                <AnimatedCounter value="9" suffix="+" />
-              </div>
-              <p className="text-gray-400">Years of Experience</p>
-            </motion.div>
-
-            {/* Stat 2 - Degrees Earned */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 1 * 0.1 }}
-              whileHover={{ scale: 1.1, y: -10 }}
-              className="text-center group cursor-pointer"
-            >
-              <motion.div
-                whileHover={{ rotate: [0, -10, 10, 0] }}
-                transition={{ duration: 0.5 }}
-                className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-lg shadow-emerald-500/30 group-hover:shadow-emerald-500/50 transition-all"
-              >
-                <GraduationCap className="w-8 h-8 text-white" />
-              </motion.div>
-              <div className="text-gray-100 mb-2 text-3xl font-semibold">
-                <AnimatedCounter value="4" />
-              </div>
-              <p className="text-gray-400">Degrees Earned</p>
-            </motion.div>
-
-            {/* Stat 3 - Startups Co-Founded */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 2 * 0.1 }}
-              whileHover={{ scale: 1.1, y: -10 }}
-              className="text-center group cursor-pointer"
-            >
-              <motion.div
-                whileHover={{ rotate: [0, -10, 10, 0] }}
-                transition={{ duration: 0.5 }}
-                className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-lg shadow-emerald-500/30 group-hover:shadow-emerald-500/50 transition-all"
-              >
-                <Rocket className="w-8 h-8 text-white" />
-              </motion.div>
-              <div className="text-gray-100 mb-2 text-3xl font-semibold">
-                <AnimatedCounter value="2" />
-              </div>
-              <p className="text-gray-400">Startups Co-Founded</p>
-            </motion.div>
-
-            {/* Stat 4 - Technologies Deployed */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.5 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 3 * 0.1 }}
-              whileHover={{ scale: 1.1, y: -10 }}
-              className="text-center group cursor-pointer"
-            >
-              <motion.div
-                whileHover={{ rotate: [0, -10, 10, 0] }}
-                transition={{ duration: 0.5 }}
-                className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl mx-auto mb-6 flex items-center justify-center shadow-lg shadow-emerald-500/30 group-hover:shadow-emerald-500/50 transition-all"
-              >
-                <Code className="w-8 h-8 text-white" />
-              </motion.div>
-              <div className="text-gray-100 mb-2 text-3xl font-semibold">
-                <AnimatedCounter value="10" suffix="+" />
-              </div>
-              <p className="text-gray-400">Technologies Deployed</p>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Professional Skills Section - INTERACTIVE */}
-      <motion.section
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.6 }}
-        className="relative bg-[#0a0e1a] py-12 sm:py-16 md:py-20 px-4 sm:px-6"
-      >
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <motion.h2
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-gray-100 mb-4"
-            >
-              Professional Skills & Technologies
-            </motion.h2>
-            <p className="text-gray-400 max-w-3xl mx-auto mb-4">
-              A comprehensive toolkit spanning product management, enterprise architecture, and technical delivery
-            </p>
-            <p className="text-emerald-400 text-sm">
-              💡 Click any skill to see where I've applied it
-            </p>
-          </div>
-
-          {/* Skills Grid */}
-          <div className="flex flex-wrap gap-3 justify-center mb-8">
-            {skills.map((skill, index) => (
-              <motion.div
-                key={skill}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: index * 0.03 }}
-              >
-                <SkillTag
-                  skill={skill}
-                  isSelected={selectedSkill === skill}
-                  onClick={() => handleSkillClick(skill)}
-                />
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Experience Panel - Shows when skill is selected */}
-          {selectedSkill !== null && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.3 }}
-                className="bg-gray-900/50 backdrop-blur-sm rounded-xl border border-emerald-500/30 p-5 sm:p-6 md:p-8 mt-8"
-              >
-                <div className="flex items-start justify-between mb-6">
-                  <div>
-                    <h3 className="text-gray-100 text-xl mb-2">
-                      Where I used <span className="text-emerald-400">{selectedSkill}</span>
-                    </h3>
-                    <p className="text-gray-400 text-sm">
-                      Click another skill to explore, or close this panel
-                    </p>
-                  </div>
-                  <motion.button
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={() => setSelectedSkill(null)}
-                    className="text-gray-400 hover:text-emerald-400 transition-colors"
-                  >
-                    <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  </motion.button>
-                </div>
-
-                {selectedExperiences.length > 0 ? (
-                  <ul className="space-y-3">
-                    {selectedExperiences.map((experience, i) => (
-                      <motion.li
-                        key={i}
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: i * 0.1 }}
-                        className="flex items-center gap-3 text-gray-300"
-                      >
-                        <div className="w-2 h-2 bg-emerald-500 rounded-full flex-shrink-0" />
-                        <span>{experience}</span>
-                      </motion.li>
-                    ))}
-                  </ul>
-                ) : (
-                  <p className="text-gray-400">No experience entries recorded yet for this skill.</p>
-                )}
-              </motion.div>
-            )}
-        </div>
-      </motion.section>
-
-      {/* Education Section - STEP 8 ANIMATED */}
-      <motion.section
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.6 }}
-        className="relative bg-gradient-to-b from-gray-900 to-[#0a0e1a] py-12 sm:py-16 md:py-20 px-4 sm:px-6"
-      >
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <motion.h2
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-gray-100 mb-4"
-            >
-              Continuous Learning
-            </motion.h2>
-            <p className="text-gray-400">Staying ahead through education and skill development</p>
-          </div>
-
-          <div className="space-y-8">
-            {/* Current Education - Ongoing Learning */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              whileHover={{ scale: 1.02, x: 10 }}
-              className="bg-gray-900/50 backdrop-blur-sm p-5 sm:p-6 md:p-8 rounded-xl border-l-4 border-emerald-500 relative hover:bg-gray-900/70 transition-all cursor-pointer"
-            >
-              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-                <div className="flex-1">
-                  <h3 className="text-gray-100 mb-2">Master of Science in Computer Science</h3>
-                  <p className="text-emerald-400 mb-2">Georgia Institute of Technology</p>
-                  <p className="text-gray-400 mb-1">2025 - Present</p>
-                  <motion.div whileHover={{ scale: 1.06 }} className="inline-block mb-4 cursor-pointer">
-                    <StatusBadge>
-                    In Progress
-                    </StatusBadge>
-                  </motion.div>
-                  <p className="text-gray-400">
-                    Currently pursuing advanced studies in Computer Science with a focus on Human Computer Interaction and emerging technologies.
-                  </p>
-                </div>
-                <motion.div
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.6 }}
-                  className="w-16 h-16 bg-[#B3A369] rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg shadow-emerald-500/30 p-2"
-                >
-                  <img src="/icons/education/gt-logo.jpeg" alt="Georgia Tech" className="w-full h-full object-contain" />
-                </motion.div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Work Experience Section - STEP 9 ANIMATED */}
-      <motion.section
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.6 }}
-        className="relative bg-[#0a0e1a] py-12 sm:py-16 md:py-20 px-4 sm:px-6"
-      >
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <motion.h2
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-gray-100 mb-4"
-            >
-              Professional Experience
-            </motion.h2>
-            <p className="text-gray-400">Building innovative solutions for modern challenges</p>
-          </div>
-
-          <div className="relative">
-            {/* Timeline Line */}
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-500 to-transparent hidden md:block" />
-
-            <div className="space-y-12">
-              {/* Current Job - Senior Product Manager */}
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="relative"
-              >
-                <div className="flex gap-6">
-                  <motion.div
-                    whileHover={{ scale: 1.1, rotate: 360 }}
-                    transition={{ duration: 0.6 }}
-                    className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full flex items-center justify-center flex-shrink-0 relative z-10 shadow-lg shadow-emerald-500/50 cursor-pointer"
-                  >
-                    <svg className="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 20 20">
-                      <path d={svgPaths.p2b274680} fill="white" />
-                    </svg>
-                  </motion.div>
-                  <motion.div
-                    whileHover={{ y: -5, scale: 1.01 }}
-                    className="flex-1 bg-gray-900/50 backdrop-blur-sm p-5 sm:p-6 md:p-8 rounded-xl border border-emerald-500/20 hover:border-emerald-500/50 transition-all"
-                  >
-                    <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
-                      <div>
-                        <h3 className="text-gray-100 mb-1">Business Architect</h3>
-                        <p className="text-emerald-400 mb-1">Federal Express Corporation</p>
-                        <p className="text-gray-400">Mar 2025 - Present</p>
-                      </div>
-                      <motion.div
-                        animate={{ scale: [1, 1.05, 1] }}
-                        transition={{ repeat: Infinity, duration: 2 }}
-                      >
-                        <StatusBadge>Current Role</StatusBadge>
-                      </motion.div>
-                    </div>
-                    <p className="text-gray-300 mb-4">
-                      Managing incoming business demand across five Agile Release Trains (ARTs), ensuring prioritization aligns with enterprise strategies. Defining and documenting data architecture to support new enterprise capabilities, developing process maps and capability models, and collaborating with architects and engineering teams to propose technology solutions.
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="px-3 py-1 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-lg">Enterprise Architecture</span>
-                      <span className="px-3 py-1 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-lg">Data Architecture</span>
-                      <span className="px-3 py-1 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-lg">Agile (SAFe)</span>
-                      <span className="px-3 py-1 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-lg">Process Modeling</span>
-                    </div>
-                  </motion.div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </div>
-      </motion.section>
-
+    <div className="max-w-[52ch]">
+      <p className="u-eyebrow u-eyebrow-accent mb-3">{index}</p>
+      <h2 className="u-display text-[clamp(1.75rem,4.5vw,2.75rem)]">{title}</h2>
+      {lede && <p className="mt-4 text-[var(--color-fog)]">{lede}</p>}
     </div>
   );
 }
 
-export default function App() {
-  const prefersReducedMotion = useReducedMotion();
-  const [isCoarsePointer, setIsCoarsePointer] = useState(false);
+/* ============================================================
+   OVERVIEW
+   ============================================================ */
 
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(pointer: coarse)");
-    const updatePointerType = () => setIsCoarsePointer(mediaQuery.matches);
+function OverviewPage() {
+  const [selectedSkill, setSelectedSkill] = useState<string | null>(null);
+  const reduceMotion = useReducedMotion();
 
-    updatePointerType();
-    mediaQuery.addEventListener("change", updatePointerType);
+  const selectedExperiences = selectedSkill ? SKILL_EXPERIENCES[selectedSkill] ?? [] : [];
 
-    return () => mediaQuery.removeEventListener("change", updatePointerType);
-  }, []);
+  const rise = (delay = 0) =>
+    reduceMotion
+      ? {}
+      : {
+          initial: { opacity: 0, y: 20 },
+          whileInView: { opacity: 1, y: 0 },
+          viewport: { once: true, amount: 0.2 },
+          transition: { duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] as const },
+        };
+
+  const load = (delay = 0) =>
+    reduceMotion
+      ? {}
+      : {
+          initial: { opacity: 0, y: 16 },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] as const },
+        };
 
   return (
-    <div className="min-h-dvh relative bg-[#050608] overflow-x-hidden flex flex-col">
+    <>
+      {/* ---------------- HERO ---------------- */}
+      <section className="relative overflow-hidden border-b border-[var(--color-line)]">
+        {/* quiet structural grid — replaces the old circuit image */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 opacity-[0.35]"
+          style={{
+            backgroundImage:
+              "linear-gradient(var(--color-line) 1px, transparent 1px), linear-gradient(90deg, var(--color-line) 1px, transparent 1px)",
+            backgroundSize: "72px 72px",
+            maskImage: "radial-gradient(ellipse 80% 60% at 30% 0%, #000 40%, transparent 100%)",
+            WebkitMaskImage:
+              "radial-gradient(ellipse 80% 60% at 30% 0%, #000 40%, transparent 100%)",
+          }}
+        />
+
+        <div className="u-shell relative pb-16 pt-14 sm:pb-24 sm:pt-20">
+          <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-16">
+            {/* left */}
+            <div>
+              <motion.div {...load(0)}>
+                <StatusBadge>Open to opportunities</StatusBadge>
+              </motion.div>
+
+              <motion.h1
+                {...load(0.06)}
+                className="u-display mt-6 text-[clamp(2.5rem,8vw,5rem)]"
+              >
+                Tchaas
+                <span className="block">Alexander-Wright</span>
+              </motion.h1>
+
+              <motion.p
+                {...load(0.12)}
+                className="u-mono mt-5 text-xs uppercase tracking-[0.14em] text-[var(--color-dim)]"
+              >
+                Business Architect, FedEx
+                <span className="mx-2 text-[var(--color-line-strong)]">/</span>
+                MBA
+                <span className="mx-2 text-[var(--color-line-strong)]">/</span>
+                MSCS, Georgia Tech
+              </motion.p>
+
+              <motion.p
+                {...load(0.18)}
+                className="mt-8 max-w-[38ch] text-[clamp(1.125rem,2.4vw,1.5rem)] leading-[1.4] text-[var(--color-bone)]"
+              >
+                Most transformation programs don't fail on technology. They fail on{" "}
+                <span className="text-[var(--color-signal-400)]">traceability</span> — the
+                line from an executive objective to a confirmed financial outcome.
+                Building that line is the work I do.
+              </motion.p>
+
+              <motion.p {...load(0.24)} className="mt-6 max-w-[60ch] text-[var(--color-fog)]">
+                Ten years across QA, business analysis, product ownership, and now
+                enterprise architecture at FedEx — where I delivered $70.5M in strategic
+                value in FY26. Currently completing an MS in Computer Science at Georgia
+                Tech.
+              </motion.p>
+
+              <motion.div {...load(0.3)} className="mt-9 flex flex-wrap gap-2.5">
+                <NavLink className="u-btn u-btn-primary" to="/research">
+                  Read my research
+                  <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+                </NavLink>
+                <a
+                  className="u-btn"
+                  href="/TchaasHAlexanderWright_Resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FileText className="h-3.5 w-3.5" aria-hidden="true" />
+                  Résumé
+                </a>
+                <a
+                  className="u-btn"
+                  href="https://www.linkedin.com/in/tchaas-alexander-wright/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Linkedin className="h-3.5 w-3.5" aria-hidden="true" />
+                  LinkedIn
+                </a>
+              </motion.div>
+            </div>
+
+            {/* right — portrait, squared and framed rather than the old glow orb */}
+            <motion.div {...load(0.16)} className="relative mx-auto w-full max-w-[26rem] lg:mx-0">
+              <div className="u-card overflow-hidden p-2">
+                <img
+                  src={profileImg}
+                  alt="Tchaas Alexander-Wright"
+                  width={900}
+                  height={900}
+                  decoding="async"
+                  fetchPriority="high"
+                  className="aspect-square w-full rounded object-cover"
+                />
+              </div>
+              <div className="mt-3 flex items-center justify-between">
+                <span className="u-eyebrow">MBA · MSCS candidate</span>
+                <span className="u-eyebrow">In the field since 2015</span>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ---------------- FRAMEWORK (signature) ---------------- */}
+      <section className="u-section border-b border-[var(--color-line)] bg-[var(--color-ink-900)]">
+        <div className="u-shell">
+          <div className="grid gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16">
+            <motion.div {...rise()}>
+              <SectionHeading
+                index="01 — How I work"
+                title="Strategy to confirmed value"
+                lede="Every engagement runs the same five layers. Each one translates the layer above it into something the next can act on, and nothing is called done until the number moves against a baseline."
+              />
+              <NavLink className="u-btn mt-7" to="/research">
+                The paper behind this
+                <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+              </NavLink>
+            </motion.div>
+
+            <motion.div {...rise(0.08)}>
+              <FrameworkStack />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* ---------------- RESEARCH ---------------- */}
+      <section className="u-section border-b border-[var(--color-line)]">
+        <div className="u-shell">
+          <motion.div {...rise()}>
+            <SectionHeading
+              index="02 — Georgia Tech"
+              title="Research & writing"
+              lede="Graduate work written to publication format, available in full."
+            />
+          </motion.div>
+
+          <div className="mt-10 grid gap-5 md:grid-cols-2">
+            {RESEARCH_TEASERS.map((paper, i) => (
+              <motion.article
+                key={paper.title}
+                {...rise(i * 0.08)}
+                className="u-card u-card-hover flex flex-col p-6"
+              >
+                <p className="u-eyebrow u-eyebrow-accent">{paper.eyebrow}</p>
+                <h3 className="mt-3 text-[1.125rem] leading-snug">{paper.title}</h3>
+                <p className="mt-3 text-sm text-[var(--color-fog)]">{paper.body}</p>
+
+                <div className="mt-6 flex flex-wrap gap-2 pt-1">
+                  <a
+                    className="u-btn"
+                    href={paper.pdf}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FileText className="h-3.5 w-3.5" aria-hidden="true" />
+                    PDF
+                  </a>
+                  {paper.hasVideo && (
+                    <a
+                      className="u-btn"
+                      href="https://youtu.be/ssSpAGB72aw?si=F0Segym8-inQRjA3"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Play className="h-3.5 w-3.5" aria-hidden="true" />
+                      Presentation
+                    </a>
+                  )}
+                </div>
+              </motion.article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ---------------- COMPETENCIES ---------------- */}
+      <section className="u-section border-b border-[var(--color-line)] bg-[var(--color-ink-900)]">
+        <div className="u-shell">
+          <motion.div {...rise()}>
+            <SectionHeading
+              index="03 — Practice"
+              title="Core competencies"
+              lede="Where the work actually happens, day to day."
+            />
+          </motion.div>
+
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {COMPETENCIES.map((item, i) => (
+              <motion.div
+                key={item.id}
+                {...rise(i * 0.08)}
+                className="u-card u-card-hover flex flex-col p-6"
+              >
+                <span className="u-mono text-xs font-semibold text-[var(--color-signal-400)]">
+                  {item.id}
+                </span>
+                <h3 className="mt-4 text-[1.0625rem] leading-snug">{item.title}</h3>
+                <p className="mt-3 text-sm text-[var(--color-fog)]">{item.body}</p>
+                <ul className="mt-6 flex flex-wrap gap-1.5">
+                  {item.tags.map((tag) => (
+                    <li key={tag} className="u-chip">
+                      {tag}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ---------------- SKILLS ---------------- */}
+      <section className="u-section">
+        <div className="u-shell">
+          <motion.div {...rise()}>
+            <SectionHeading
+              index="04 — Toolkit"
+              title="Skills & technologies"
+              lede="Select any skill to see where I've applied it."
+            />
+          </motion.div>
+
+          <motion.div {...rise(0.06)} className="mt-9 flex flex-wrap gap-2">
+            {SKILLS.map((skill) => (
+              <SkillTag
+                key={skill}
+                skill={skill}
+                isSelected={selectedSkill === skill}
+                onClick={() => setSelectedSkill(selectedSkill === skill ? null : skill)}
+              />
+            ))}
+          </motion.div>
+
+          {selectedSkill && (
+            <motion.div
+              initial={reduceMotion ? false : { opacity: 0, y: -6 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="u-card mt-6 p-6"
+            >
+              <div className="flex items-start justify-between gap-4">
+                <h3 className="text-base">
+                  Where I've used{" "}
+                  <span className="text-[var(--color-signal-400)]">{selectedSkill}</span>
+                </h3>
+                <button
+                  type="button"
+                  onClick={() => setSelectedSkill(null)}
+                  className="u-mono text-[0.625rem] uppercase tracking-[0.1em] text-[var(--color-dim)] transition-colors hover:text-[var(--color-bone)]"
+                >
+                  Close
+                </button>
+              </div>
+
+              {selectedExperiences.length > 0 ? (
+                <ul className="mt-5 flex flex-col gap-2.5">
+                  {selectedExperiences.map((experience) => (
+                    <li
+                      key={experience}
+                      className="relative pl-5 text-sm text-[var(--color-fog)]"
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="absolute left-0 top-[0.6em] h-px w-2.5 bg-[var(--color-signal-500)]"
+                      />
+                      {experience}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="mt-4 text-sm text-[var(--color-dim)]">
+                  No entries recorded for this skill yet.
+                </p>
+              )}
+            </motion.div>
+          )}
+        </div>
+      </section>
+
+      {/* ---------------- CLOSING ---------------- */}
+      <section className="border-t border-[var(--color-line)] bg-[var(--color-ink-900)]">
+        <div className="u-shell py-16 sm:py-20">
+          <motion.div {...rise()} className="max-w-[46ch]">
+            <p className="u-eyebrow u-eyebrow-accent mb-3">05 — Next cycle</p>
+            <h2 className="u-display text-[clamp(1.75rem,4.5vw,2.75rem)]">
+              Let's build the line
+            </h2>
+            <p className="mt-4 text-[var(--color-fog)]">
+              Open to conversations about technical product management, solutions
+              architecture, and enterprise transformation.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-2.5">
+              <NavLink className="u-btn u-btn-primary" to="/contact">
+                Get in touch
+                <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
+              </NavLink>
+              <NavLink className="u-btn" to="/experience">
+                See experience
+              </NavLink>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+/* ============================================================
+   APP
+   ============================================================ */
+
+export default function App() {
+  return (
+    <div className="flex min-h-dvh flex-col overflow-x-hidden bg-[var(--color-ink-950)]">
       <ScrollToTop />
+      <Header />
 
-      {/* Global animated circuit background */}
-      {!prefersReducedMotion && !isCoarsePointer && <CircuitBackground />}
+      <main className="flex-1 overflow-x-hidden">
+        <Routes>
+          <Route path="/" element={<OverviewPage />} />
+          <Route path="/overview" element={<Navigate to="/" replace />} />
+          <Route path="/research" element={<ResearchPage />} />
+          <Route path="/education" element={<EducationPage />} />
+          <Route path="/experience" element={<WorkHistoryPage />} />
+          <Route
+            path="/professional-development"
+            element={<ProfessionalDevelopmentPage />}
+          />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </main>
 
-      {/* Interactive sparks */}
-      {!prefersReducedMotion && !isCoarsePointer && <InteractiveSparks />}
-
-      {/* Foreground content */}
-      <div className="relative z-20 flex flex-col min-h-dvh">
-        <Header />
-        
-        <main className="flex-1 overflow-x-hidden">
-          <Routes>
-            <Route path="/" element={<OverviewPage />} />
-            <Route path="/overview" element={<Navigate to="/" replace />} />
-            <Route path="/education" element={<EducationPage />} />
-            <Route path="/experience" element={<WorkHistoryPage />} />
-            <Route path="/professional-development" element={<ProfessionalDevelopmentPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
-        </main>
-      </div>
+      <Footer />
     </div>
   );
 }

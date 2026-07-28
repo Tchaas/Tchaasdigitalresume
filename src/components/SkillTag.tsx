@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-
 interface SkillTagProps {
   skill: string;
   isSelected: boolean;
@@ -8,21 +6,17 @@ interface SkillTagProps {
 
 export function SkillTag({ skill, isSelected, onClick }: SkillTagProps) {
   return (
-    <motion.button
+    <button
       type="button"
-      whileHover={{ scale: 1.05, y: -2 }}
-      whileTap={{ scale: 0.95 }}
       onClick={onClick}
-      className={`
-        inline-flex items-center justify-center min-h-[44px] px-4 py-2 rounded-lg text-sm cursor-pointer
-        transition-all duration-300 border
-        ${isSelected 
-          ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/50 border-emerald-400' 
-          : 'bg-gray-800/50 text-gray-300 border-emerald-500/30 hover:border-emerald-500/50 hover:bg-emerald-500/10'
-        }
-      `}
+      aria-pressed={isSelected}
+      className={`u-mono inline-flex min-h-[40px] cursor-pointer items-center justify-center rounded border px-3 py-2 text-[0.6875rem] uppercase tracking-[0.08em] transition-colors duration-200 ${
+        isSelected
+          ? "border-[var(--color-signal-500)] bg-[var(--color-signal-500)] text-white"
+          : "border-[var(--color-line)] text-[var(--color-fog)] hover:border-[var(--color-line-strong)] hover:bg-[var(--color-ink-700)] hover:text-[var(--color-bone)]"
+      }`}
     >
       {skill}
-    </motion.button>
+    </button>
   );
 }

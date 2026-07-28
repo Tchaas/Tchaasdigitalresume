@@ -132,10 +132,10 @@ export function CircuitBackground({ className = "" }: CircuitBackgroundProps) {
 
       // --- Background gradient (blue → teal → green bias) ---
       const grad = ctx.createLinearGradient(0, 0, w, h);
-      grad.addColorStop(0, "#020617");  // deep navy
-      grad.addColorStop(0.4, "#012a3a"); // cyan / blue
-      grad.addColorStop(0.8, "#022c22"); // teal / green
-      grad.addColorStop(1, "#00110c");   // darker green edge
+      grad.addColorStop(0, "var(--color-ink-950)");  // deep navy
+      grad.addColorStop(0.4, "var(--color-ink-850)"); // cyan / blue
+      grad.addColorStop(0.8, "var(--color-ink-850)"); // teal / green
+      grad.addColorStop(1, "var(--color-ink-950)");   // darker green edge
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, w, h);
 

@@ -1,637 +1,276 @@
-import { Calendar, TrendingUp, Users, Award, MapPin, CheckCircle2 } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { StatusBadge } from "./StatusBadge";
+
+type Role = {
+  id: string;
+  title: string;
+  company: string;
+  logo: string;
+  period: string;
+  current?: boolean;
+  /** headline outcome, pulled forward out of the bullets */
+  metric?: { value: string; label: string };
+  summary: string;
+  bullets: string[];
+  tags: string[];
+};
+
+/* Source of truth: TchaasHakeemAlexanderWright_Resume.docx */
+const ROLES: Role[] = [
+  {
+    id: "fedex-ba",
+    title: "Business Architect",
+    company: "FedEx",
+    logo: "/icons/work/fedex-logo.png",
+    period: "Apr 2025 — Present",
+    current: true,
+    metric: { value: "$70.5M", label: "strategic value delivered, FY26" },
+    summary:
+      "Translating enterprise strategy into capability models, data architecture, and implementation-ready demand across the FedEx network.",
+    bullets: [
+      "Manage incoming business demand across 5 Agile Release Trains, ensuring prioritization aligns with enterprise strategy.",
+      "Define and document data architecture supporting new enterprise activity capabilities, enabling scalable and integrated data models.",
+      "Develop process maps and capability models capturing current and future-state operations across business units.",
+      "Lead working sessions to capture cross-functional requirements for volume, routing, and service integration capabilities.",
+      "Support the architectural definition of solutions bridging FedEx Express and FedEx Ground systems to optimize delivery operations.",
+      "Create high-level solution designs and capability documentation for stakeholder approval and implementation readiness.",
+      "Collaborate with enterprise architects and engineering teams to propose technology solutions aligned to strategic initiatives.",
+    ],
+    tags: ["Enterprise architecture", "Data architecture", "Agile / SAFe", "Capability modeling"],
+  },
+  {
+    id: "fedex-spo",
+    title: "Senior Product Owner",
+    company: "FedEx",
+    logo: "/icons/work/fedex-logo.png",
+    period: "Oct 2023 — Apr 2025",
+    summary:
+      "Owned a backend development team building agnostic APIs that closed the data gap between FedEx Express and FedEx Ground.",
+    bullets: [
+      "Product Owner for a backend team developing agnostic APIs supporting multiple business areas.",
+      "Delivered products that removed legacy processes and improved the global network by feeding captured data into the network data lake.",
+      "Led development of a new process combining Express and Ground volume management per zip code for the global network.",
+      "Owned deployment of an application allowing engineers to submit volume changes for all FedEx Ground facilities.",
+      "Used GAP analysis to support discovery, define new features, and map processes into digital solutions.",
+      "Demoed software solutions to leadership to showcase enterprise-level implementation potential.",
+      "Developed solutions supporting volume management for all FedEx facilities in the U.S. and Canada.",
+    ],
+    tags: ["API strategy", "GAP analysis", "Data lake", "Volume management"],
+  },
+  {
+    id: "fedex-po",
+    title: "Product Owner",
+    company: "FedEx",
+    logo: "/icons/work/fedex-logo.png",
+    period: "Mar 2021 — Oct 2023",
+    metric: { value: "16+", label: "features shipped to production" },
+    summary:
+      "Product Owner across three offshore backend teams and a UX/UI team, defining API business rules and MVP scope.",
+    bullets: [
+      "Product Owner for three offshore teams focused on backend development, production issues, and API business rules.",
+      "Partnered with the Senior User Experience Analyst to develop features and engage external users on MVP scope.",
+      "Implemented over 16 new features addressing security vulnerabilities, network modernization, and field engineer tooling.",
+      "Implemented a new documentation process adopted by 8 development teams.",
+      "Developed user stories from stakeholder business requirements and worked with architects to gather requirements per feature.",
+      "Partnered with Business Architects to structure API contracts for all user-interface applications.",
+      "Conducted user interviews with process engineers to identify gaps addressable by new web-based products.",
+      "Worked with the Product Manager on a roadmap aligned to overall business direction.",
+    ],
+    tags: ["Product ownership", "API contracts", "User research", "Offshore teams"],
+  },
+  {
+    id: "kohls",
+    title: "Product Manager, Payments",
+    company: "Kohl's",
+    logo: "/icons/work/kohls-logo.jpg",
+    period: "Jan 2020 — Oct 2020",
+    summary:
+      "Managed payment products and pin-pad estate, balancing customer experience against risk and compliance.",
+    bullets: [
+      "Developed user stories for payments products in Jira based on business partner requests.",
+      "Built pin-pad performance metrics and presented reporting to upper management.",
+      "Managed code deployment for releases and produced project documentation for the support team.",
+      "Troubleshot and deployed software packages for Verifone Mx925 and Mx915 pin-pads via Verifone Estate Management (VHQ).",
+      "Used SQL to trace payment transactions for troubleshooting and validate data from payment processing applications.",
+      "Supported Microsoft Server 2008 R2 and 2016 patching in test environments.",
+      "Created diagrams and workflows in Lucidchart to determine impacted applications and data flow after changes.",
+    ],
+    tags: ["Payments", "SQL", "Verifone VHQ", "Release management"],
+  },
+  {
+    id: "fis-senior",
+    title: "Senior Business Systems Analyst",
+    company: "FIS",
+    logo: "/icons/work/fis-logo.png",
+    period: "Oct 2019 — Dec 2019",
+    summary:
+      "Compliance analysis across the major card networks, spanning two development platforms.",
+    bullets: [
+      "Analyzed technical documentation from American Express, Pulse, Mastercard, and Visa across two development platforms to determine compliance impacts.",
+      "Coordinated timely delivery of compliance features against network release schedules.",
+      "Managed production releases and feature deployments.",
+      "Supported creation of customer bulletins for feature changes.",
+    ],
+    tags: ["Card networks", "Compliance", "Release management"],
+  },
+  {
+    id: "fis-bsa",
+    title: "Business Systems Analyst / Product Owner",
+    company: "FIS",
+    logo: "/icons/work/fis-logo.png",
+    period: "Jul 2017 — Oct 2019",
+    metric: { value: "15", label: "IT development projects delivered" },
+    summary:
+      "Delivered IT development projects end to end and owned the technical documentation standard behind them.",
+    bullets: [
+      "Managed and completed 15 IT development projects, documenting changes in Confluence for Production Support.",
+      "Wrote technical verbiage for project changes and approved final copy before publication.",
+      "Maintained the in-house manual covering system updates and project changes for all project teams and Product Support.",
+      "Executed code releases across six applications.",
+      "Drove Agile process improvement for code releases, targeting a 60% reduction in delivery delays.",
+      "Facilitated and trained 20+ individuals on new software functionality.",
+    ],
+    tags: ["Agile", "Confluence", "Technical writing", "Process improvement"],
+  },
+  {
+    id: "nm",
+    title: "Associate Automation Quality Assurance",
+    company: "Northwestern Mutual",
+    logo: "/icons/work/nm-logo.png",
+    period: "Jun 2015 — Jul 2017",
+    metric: { value: "100+", label: "automation scripts supported" },
+    summary:
+      "Built and maintained browser automation coverage, and modeled data warehouse processes.",
+    bullets: [
+      "Completed 20 test cases and supported 100+ scripts internally.",
+      "Developed data warehouse process models covering sourcing, loading, transformation, and extraction.",
+      "Built automation test cases using Nightwatch.js and executed them through Sauce Labs.",
+      "Trained offshore QA testers.",
+      "Worked alongside developers to deploy code into production.",
+    ],
+    tags: ["Nightwatch.js", "Sauce Labs", "Test automation", "Data warehousing"],
+  },
+];
 
 export function WorkHistoryPage() {
+  const reduceMotion = useReducedMotion();
+
+  const rise = (delay = 0) =>
+    reduceMotion
+      ? {}
+      : {
+          initial: { opacity: 0, y: 18 },
+          whileInView: { opacity: 1, y: 0 },
+          viewport: { once: true, amount: 0.15 },
+          transition: { duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] as const },
+        };
+
   return (
-    <div className="min-h-screen relative">
-      {/* Hero Section */}
-      <section className="relative py-8 sm:py-10 md:py-12 px-4 sm:px-6">
-        <div className="max-w-5xl mx-auto text-center">
-          <h1 className="text-gray-100 mb-3 sm:mb-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl">Professional Experience</h1>
-          <p className="text-gray-300 max-w-2xl mx-auto text-sm sm:text-base leading-relaxed bg-black/25 border border-emerald-500/20 backdrop-blur-sm rounded-xl p-4 sm:p-5">
-            A 9+ year journey from quality assurance to business architecture, spanning fintech, retail, financial services, and logistics. My career showcases progressive growth in product ownership, enterprise architecture, and leading digital transformation initiatives that deliver strategic value across global organizations.
+    <div className="bg-[var(--color-ink-950)]">
+      {/* header */}
+      <section className="u-shell pt-14 pb-10 sm:pt-20 sm:pb-14">
+        <motion.div {...rise()}>
+          <p className="u-eyebrow u-eyebrow-accent mb-4">Track record</p>
+          <h1 className="u-display max-w-[14ch] text-[clamp(2.25rem,7vw,4.25rem)]">
+            Experience
+          </h1>
+          <p className="mt-6 max-w-[58ch] text-lg text-[var(--color-fog)]">
+            Ten years moving from test automation into enterprise architecture — the
+            same throughline each time: turn an ambiguous business need into something a
+            team can actually build and measure.
           </p>
-        </div>
+        </motion.div>
       </section>
 
-      {/* Timeline Section */}
-      <section className="relative py-8 sm:py-10 md:py-12 px-4 sm:px-6">
-        <div className="max-w-5xl mx-auto relative">
-          {/* Center line */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-emerald-500 via-emerald-500/50 to-transparent hidden lg:block" />
+      {/* timeline */}
+      <section className="u-shell pb-16 sm:pb-24">
+        <div className="relative">
+          {/* spine */}
+          <div
+            aria-hidden="true"
+            className="absolute left-[15px] top-2 bottom-2 hidden w-px bg-[var(--color-line)] sm:block"
+          />
 
-          <div className="space-y-16 sm:space-y-24">
-            {/* Job 1 - Business Architect (Left Side) */}
-            <div className="relative">
-              {/* Timeline dot */}
-              <div className="absolute left-1/2 top-0 w-4 h-4 bg-emerald-500 rounded-full border-4 border-gray-900 shadow-lg shadow-emerald-500/50 -ml-2 hidden lg:block" />
-              
-              <div className="lg:grid lg:grid-cols-2 lg:gap-16">
-                {/* Left side - Company Info */}
-                <div className="order-2 lg:order-1 mt-6 sm:mt-8 lg:mt-0">
-                  <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-5 sm:p-6 rounded-xl hover:border-emerald-500/50 transition-all">
-                    <div className="flex items-center gap-3 mb-3">
-                      <img src="/icons/work/fedex-logo.png" alt="FedEx" className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg" />
-                      <h4 className="text-gray-100 text-base sm:text-lg">About Federal Express Corporation</h4>
-                    </div>
-                    <p className="text-gray-300 mb-3 sm:mb-4 text-sm sm:text-base">
-                      Logistics & Transportation
-                    </p>
-                    <p className="text-gray-300 mb-3 sm:mb-4 text-sm sm:text-base">
-                      Federal Express Corporation (FedEx) is a multinational conglomerate holding company focused on transportation, e-commerce, and business services. Founded in 1971, FedEx is a global leader in express shipping and logistics solutions, serving millions of customers worldwide with innovative delivery and supply chain management solutions.
-                    </p>
-                    <div className="flex items-center gap-2 text-emerald-400 text-sm sm:text-base">
-                      <MapPin className="w-4 h-4 flex-shrink-0" />
-                      <span>Remote</span>
-                    </div>
-                  </div>
-                </div>
+          <ol className="flex list-none flex-col gap-5">
+            {ROLES.map((role, i) => (
+              <motion.li key={role.id} {...rise(Math.min(i, 4) * 0.05)} className="relative">
+                <div className="sm:pl-12">
+                  {/* node */}
+                  <span
+                    aria-hidden="true"
+                    className={`absolute left-[9px] top-7 hidden h-3.5 w-3.5 rounded-full border-2 sm:block ${
+                      role.current
+                        ? "border-[var(--color-signal-500)] bg-[var(--color-signal-500)]"
+                        : "border-[var(--color-line-strong)] bg-[var(--color-ink-950)]"
+                    }`}
+                  />
 
-                {/* Right side - Job Details */}
-                <div className="order-1 lg:order-2 space-y-4 sm:space-y-6">
-                  <div>
-                    <span className="px-3 sm:px-3 sm:px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex flex-wrap items-center gap-2 text-xs sm:text-sm text-xs sm:text-sm">
-                      <Calendar className="w-3 h-3 sm:w-4 sm:h-4" />
-                      Mar 2025 - Present
-                    </span>
-                  </div>
-                  
-                  <div>
-                    <h3 className="text-gray-100 mb-2 text-xl sm:text-2xl">Business Architect</h3>
-                    <h4 className="text-emerald-400 mb-3 sm:mb-4 text-base sm:text-lg">Federal Express Corporation</h4>
-                    <div className="text-gray-400 space-y-2 sm:space-y-3 text-sm sm:text-base">
-                      <p>
-                        I manage incoming business demand across five Agile Release Trains (ARTs), ensuring prioritization aligns with enterprise strategies. My responsibilities include defining and documenting data architecture to support new enterprise capabilities, developing process maps and capability models for current and future-state operations, and collaborating with architects and engineering teams to propose technology solutions.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h5 className="text-gray-100 mb-3 text-base sm:text-lg">Key Metrics:</h5>
-                    <ul className="space-y-2 sm:space-y-3">
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300 text-sm sm:text-base">Managed demand across 5 Agile Release Trains (ARTs)</p>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300 text-sm sm:text-base">Defined scalable data architecture for new enterprise capabilities</p>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300 text-sm sm:text-base">Developed process maps and capability models for multiple business units</p>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300 text-sm sm:text-base">Delivered $70.5M in strategic value to FedEx in FY26</p>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300 text-sm sm:text-base">Created high-level solution designs and capability documentation for implementation readiness</p>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Job 2 - Senior Product Owner (Left Side) */}
-            <div className="relative">
-              {/* Timeline dot */}
-              <div className="absolute left-1/2 top-0 w-4 h-4 bg-emerald-500 rounded-full border-4 border-gray-900 shadow-lg shadow-emerald-500/50 -ml-2 hidden lg:block" />
-              
-              <div className="lg:grid lg:grid-cols-2 lg:gap-16">
-                {/* Left side - Company Info */}
-                <div className="order-2 lg:order-1 mt-8 lg:mt-0">
-                  <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-6 rounded-xl hover:border-emerald-500/50 transition-all">
-                    <div className="flex items-center gap-3 mb-3">
-                      <img src="/icons/work/fedex-logo.png" alt="FedEx" className="w-12 h-12 rounded-lg" />
-                      <h4 className="text-gray-100">About Federal Express Corporation</h4>
-                    </div>
-                    <p className="text-gray-300 mb-4">
-                      Logistics & Transportation
-                    </p>
-                    <p className="text-gray-300 mb-4">
-                      Federal Express Corporation (FedEx) is a multinational conglomerate holding company focused on transportation, e-commerce, and business services. Founded in 1971, FedEx is a global leader in express shipping and logistics solutions, serving millions of customers worldwide with innovative delivery and supply chain management solutions.
-                    </p>
-                    <div className="flex items-center gap-2 text-emerald-400">
-                      <MapPin className="w-4 h-4 flex-shrink-0" />
-                      <span>Remote</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Right side - Job Details */}
-                <div className="order-1 lg:order-2 space-y-6">
-                  <div>
-                    <span className="px-3 sm:px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex flex-wrap items-center gap-2 text-xs sm:text-sm">
-                      Oct 2023 - Mar 2025
-                      <MapPin className="w-4 h-4 flex-shrink-0" />
-                    </span>
-                  </div>
-                  
-                  <div>
-                    <h3 className="text-gray-100 mb-2">Senior Product Owner</h3>
-                    <h4 className="text-emerald-400 mb-4">Federal Express Corporation</h4>
-                    <div className="text-gray-400 space-y-3">
-                      <p>
-                        I serve as the Product Owner for both UI/UX and backend development teams, driving digital solutions to replace legacy processes and bridge data gaps between FedEx Express and FedEx Ground. I lead initiatives to deliver new products that enhance the global network by leveraging captured data for analytics and volume management.
-                      </p>
-                      <p>
-                        My role includes conducting GAP analysis for feature discovery, collaborating with engineers and designers to define product vision, and managing application deployments to production. I also promote solutions to leadership, facilitate cross-functional sessions to document processes, and develop MVPs that support enterprise-level applications across the U.S. and Canada.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h5 className="text-gray-100 mb-3">Key Metrics:</h5>
-                    <ul className="space-y-3">
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300">Product Owner for UI/UX and backend teams</p>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300">Delivered new products eliminating legacy processes and improving global network analytics</p>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300">Led development of a process combining Express and Ground volume management per zip code</p>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300">Owned deployment of a new application enabling engineers to submit volume changes for all FedEx Ground facilities</p>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300">Developed enterprise software solutions supporting volume management for U.S. and Canada</p>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Job 3 - Product Owner (Left Side) */}
-            <div className="relative">
-              {/* Timeline dot */}
-              <div className="absolute left-1/2 top-0 w-4 h-4 bg-emerald-500 rounded-full border-4 border-gray-900 shadow-lg shadow-emerald-500/50 -ml-2 hidden lg:block" />
-              
-              <div className="lg:grid lg:grid-cols-2 lg:gap-16">
-                {/* Left side - Company Info */}
-                <div className="order-2 lg:order-1 mt-8 lg:mt-0">
-                  <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-6 rounded-xl hover:border-emerald-500/50 transition-all">
-                    <div className="flex items-center gap-3 mb-3">
-                      <img src="/icons/work/fedex-logo.png" alt="FedEx" className="w-12 h-12 rounded-lg" />
-                      <h4 className="text-gray-100">About Federal Express Corporation</h4>
-                    </div>
-                    <p className="text-gray-300 mb-4">
-                      Logistics & Transportation
-                    </p>
-                    <p className="text-gray-300 mb-4">
-                      Federal Express Corporation (FedEx) is a multinational conglomerate holding company focused on transportation, e-commerce, and business services. Founded in 1971, FedEx is a global leader in express shipping and logistics solutions, serving millions of customers worldwide with innovative delivery and supply chain management solutions.
-                    </p>
-                    <div className="flex items-center gap-2 text-emerald-400">
-                      <MapPin className="w-4 h-4 flex-shrink-0" />
-                      <span>Remote</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Right side - Job Details */}
-                <div className="order-1 lg:order-2 space-y-6">
-                  <div>
-                    <span className="px-3 sm:px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex flex-wrap items-center gap-2 text-xs sm:text-sm">
-                      Mar 2021 - Sep 2023
-                      <MapPin className="w-4 h-4 flex-shrink-0" />
-                    </span>
-                  </div>
-                  
-                  <div>
-                    <h3 className="text-gray-100 mb-2">Product Owner</h3>
-                    <h4 className="text-emerald-400 mb-4">Federal Express Corporation</h4>
-                    <div className="text-gray-400 space-y-3">
-                      <p>
-                        I serve as a Product Owner for multiple teams, including three offshore backend development teams and a UX/UI team, where I define business rules for APIs and collaborate with stakeholders to deliver high-value features. I develop user stories, gather requirements with architects, and partner with the Product Manager to create a roadmap aligned with business goals.
-                      </p>
-                      <p>
-                        I implemented a new documentation process adopted by eight development teams and introduced a method for capturing production issues. Additionally, I conduct user interviews to identify process gaps, structure API contracts, and work closely with solution architects and lead developers to deliver impactful solutions.
-                      </p>
-                      <p>
-                        My efforts have resulted in the successful implementation of features that enhance security, modernize the FedEx network, and provide new tools for field engineers.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h5 className="text-gray-100 mb-3">Key Metrics:</h5>
-                    <ul className="space-y-3">
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300">Product Owner for 3 offshore backend teams and 1 UX/UI team</p>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300">Implemented a new documentation process adopted by 8 development teams</p>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300">Delivered over 16 new features improving security and network modernization</p>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300">Partnered with Sr. UX Analyst to develop MVP features and engage external users</p>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300">Defined API contracts and business rules for multiple UI applications</p>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Job 4 - Product Manager - Payments (Left Side) */}
-            <div className="relative">
-              {/* Timeline dot */}
-              <div className="absolute left-1/2 top-0 w-4 h-4 bg-emerald-500 rounded-full border-4 border-gray-900 shadow-lg shadow-emerald-500/50 -ml-2 hidden lg:block" />
-              
-              <div className="lg:grid lg:grid-cols-2 lg:gap-16">
-                {/* Left side - Company Info */}
-                <div className="order-2 lg:order-1 mt-8 lg:mt-0">
-                  <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-6 rounded-xl hover:border-emerald-500/50 transition-all">
-                    <div className="flex items-center gap-3 mb-3">
-                      <img src="/icons/work/kohls-logo.jpg" alt="Kohl's" className="w-12 h-12 rounded-lg" />
-                      <h4 className="text-gray-100">About Kohl's</h4>
-                    </div>
-                    <p className="text-gray-300 mb-4">
-                      Retail
-                    </p>
-                    <p className="text-gray-300 mb-4">
-                      Kohl's is an American department store retail chain, founded in 1962. It operates over 1,100 stores across 49 states, offering a wide range of products including apparel, footwear, bedding, furniture, jewelry, beauty products, and housewares. Kohl's is known for its customer-centric approach, loyalty programs, and strategic partnerships with major brands.
-                    </p>
-                    <div className="flex items-center gap-2 text-emerald-400">
-                      <MapPin className="w-4 h-4 flex-shrink-0" />
-                      <span>Menomonee Falls, WI</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Right side - Job Details */}
-                <div className="order-1 lg:order-2 space-y-6">
-                  <div>
-                    <span className="px-3 sm:px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex flex-wrap items-center gap-2 text-xs sm:text-sm">
-                      Jan 2020 - Oct 2020
-                      <MapPin className="w-4 h-4 flex-shrink-0" />
-                    </span>
-                  </div>
-                  
-                  <div>
-                    <h3 className="text-gray-100 mb-2">Product Manager - Payments</h3>
-                    <h4 className="text-emerald-400 mb-4">Kohl's</h4>
-                    <div className="text-gray-400 space-y-3">
-                      <p>
-                        I develop user stories for payment products based on business partner requests and create acceptance criteria for engineers by analyzing business and technical documentation.
-                      </p>
-                      <p>
-                        I utilize Splunk to validate payment transactions and troubleshoot issues, while also managing and testing Verifone pin-pads in the test environment.
-                      </p>
-                      <p>
-                        My responsibilities include developing performance metrics, creating test cases, supporting server patching, managing code deployments, and documenting processes for the support team. Additionally, I design workflows and diagrams in Lucidchart to map data flows and impacted applications for new projects.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h5 className="text-gray-100 mb-3">Key Metrics:</h5>
-                    <ul className="space-y-3">
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300">Developed user stories and acceptance criteria for payment products</p>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300">Utilized Splunk for transaction validation and troubleshooting</p>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300">Created and tested pin-pad performance metrics</p>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300">Managed and deployed software packages for Verifone Mx925 and Mx915 models</p>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300">Supported Microsoft Server 2008 R2 and 2016 patching in test environments</p>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300">Designed workflows and diagrams for new projects using Lucidchart</p>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Job 5 - Senior Business System Analyst at FIS (Left Side) */}
-            <div className="relative">
-              {/* Timeline dot */}
-              <div className="absolute left-1/2 top-0 w-4 h-4 bg-emerald-500 rounded-full border-4 border-gray-900 shadow-lg shadow-emerald-500/50 -ml-2 hidden lg:block" />
-              
-              <div className="lg:grid lg:grid-cols-2 lg:gap-16">
-                {/* Left side - Company Info */}
-                <div className="order-2 lg:order-1 mt-8 lg:mt-0">
-                  <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-6 rounded-xl hover:border-emerald-500/50 transition-all">
-                    <div className="flex items-center gap-3 mb-3">
-                      <img src="/icons/work/fis-logo.png" alt="FIS" className="w-12 h-12 rounded-lg" />
-                      <h4 className="text-gray-100">About FIS</h4>
-                    </div>
-                    <p className="text-gray-300 mb-4">
-                      FinTech
-                    </p>
-                    <p className="text-gray-300 mb-4">
-                      FIS primarily operates across three major segments, providing software, services, and outsourcing to:
-                    </p>
-                    <div className="mb-4 space-y-3 text-gray-300 text-sm">
-                      <div>
-                        <span className="text-emerald-400">1. Merchant Solutions (Worldpay):</span> Enables businesses of all sizes to accept electronic payments (credit, debit, e-commerce, mobile) securely and efficiently through its platform, Worldpay.
+                  <article className="u-card u-card-hover p-5 sm:p-7">
+                    <div className="flex flex-wrap items-start justify-between gap-4">
+                      <div className="flex min-w-0 items-start gap-4">
+                        <img
+                          src={role.logo}
+                          alt=""
+                          aria-hidden="true"
+                          loading="lazy"
+                          className="h-11 w-11 flex-none rounded border border-[var(--color-line)] bg-white/95 object-contain p-1.5"
+                        />
+                        <div className="min-w-0">
+                          <h2 className="text-[1.125rem] leading-snug sm:text-[1.3125rem]">
+                            {role.title}
+                          </h2>
+                          <p className="u-mono mt-1.5 text-[0.6875rem] uppercase tracking-[0.12em] text-[var(--color-signal-400)]">
+                            {role.company}
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <span className="text-emerald-400">2. Banking Solutions:</span> Provides technology for financial institutions (from community banks to large regional banks) for core processing, digital solutions, payment services, fraud/risk management, and wealth/retirement services.
-                      </div>
-                      <div>
-                        <span className="text-emerald-400">3. Capital Markets Solutions:</span> Offers an array of solutions for global financial services clients (buy-side and sell-side), including trading, risk management, and compliance software.
+
+                      <div className="flex flex-col items-start gap-2 sm:items-end">
+                        <span className="u-mono text-[0.6875rem] tracking-[0.08em] text-[var(--color-dim)]">
+                          {role.period}
+                        </span>
+                        {role.current && <StatusBadge>Current role</StatusBadge>}
                       </div>
                     </div>
-                    <div className="flex items-center gap-2 text-emerald-400">
-                      <MapPin className="w-4 h-4 flex-shrink-0" />
-                      <span>Milwaukee, WI</span>
-                    </div>
-                  </div>
-                </div>
 
-                {/* Right side - Job Details */}
-                <div className="order-1 lg:order-2 space-y-6">
-                  <div>
-                    <span className="px-3 sm:px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex flex-wrap items-center gap-2 text-xs sm:text-sm">
-                      Oct 2019 - Dec 2019
-                      <MapPin className="w-4 h-4 flex-shrink-0" />
-                    </span>
-                  </div>
-                  
-                  <div>
-                    <h3 className="text-gray-100 mb-2">Senior Business System Analyst</h3>
-                    <h4 className="text-emerald-400 mb-4">FIS</h4>
-                    <div className="text-gray-400 space-y-3">
-                      <p>
-                        I analyze technical documents from major payment networks such as American Express, Pulse, Mastercard, and Visa to assess compliance impacts across two development platforms.
-                      </p>
-                      <p>
-                        I coordinate with development teams to implement compliance features aligned with network delivery timelines, manage feature requirements to meet deadlines, and assist technical writers in creating customer bulletins.
-                      </p>
-                      <p>
-                        Additionally, I oversee production releases, convert mandates into user stories, and ensure compliance features are deployed successfully within an Agile/Scrum/SAFe environment.
-                      </p>
-                    </div>
-                  </div>
+                    <p className="mt-5 max-w-[68ch] text-[var(--color-fog)]">{role.summary}</p>
 
-                  <div>
-                    <h5 className="text-gray-100 mb-3">Key Metrics:</h5>
-                    <ul className="space-y-3">
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300">Analyzed compliance impacts for 4 major payment networks across 2 development platforms</p>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300">Coordinated timely delivery of compliance features based on network schedules</p>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300">Managed production releases and feature deployments</p>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300">Supported creation of customer bulletins for feature changes</p>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Job 6 - Business System Analyst/Product Owner at FIS (Left Side) */}
-            <div className="relative">
-              {/* Timeline dot */}
-              <div className="absolute left-1/2 top-0 w-4 h-4 bg-emerald-500 rounded-full border-4 border-gray-900 shadow-lg shadow-emerald-500/50 -ml-2 hidden lg:block" />
-              
-              <div className="lg:grid lg:grid-cols-2 lg:gap-16">
-                {/* Left side - Company Info */}
-                <div className="order-2 lg:order-1 mt-8 lg:mt-0">
-                  <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-6 rounded-xl hover:border-emerald-500/50 transition-all">
-                    <div className="flex items-center gap-3 mb-3">
-                      <img src="/icons/work/fis-logo.png" alt="FIS" className="w-12 h-12 rounded-lg" />
-                      <h4 className="text-gray-100">About FIS</h4>
-                    </div>
-                    <p className="text-gray-300 mb-4">
-                      FinTech
-                    </p>
-                    <p className="text-gray-300 mb-4">
-                      FIS primarily operates across three major segments, providing software, services, and outsourcing to:
-                    </p>
-                    <div className="mb-4 space-y-3 text-gray-300 text-sm">
-                      <div>
-                        <span className="text-emerald-400">1. Merchant Solutions (Worldpay):</span> Enables businesses of all sizes to accept electronic payments (credit, debit, e-commerce, mobile) securely and efficiently through its platform, Worldpay.
+                    {role.metric && (
+                      <div className="mt-5 flex items-baseline gap-3 border-l-2 border-[var(--color-brass-500)] bg-white/[0.02] px-4 py-3">
+                        <span className="font-[family-name:var(--font-display)] text-[1.5rem] font-bold leading-none text-[var(--color-brass-400)]">
+                          {role.metric.value}
+                        </span>
+                        <span className="u-eyebrow text-[0.625rem]">{role.metric.label}</span>
                       </div>
-                      <div>
-                        <span className="text-emerald-400">2. Banking Solutions:</span> Provides technology for financial institutions (from community banks to large regional banks) for core processing, digital solutions, payment services, fraud/risk management, and wealth/retirement services.
-                      </div>
-                      <div>
-                        <span className="text-emerald-400">3. Capital Markets Solutions:</span> Offers an array of solutions for global financial services clients (buy-side and sell-side), including trading, risk management, and compliance software.
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2 text-emerald-400">
-                      <MapPin className="w-4 h-4 flex-shrink-0" />
-                      <span>Milwaukee, WI</span>
-                    </div>
-                  </div>
-                </div>
+                    )}
 
-                {/* Right side - Job Details */}
-                <div className="order-1 lg:order-2 space-y-6">
-                  <div>
-                    <span className="px-3 sm:px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex flex-wrap items-center gap-2 text-xs sm:text-sm">
-                      Jul 2017 - Oct 2019
-                      <MapPin className="w-4 h-4 flex-shrink-0" />
-                    </span>
-                  </div>
-                  
-                  <div>
-                    <h3 className="text-gray-100 mb-2">Business System Analyst/Product Owner</h3>
-                    <h4 className="text-emerald-400 mb-4">FIS</h4>
-                    <div className="text-gray-400 space-y-3">
-                      <p>
-                        I manage and deliver IT development projects within an Agile/Scrum environment, focusing on process improvements to ensure timely code releases and reduce delays.
-                      </p>
-                      <p>
-                        My responsibilities include overseeing new software implementations, guiding product introductions, and providing direction to development teams by prioritizing work and converting mandates into actionable user stories.
-                      </p>
-                      <p>
-                        I also facilitate training sessions, test development changes across banking mainframes and web applications, and collaborate with QA analysts and developers to ensure quality and plan future enhancements.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h5 className="text-gray-100 mb-3">Key Metrics:</h5>
-                    <ul className="space-y-3">
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300">Managed and completed 15 IT development projects</p>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300">Executed code releases across 6 applications</p>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300">Targeted process improvements to reduce delays by 60%</p>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300">Facilitated and trained 20+ individuals on new software functionality</p>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Job 7 - Associate Automation Quality Assurance (Left Side) */}
-            <div className="relative">
-              {/* Timeline dot */}
-              <div className="absolute left-1/2 top-0 w-4 h-4 bg-emerald-500 rounded-full border-4 border-gray-900 shadow-lg shadow-emerald-500/50 -ml-2 hidden lg:block" />
-              
-              <div className="lg:grid lg:grid-cols-2 lg:gap-16">
-                {/* Left side - Company Info */}
-                <div className="order-2 lg:order-1 mt-8 lg:mt-0">
-                  <div className="bg-gray-900/70 backdrop-blur-sm border border-emerald-500/20 p-6 rounded-xl hover:border-emerald-500/50 transition-all">
-                    <div className="flex items-center gap-3 mb-3">
-                      <img src="/icons/work/nm-logo.png" alt="Northwestern Mutual" className="w-12 h-12 rounded-lg" />
-                      <h4 className="text-gray-100">About Northwestern Mutual</h4>
-                    </div>
-                    <p className="text-gray-300 mb-4">
-                      Financial Services
-                    </p>
-                    <p className="text-gray-300 mb-4">
-                      Northwestern Mutual is a U.S. financial services mutual organization headquartered in Milwaukee, Wisconsin. It was founded in 1857.
-                    </p>
-                    <div className="mb-4">
-                      <h5 className="text-gray-100 mb-2">Key Characteristics</h5>
-                      <ul className="space-y-2 text-gray-300 text-sm">
-                        <li>
-                          <span className="text-emerald-400">• Mutual Company:</span> As a mutual company, it does not have shareholders. It operates for the benefit of its policy-owners, who are considered owners and may receive dividends based on the company's performance.
+                    <ul className="mt-5 flex flex-col gap-2.5">
+                      {role.bullets.map((bullet) => (
+                        <li
+                          key={bullet}
+                          className="relative max-w-[76ch] pl-5 text-sm text-[var(--color-dim)]"
+                        >
+                          <span
+                            aria-hidden="true"
+                            className="absolute left-0 top-[0.6em] h-px w-2.5 bg-[var(--color-signal-500)]"
+                          />
+                          {bullet}
                         </li>
-                        <li>
-                          <span className="text-emerald-400"> Financial Strength:</span> It is widely recognized for its exceptional financial strength, often receiving some of the highest financial strength ratings awarded to any U.S. life insurance or financial services company by major rating agencies.
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="flex items-center gap-2 text-emerald-400">
-                      <MapPin className="w-4 h-4 flex-shrink-0" />
-                      <span>Milwaukee, WI</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Right side - Job Details */}
-                <div className="order-1 lg:order-2 space-y-6">
-                  <div>
-                    <span className="px-3 sm:px-4 py-1.5 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full inline-flex flex-wrap items-center gap-2 text-xs sm:text-sm">
-                      Jun 2015 - Jul 2017
-                      <MapPin className="w-4 h-4 flex-shrink-0" />
-                    </span>
-                  </div>
-                  
-                  <div>
-                    <h3 className="text-gray-100 mb-2">Associate Automation Quality Assurance</h3>
-                    <h4 className="text-emerald-400 mb-4">Northwestern Mutual</h4>
-                    <p className="text-gray-400 mb-4">
-                      I have played a key role in ensuring software quality and automation within an Agile/Scrum/SAFe environment. I develop data warehouse process models covering sourcing, loading, transformation, and extraction. I create and automate test cases using Nightwatch.js and execute them through Sauce Labs. I work closely with developers to deploy code, identify defects, and improve software quality for products like Microsoft CRM, Posting+, CRM for Tablets, and CRM Mobile. Additionally, I document processes, train offshore QA testers on basic testing practices, and continuously look for innovative ways to enhance testing efficiency and product reliability.
-                    </p>
-                  </div>
-
-                  <div>
-                    <h5 className="text-gray-100 mb-3">Key Metrics:</h5>
-                    <ul className="space-y-3">
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300">Completed 20 test cases</p>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300">Supported 100+ scripts internally</p>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300">Trained offshore QA testers</p>
-                      </li>
-                      <li className="flex items-start gap-2">
-                        <CheckCircle2 className="w-4 h-4 flex-shrink-0 text-emerald-400 mt-1" />
-                        <p className="text-gray-300">Implemented automation using Nightwatch.js and Sauce Labs</p>
-                      </li>
+                      ))}
                     </ul>
-                  </div>
+
+                    <ul className="mt-6 flex flex-wrap gap-1.5">
+                      {role.tags.map((tag) => (
+                        <li key={tag} className="u-chip">
+                          {tag}
+                        </li>
+                      ))}
+                    </ul>
+                  </article>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Career Journey Summary */}
-      <section className="py-10 sm:py-12 md:py-14 px-4 sm:px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-gray-900 mb-4">Career Journey Summary</h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">
-              Over 9+ years of progressive experience across logistics, retail, fintech, and financial services. A proven track record of delivering enterprise-level solutions, driving digital transformation, and managing cross-functional teams to achieve strategic business objectives.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-xl mx-auto mb-4 flex items-center justify-center">
-                <TrendingUp className="w-8 h-8 text-green-600" />
-              </div>
-              <h4 className="text-gray-900 mb-2">Strategic Value Delivery</h4>
-              <p className="text-gray-600">
-                Delivered $70.5M in strategic value at FedEx, managed 5 Agile Release Trains, and implemented solutions adopted across 8+ development teams
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-xl mx-auto mb-4 flex items-center justify-center">
-                <Users className="w-8 h-8 text-green-600" />
-              </div>
-              <h4 className="text-gray-900 mb-2">Cross-Functional Leadership</h4>
-              <p className="text-gray-600">
-                Led multiple UI/UX and backend teams including 3 offshore development teams, facilitated training for 20+ professionals, and managed enterprise-wide initiatives
-              </p>
-            </div>
-
-            <div className="text-center">
-              <div className="w-16 h-16 bg-green-100 rounded-xl mx-auto mb-4 flex items-center justify-center">
-                <Award className="w-8 h-8 text-green-600" />
-              </div>
-              <h4 className="text-gray-900 mb-2">Innovation & Modernization</h4>
-              <p className="text-gray-600">
-                Delivered 16+ features for security and network modernization, eliminated legacy processes, and developed enterprise solutions supporting operations across U.S. and Canada
-              </p>
-            </div>
-          </div>
+              </motion.li>
+            ))}
+          </ol>
         </div>
       </section>
     </div>
