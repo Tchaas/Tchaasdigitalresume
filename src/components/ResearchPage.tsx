@@ -87,6 +87,28 @@ const PAPERS: Paper[] = [
     ],
     pdf: "/papers/HCI-Individual-Project-Final.pdf",
   },
+  {
+    slug: "albrecht-wood-interiors-analysis",
+    eyebrow: "MBA capstone · University of Dayton · 2020",
+    title: "Albrecht Wood Interiors (AWI) Analysis",
+    summary:
+      "A team consulting analysis of Albrecht Wood Interiors, a premier custom cabinetry and remodeling contractor in the Dayton, OH area. The report pairs external and internal strategic analysis with a two-part recommendation to help a 30-year-old, reputation-built small business professionalize financial management and workforce development ahead of an anticipated labor shortage. Co-authored with Dan Collier, Lauren Meador, Ahmed Mohammadein, Kaitlyn Roberts, and Robert Volk.",
+    findings: [
+      "Applies PESTDGE, Porter's Five Forces, and Herfindahl indexes to the finish carpentry contractors industry, alongside SWOT and VRIO analysis of AWI's internal position.",
+      "Identifies AWI's word-of-mouth reputation and skilled, tenured labor force as its core competitive advantage — and its looming retirement wave as its central risk.",
+      "Recommends a financial infrastructure of forecasting, budgeting, and KPI tracking, projecting net income growth from roughly $205,000 to $414,000 over five years.",
+      "Proposes a three-pronged workforce development plan — hire, train, and retain — to replace retiring craftsmen and sustain growth in a saturated market.",
+    ],
+    tags: [
+      "Business strategy",
+      "Industry analysis",
+      "SWOT/VRIO",
+      "Financial forecasting",
+      "Workforce development",
+      "Small business consulting",
+    ],
+    pdf: "/papers/albrecht_wood_interiors__awi__analysis.pdf",
+  },
 ];
 
 const VIDEO_ID = "ssSpAGB72aw";
