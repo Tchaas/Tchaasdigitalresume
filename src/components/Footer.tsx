@@ -31,7 +31,7 @@ export function Footer() {
               Tchaas Alexander-Wright
             </p>
             <p className="u-eyebrow mt-1.5">
-              Business Architect · Georgia Tech MSCS
+              Business Architect · Georgia Tech MSCS candidate
             </p>
           </div>
 

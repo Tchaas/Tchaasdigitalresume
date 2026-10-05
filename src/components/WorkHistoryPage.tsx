@@ -15,35 +15,39 @@ type Role = {
   tags: string[];
 };
 
-/* Source of truth: TchaasHakeemAlexanderWright_Resume.docx */
+/* Source of truth: uploaded resume dated October 5, 2026. */
 const ROLES: Role[] = [
   {
     id: "fedex-ba",
     title: "Business Architect",
     company: "FedEx",
     logo: "/icons/work/fedex-logo.png",
-    period: "Apr 2025 — Present",
+    period: "Mar 2025 — Present",
     current: true,
-    metric: { value: "$70.5M", label: "strategic value delivered, FY26" },
+    metric: { value: "$70.5M", label: "estimated strategic value contributed, FY26" },
     summary:
-      "Translating enterprise strategy into capability models, data architecture, and implementation-ready demand across the FedEx network.",
+      "Leading demand management across 5 Agile Release Trains, capability modeling, and solution architecture, with AI agents that automate business architecture work.",
     bullets: [
-      "Manage incoming business demand across 5 Agile Release Trains, ensuring prioritization aligns with enterprise strategy.",
-      "Define and document data architecture supporting new enterprise activity capabilities, enabling scalable and integrated data models.",
-      "Develop process maps and capability models capturing current and future-state operations across business units.",
-      "Lead working sessions to capture cross-functional requirements for volume, routing, and service integration capabilities.",
-      "Support the architectural definition of solutions bridging FedEx Express and FedEx Ground systems to optimize delivery operations.",
-      "Create high-level solution designs and capability documentation for stakeholder approval and implementation readiness.",
-      "Collaborate with enterprise architects and engineering teams to propose technology solutions aligned to strategic initiatives.",
+      "Streamlined and automated business demand intake for 5 Agile Release Trains (ARTs), reducing processing time by 40% and aligning prioritized initiatives with enterprise strategy.",
+      "Led development and implementation of AI agents to automate business architecture tasks, streamline demand intake, and reduce manual analysis by 50%.",
+      "Used AI to process and structure portfolio data and automate lean business cases and problem statements, accelerating decisions on new initiatives.",
+      "Architected and documented scalable data architecture integrating 15+ disparate data sources to support enterprise activity capabilities, with a projected 60% improvement in data consistency.",
+      "Developed 25+ process maps and capability models for current- and future-state operations, identifying optimization opportunities that contributed to a 15% increase in operational efficiency.",
+      "Partnered with enterprise architects and engineering teams to evaluate technology solutions, resulting in selection of a GCP-based platform aligned with strategic modernization goals.",
+      "Led 50+ cross-functional working sessions to capture requirements for volume forecasting, dynamic routing, and service integration.",
+      "Designed and supported architectural definition for 3 major solutions bridging FedEx Express and Ground systems, projected to reduce package handling redundancies by 25% and optimize last-mile delivery.",
+      "Authored and presented solution designs and capability documentation for 10+ initiatives, securing stakeholder buy-in and implementation readiness.",
+      "Translated enterprise goals into 12 executable solution concepts, working with ARTs to align delivery with the broader business vision.",
+      "Delivered a portfolio of projects contributing an estimated $118M in strategic value in FY25 and $70.5M in FY26.",
     ],
-    tags: ["Enterprise architecture", "Data architecture", "Agile / SAFe", "Capability modeling"],
+    tags: ["Business architecture", "AI agent automation", "Data architecture", "Capability modeling", "GCP", "SAFe 6"],
   },
   {
     id: "fedex-spo",
     title: "Senior Product Owner",
     company: "FedEx",
     logo: "/icons/work/fedex-logo.png",
-    period: "Oct 2023 — Apr 2025",
+    period: "Oct 2023 — Mar 2025",
     summary:
       "Owned a backend development team building agnostic APIs that closed the data gap between FedEx Express and FedEx Ground.",
     bullets: [
@@ -70,7 +74,6 @@ const ROLES: Role[] = [
       "Product Owner for three offshore teams focused on backend development, production issues, and API business rules.",
       "Partnered with the Senior User Experience Analyst to develop features and engage external users on MVP scope.",
       "Implemented over 16 new features addressing security vulnerabilities, network modernization, and field engineer tooling.",
-      "Implemented a new documentation process adopted by 8 development teams.",
       "Developed user stories from stakeholder business requirements and worked with architects to gather requirements per feature.",
       "Partnered with Business Architects to structure API contracts for all user-interface applications.",
       "Conducted user interviews with process engineers to identify gaps addressable by new web-based products.",
@@ -92,45 +95,36 @@ const ROLES: Role[] = [
       "Managed code deployment for releases and produced project documentation for the support team.",
       "Troubleshot and deployed software packages for Verifone Mx925 and Mx915 pin-pads via Verifone Estate Management (VHQ).",
       "Used SQL to trace payment transactions for troubleshooting and validate data from payment processing applications.",
-      "Supported Microsoft Server 2008 R2 and 2016 patching in test environments.",
       "Created diagrams and workflows in Lucidchart to determine impacted applications and data flow after changes.",
     ],
     tags: ["Payments", "SQL", "Verifone VHQ", "Release management"],
   },
   {
-    id: "fis-senior",
-    title: "Senior Business Systems Analyst",
-    company: "FIS",
-    logo: "/icons/work/fis-logo.png",
-    period: "Oct 2019 — Dec 2019",
-    summary:
-      "Compliance analysis across the major card networks, spanning two development platforms.",
-    bullets: [
-      "Analyzed technical documentation from American Express, Pulse, Mastercard, and Visa across two development platforms to determine compliance impacts.",
-      "Coordinated timely delivery of compliance features against network release schedules.",
-      "Managed production releases and feature deployments.",
-      "Supported creation of customer bulletins for feature changes.",
-    ],
-    tags: ["Card networks", "Compliance", "Release management"],
-  },
-  {
-    id: "fis-bsa",
-    title: "Business Systems Analyst / Product Owner",
-    company: "FIS",
-    logo: "/icons/work/fis-logo.png",
-    period: "Jul 2017 — Oct 2019",
-    metric: { value: "15", label: "IT development projects delivered" },
-    summary:
-      "Delivered IT development projects end to end and owned the technical documentation standard behind them.",
-    bullets: [
+    "id": "fis-bsa",
+    "title": "Senior Business System Analyst / Product Owner",
+    "company": "FIS",
+    "logo": "/icons/work/fis-logo.png",
+    "period": "Jul 2017 \u2014 Dec 2019",
+    "metric": {
+      "value": "15",
+      "label": "IT development projects delivered"
+    },
+    "summary": "Delivered IT development projects, managed releases across six applications, and analyzed card network requirements across two development platforms.",
+    "bullets": [
       "Managed and completed 15 IT development projects, documenting changes in Confluence for Production Support.",
-      "Wrote technical verbiage for project changes and approved final copy before publication.",
-      "Maintained the in-house manual covering system updates and project changes for all project teams and Product Support.",
+      "Developed technical wording for project changes and approved final copy before publication.",
+      "Maintained the in-house manual covering system updates and project changes for project teams and Product Support.",
       "Executed code releases across six applications.",
       "Drove Agile process improvement for code releases, targeting a 60% reduction in delivery delays.",
-      "Facilitated and trained 20+ individuals on new software functionality.",
+      "Analyzed American Express, Pulse, Mastercard, and Visa technical documents across two development platforms to determine compliance impacts."
     ],
-    tags: ["Agile", "Confluence", "Technical writing", "Process improvement"],
+    "tags": [
+      "Agile",
+      "Confluence",
+      "Technical writing",
+      "Release management",
+      "Card network compliance"
+    ]
   },
   {
     id: "nm",
@@ -145,7 +139,6 @@ const ROLES: Role[] = [
       "Completed 20 test cases and supported 100+ scripts internally.",
       "Developed data warehouse process models covering sourcing, loading, transformation, and extraction.",
       "Built automation test cases using Nightwatch.js and executed them through Sauce Labs.",
-      "Trained offshore QA testers.",
       "Worked alongside developers to deploy code into production.",
     ],
     tags: ["Nightwatch.js", "Sauce Labs", "Test automation", "Data warehousing"],
@@ -175,9 +168,9 @@ export function WorkHistoryPage() {
             Experience
           </h1>
           <p className="mt-6 max-w-[58ch] text-lg text-[var(--color-fog)]">
-            Ten years moving from test automation into enterprise architecture — the
-            same throughline each time: turn an ambiguous business need into something a
-            team can actually build and measure.
+            From test automation to business analysis, product ownership, and business
+            architecture. I bring 8+ years in product management and business analysis,
+            now leading demand management and AI automation at FedEx.
           </p>
         </motion.div>
       </section>

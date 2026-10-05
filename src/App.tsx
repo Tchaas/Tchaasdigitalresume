@@ -22,8 +22,8 @@ import { ResearchPage } from "./components/ResearchPage";
 const COMPETENCIES = [
   {
     id: "01",
-    title: "Enterprise & data architecture",
-    body: "Defining scalable data architectures and capability models that bridge FedEx Express and Ground systems. Leading cross-functional requirements gathering and translating enterprise goals into executable technology solutions.",
+    title: "Business & data architecture",
+    body: "Building capability models, process maps, and scalable data architecture across 15+ data sources. Translating enterprise goals into executable solution concepts and bridging FedEx Express and Ground systems.",
     tags: ["Solution design", "Data architecture", "Process mapping"],
   },
   {
@@ -34,9 +34,9 @@ const COMPETENCIES = [
   },
   {
     id: "03",
-    title: "Discovery & business analysis",
-    body: "Conducting user interviews and partnering with UX analysts to define MVP scope. Requirements gathering, technical documentation, and turning business needs into working digital solutions.",
-    tags: ["User research", "Requirements", "UX partnership"],
+    title: "AI automation & discovery",
+    body: "Building AI agents to automate demand intake and business architecture analysis, reducing manual analysis by 50%. Structuring portfolio data to generate lean business cases and problem statements for faster decisions.",
+    tags: ["AI agents", "Lean business cases", "Requirements"],
   },
 ];
 
@@ -80,6 +80,12 @@ const SKILLS = [
   "Risk Management",
   "Facilitation",
   // Architecture & analysis
+  "Business Architecture",
+  "Capability Modeling",
+  "Data Architecture",
+  "AI Agent Automation",
+  "Solution Design",
+  "SAFe 6",
   "Business Process Identification",
   "API Development",
   "Data Mining",
@@ -146,11 +152,19 @@ const SKILL_EXPERIENCES: Record<string, string[]> = {
     "FIS — Compliance impact analysis across four card networks",
   ],
   Facilitation: [
-    "FIS — Facilitated and trained 20+ individuals on new software functionality",
     "FedEx — Led cross-functional requirements working sessions",
   ],
 
   // --- Architecture & analysis ---
+  "Business Architecture": ["FedEx — Demand intake across 5 ARTs, aligned with enterprise strategy"],
+  "Capability Modeling": ["FedEx — 25+ process maps and capability models for current- and future-state operations"],
+  "Data Architecture": ["FedEx — Scalable architecture integrating 15+ disparate data sources"],
+  "AI Agent Automation": [
+    "FedEx — AI agents reduced manual business architecture analysis by 50%",
+    "FedEx — Automated lean business cases and problem statements from portfolio data",
+  ],
+  "Solution Design": ["FedEx — 12 executable solution concepts and designs for 10+ initiatives"],
+  "SAFe 6": ["FedEx — Demand management and delivery alignment across 5 Agile Release Trains"],
   "Business Process Identification": [
     "FedEx — Process maps and capability models for current and future-state operations",
   ],
@@ -184,7 +198,10 @@ const SKILL_EXPERIENCES: Record<string, string[]> = {
     "NovaOne Technology — Browser automation and testing",
   ],
   "Sauce Labs": ["Northwestern Mutual — Automation test execution"],
-  "Google Cloud": ["NovaOne Technology — Cloud infrastructure and services"],
+  "Google Cloud": [
+    "FedEx — Partnered with architects and engineering teams to select a GCP-based modernization platform",
+    "NovaOne Technology — Cloud infrastructure and services",
+  ],
   "GitHub Copilot": ["NovaOne Technology — JavaScript development and code generation"],
   JavaScript: ["NovaOne Technology — Developed JavaScript logic"],
   CockroachDB: ["NovaOne Technology — Distributed database implementation"],
@@ -295,24 +312,26 @@ function OverviewPage() {
                 <span className="mx-2 text-[var(--color-line-strong)]">/</span>
                 MBA
                 <span className="mx-2 text-[var(--color-line-strong)]">/</span>
-                MSCS, Georgia Tech
+                MSCS candidate, Georgia Tech
               </motion.p>
 
               <motion.p
                 {...load(0.18)}
                 className="mt-8 max-w-[38ch] text-[clamp(1.125rem,2.4vw,1.5rem)] leading-[1.4] text-[var(--color-bone)]"
               >
-                Most transformation programs don't fail on technology. They fail on{" "}
-                <span className="text-[var(--color-signal-400)]">traceability</span> — the
-                line from an executive objective to a confirmed financial outcome.
-                Building that line is the work I do.
+                I translate business strategy into{' '}
+                <span className="text-[var(--color-signal-400)]">capabilities and solutions</span>{' '}
+                teams can deliver. At FedEx, I lead demand management across five Agile
+                Release Trains and build AI agents that automate business architecture work.
               </motion.p>
 
               <motion.p {...load(0.24)} className="mt-6 max-w-[60ch] text-[var(--color-fog)]">
-                Ten years across QA, business analysis, product ownership, and now
-                enterprise architecture at FedEx — where I delivered $70.5M in strategic
-                value in FY26. Currently completing an MS in Computer Science at Georgia
-                Tech.
+                With 8+ years in product management and business analysis, my work spans
+                capability modeling, data architecture, and solution design. I reduced
+                demand intake processing time by 40% and manual analysis by 50% through AI
+                automation. My project portfolio contributed an estimated $118M in strategic
+                value in FY25 and $70.5M in FY26. I hold an MBA and am completing an MS in
+                Computer Science at Georgia Tech, with anticipated graduation in 2027.
               </motion.p>
 
               <motion.div {...load(0.3)} className="mt-9 flex flex-wrap gap-2.5">
@@ -322,12 +341,20 @@ function OverviewPage() {
                 </NavLink>
                 <a
                   className="u-btn"
-                  href="/TchaasHAlexanderWright_Resume.pdf"
+                  href="/TchaasHAlexanderWright_Resume.pdf?v=20261005"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <FileText className="h-3.5 w-3.5" aria-hidden="true" />
-                  Résumé
+                  Résumé PDF
+                </a>
+                <a
+                  className="u-btn"
+                  href="/TchaasHAlexanderWright_Resume.docx"
+                  download="TchaasHAlexanderWright_Resume.docx"
+                >
+                  <FileText className="h-3.5 w-3.5" aria-hidden="true" />
+                  Résumé Word
                 </a>
                 <a
                   className="u-btn"
