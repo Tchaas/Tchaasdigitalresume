@@ -330,7 +330,7 @@ function OverviewPage() {
                 capability modeling, data architecture, and solution design. I reduced
                 demand intake processing time by 40% and manual analysis by 50% through AI
                 automation. My project portfolio contributed an estimated $118M in strategic
-                value in FY25 and $70.5M in FY26. I hold an MBA and am completing an MS in
+                value in FY25. I hold an MBA and am completing an MS in
                 Computer Science at Georgia Tech, with anticipated graduation in 2027.
               </motion.p>
 
