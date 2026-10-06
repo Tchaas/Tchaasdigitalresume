@@ -341,7 +341,7 @@ function OverviewPage() {
                 </NavLink>
                 <a
                   className="u-btn"
-                  href="/TchaasHAlexanderWright_Resume.pdf?v=20261005"
+                  href="/TchaasHAlexanderWright_Resume.pdf?v=20261006"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -350,7 +350,7 @@ function OverviewPage() {
                 </a>
                 <a
                   className="u-btn"
-                  href="/TchaasHAlexanderWright_Resume.docx"
+                  href="/TchaasHAlexanderWright_Resume.docx?v=20261006"
                   download="TchaasHAlexanderWright_Resume.docx"
                 >
                   <FileText className="h-3.5 w-3.5" aria-hidden="true" />
