@@ -24,7 +24,7 @@ const ROLES: Role[] = [
     logo: "/icons/work/fedex-logo.png",
     period: "Mar 2025 — Present",
     current: true,
-    metric: { value: "$70.5M", label: "estimated strategic value contributed, FY26" },
+    metric: { value: "$118M", label: "estimated strategic value contributed, FY25" },
     summary:
       "Leading demand management across 5 Agile Release Trains, capability modeling, and solution architecture, with AI agents that automate business architecture work.",
     bullets: [
@@ -38,7 +38,7 @@ const ROLES: Role[] = [
       "Designed and supported architectural definition for 3 major solutions bridging FedEx Express and Ground systems, projected to reduce package handling redundancies by 25% and optimize last-mile delivery.",
       "Authored and presented solution designs and capability documentation for 10+ initiatives, securing stakeholder buy-in and implementation readiness.",
       "Translated enterprise goals into 12 executable solution concepts, working with ARTs to align delivery with the broader business vision.",
-      "Delivered a portfolio of projects contributing an estimated $118M in strategic value in FY25 and $70.5M in FY26.",
+      "Delivered a portfolio of projects contributing an estimated $118M in strategic value in FY25.",
     ],
     tags: ["Business architecture", "AI agent automation", "Data architecture", "Capability modeling", "GCP", "SAFe 6"],
   },
