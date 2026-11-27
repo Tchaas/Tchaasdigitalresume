@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Navigate, NavLink, Route, Routes, useLocation } from "react-router-dom";
-import { ArrowRight, ExternalLink, FileText, Linkedin, Play } from "lucide-react";
+import { ArrowRight, ExternalLink, FileText, Linkedin, Play, Sparkles } from "lucide-react";
 
 import profileImg from "./assets/profile-headshot.webp";
 import { SkillTag } from "./components/SkillTag";
@@ -14,6 +14,7 @@ import { WorkHistoryPage } from "./components/WorkHistoryPage";
 import { ContactPage } from "./components/ContactPage";
 import { ProfessionalDevelopmentPage } from "./components/ProfessionalDevelopmentPage";
 import { ResearchPage } from "./components/ResearchPage";
+import { AskAI, isAskAIEnabled, openAskAI } from "./components/AskAI";
 
 /* ============================================================
    DATA
@@ -320,6 +321,12 @@ function OverviewPage() {
                   Read my research
                   <ArrowRight className="h-3.5 w-3.5" aria-hidden="true" />
                 </NavLink>
+                {isAskAIEnabled && (
+                  <button type="button" className="u-btn" onClick={openAskAI}>
+                    <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
+                    Ask my AI
+                  </button>
+                )}
                 <a
                   className="u-btn"
                   href="/TchaasHAlexanderWright_Resume.pdf"
@@ -605,6 +612,7 @@ export default function App() {
       </main>
 
       <Footer />
+      <AskAI />
     </div>
   );
 }

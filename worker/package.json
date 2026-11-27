@@ -1,0 +1,19 @@
+{
+  "name": "tchaas-resume-ai",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.14.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261127.1",
+    "typescript": "^5.7.2",
+    "wrangler": "^4.169.0"
+  }
+}
