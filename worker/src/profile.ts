@@ -11,15 +11,18 @@
 export const PROFILE = `
 # Tchaas Alexander-Wright, MBA
 
-Business Architect at FedEx. MBA (University of Dayton). Currently completing an
+Business Architect at FedEx with 8+ years in product management and business
+analysis, leading demand management, capability modeling, and solution
+architecture across 5 Agile Release Trains (ARTs). Builds AI agents that automate
+business architecture work. MBA (University of Dayton). Currently completing an
 MS in Computer Science at Georgia Tech (anticipated 2027). In the field since 2015.
 Open to opportunities: technical product management, solutions architecture, and
 enterprise transformation. Open to remote work, full-time and consulting.
 
-Positioning: "Most transformation programs don't fail on technology. They fail on
-traceability — the line from an executive objective to a confirmed financial
-outcome. Building that line is the work I do." Ten years across QA, business
-analysis, product ownership, and now enterprise architecture at FedEx.
+Positioning: "I translate business strategy into capabilities and solutions teams
+can deliver. At FedEx, I lead demand management across five Agile Release Trains
+and build AI agents that automate business architecture work." Career path: QA
+automation → business systems analysis → product ownership → business architecture.
 
 Contact: email tchaasawright@gmail.com · LinkedIn linkedin.com/in/tchaas-alexander-wright
 · GitHub github.com/Tchaas · Site tchaasawright.com (résumé PDF downloadable there).
@@ -36,18 +39,20 @@ against a baseline.
 
 ## Work experience
 
-### Business Architect — FedEx (Apr 2025 – Present)
-Headline: delivered $70.5M in strategic value to FedEx in FY26.
-- Manages incoming business demand across 5 Agile Release Trains (ARTs), keeping prioritization aligned to enterprise strategy.
-- Defines and documents data architecture for new enterprise activity capabilities, enabling scalable, integrated data models.
-- Develops process maps and capability models for current and future-state operations across business units.
-- Leads working sessions to capture cross-functional requirements for volume, routing, and service integration capabilities.
-- Supports architectural definition of solutions bridging FedEx Express and FedEx Ground systems to optimize delivery operations.
-- Creates high-level solution designs and capability documentation for stakeholder approval and implementation readiness.
-- Translates enterprise goals into executable solution concepts and works with ARTs to keep alignment during delivery.
-- Collaborates with enterprise architects and engineering teams on technology solutions aligned to strategic initiatives.
+### Business Architect — FedEx (Mar 2025 – Present)
+Headline: portfolio of projects contributing an estimated $118M in strategic value to FedEx in FY25.
+- Streamlined and automated business demand intake for 5 Agile Release Trains (ARTs), reducing processing time by 40% and keeping prioritized initiatives aligned with enterprise strategy.
+- Led development and implementation of AI agents that automate business architecture tasks, streamlining demand intake and reducing manual analysis by 50%.
+- Used AI to process and structure portfolio data, automating generation of lean business cases and problem statements, which accelerated decisions on new initiatives.
+- Architected and documented a scalable data architecture for new enterprise activity capabilities, integrating 15+ disparate data sources; projected to improve data consistency by 60%.
+- Developed 25+ process maps and capability models for current- and future-state operations, identifying optimization opportunities that contributed to a 15% increase in operational efficiency.
+- Partnered with enterprise architects and engineering teams to evaluate technology solutions, resulting in selection of a new GCP-based platform aligned with FedEx's modernization goals.
+- Led 50+ cross-functional working sessions to capture requirements for volume forecasting, dynamic routing, and service integration.
+- Designed and supported architectural definition of 3 major solutions bridging FedEx Express and FedEx Ground systems, projected to reduce package handling redundancies by 25% and optimize last-mile delivery.
+- Authored and presented solution designs and capability documentation for 10+ key initiatives, securing stakeholder buy-in and implementation readiness.
+- Translated enterprise goals into 12 executable solution concepts, working with ARTs to ensure delivery and alignment.
 
-### Senior Product Owner — FedEx (Oct 2023 – Apr 2025)
+### Senior Product Owner — FedEx (Oct 2023 – Mar 2025)
 - Product Owner for a backend team building agnostic APIs serving multiple business areas and bridging the data gap between FedEx Express and FedEx Ground.
 - Delivered products that removed legacy processes and improved the global network by feeding captured data into the network data lake for analytics.
 - Led a new process combining Express and Ground volume management per zip code for the global network.
@@ -76,16 +81,13 @@ Headline: 16+ features shipped to production.
 - Supported Microsoft Server 2008 R2 and 2016 patching in test environments.
 - Lucidchart diagrams and workflows to determine impacted applications and data flow after changes.
 
-### Senior Business Systems Analyst — FIS (Oct 2019 – Dec 2019)
-- Analyzed technical documentation from American Express, Pulse, Mastercard, and Visa across two development platforms to determine compliance impacts.
-- Coordinated delivery of compliance features against card-network release schedules; managed production releases; supported customer bulletins.
-
-### Business Systems Analyst / Product Owner — FIS (Jul 2017 – Oct 2019)
+### Senior Business Systems Analyst / Product Owner — FIS (Jul 2017 – Dec 2019)
 Headline: 15 IT development projects delivered.
 - Managed and completed 15 IT development projects, documenting changes in Confluence for Production Support.
 - Wrote technical verbiage for project changes and approved final copy before publication; maintained the in-house manual for system updates.
 - Executed code releases across six applications.
 - Drove Agile process improvement for code releases, targeting a 60% reduction in delivery delays.
+- Analyzed technical documentation from American Express, Pulse, Mastercard, and Visa across two development platforms to determine compliance impacts.
 - Facilitated and trained 20+ people on new software functionality.
 
 ### Associate Automation Quality Assurance — Northwestern Mutual (Jun 2015 – Jul 2017)
@@ -112,6 +114,10 @@ Headline: 100+ automation scripts supported.
 4. "Albrecht Wood Interiors (AWI) Analysis" (University of Dayton MBA capstone, 2020, team of six). PESTDGE, Porter's Five Forces, Herfindahl, SWOT, VRIO; recommended financial infrastructure (forecasting, budgeting, KPIs) projecting net income growth from ~$205K to ~$414K over five years, plus a hire/train/retain workforce plan.
 
 ## Skills and where they were applied
+- AI agent automation: FedEx — AI agents cut manual business architecture analysis by 50%; AI-generated lean business cases and problem statements from portfolio data; demand intake automation cut processing time by 40%.
+- Business architecture, capability modeling, solution design: FedEx — 25+ process maps and capability models, 12 solution concepts, designs for 10+ initiatives.
+- Data architecture: FedEx — scalable architecture integrating 15+ data sources.
+- SAFe 6: FedEx — demand management and delivery alignment across 5 ARTs.
 - Product management & roadmapping: FedEx (Business Architect, Sr. PO, PO), Kohl's Payments PM, Bytonomy.
 - Agile / SAFe: demand across 5 ARTs at FedEx; FIS release process improvement (60% delay-reduction target).
 - Requirements, GAP analysis, use cases, process mapping, capability modeling: FedEx.
@@ -122,6 +128,7 @@ Headline: 100+ automation scripts supported.
 - User research / UX / UI: FedEx user interviews with process engineers, partnership with Sr. UX Analyst; Georgia Tech HCI.
 - Facilitation & training: FIS (20+ people trained); FedEx working sessions.
 - Technical writing: FIS in-house manual; FedEx documentation process adopted by 8 teams.
+- Cloud: Google Cloud — FedEx GCP-based platform selection; NovaOne infrastructure.
 - Tools: SQL, Jira, Confluence, Splunk, Lucidchart, Nightwatch.js, Sauce Labs, Cypress, Postman, Google Cloud, CockroachDB, Fivetran, OKTA, GitHub Copilot, JavaScript, Java (coursework), Cisco networking.
-- AI: authored the AI-Augmented Business Architecture framework (AI at each layer, governed by human judgment, NIST AI RMF); uses AI coding tools (GitHub Copilot); this site's assistant is built on Claude.
+- AI: builds AI agents at FedEx that automate business architecture work (see Business Architect role); authored the AI-Augmented Business Architecture framework (AI at each layer, governed by human judgment, NIST AI RMF); uses AI coding tools (GitHub Copilot); this site's assistant is built on Claude.
 `.trim();
