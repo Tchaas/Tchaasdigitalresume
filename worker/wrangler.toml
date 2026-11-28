@@ -3,6 +3,10 @@ main = "src/index.ts"
 compatibility_date = "2026-11-01"
 compatibility_flags = ["nodejs_compat"]
 
+# Served at https://tchaas-resume-ai.tchaasawright-ca5.workers.dev
+workers_dev = true
+preview_urls = false
+
 [vars]
 # Sites allowed to call the assistant. Add your preview URL here if you use one.
 ALLOWED_ORIGINS = "https://tchaasawright.com,https://www.tchaasawright.com,https://tchaas.github.io,http://localhost:5173"
