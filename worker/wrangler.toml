@@ -1,0 +1,21 @@
+name = "tchaas-resume-ai"
+main = "src/index.ts"
+compatibility_date = "2026-11-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Served at https://tchaas-resume-ai.tchaasawright-ca5.workers.dev
+workers_dev = true
+preview_urls = false
+
+[vars]
+# Sites allowed to call the assistant. Add your preview URL here if you use one.
+ALLOWED_ORIGINS = "https://tchaasawright.com,https://www.tchaasawright.com,https://tchaas.github.io,http://localhost:5173"
+
+# 10 requests per minute per visitor IP.
+[[ratelimits]]
+name = "RATE_LIMITER"
+namespace_id = "1001"
+simple = { limit = 10, period = 60 }
+
+# The API key is a secret, never committed:
+#   npx wrangler secret put ANTHROPIC_API_KEY

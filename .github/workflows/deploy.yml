@@ -32,6 +32,10 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          # Set under Settings → Secrets and variables → Actions → Variables.
+          # If unset, the "Ask my AI" assistant is simply hidden.
+          VITE_AI_ENDPOINT: ${{ vars.VITE_AI_ENDPOINT }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
