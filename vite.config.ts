@@ -1,5 +1,5 @@
 
-  import { defineConfig } from 'vite';
+  import { defineConfig, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react-swc';
 import tailwindcss from '@tailwindcss/vite';
 import path from 'path';
@@ -8,9 +8,30 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+/**
+ * Publishes /ai-profile.txt — the AI assistant's knowledge, generated from
+ * src/data on every build so the assistant always matches the site.
+ */
+function aiProfile(): Plugin {
+  return {
+    name: 'ai-profile',
+    async generateBundle() {
+      const { buildAiProfile } = await import('./src/data/aiProfile');
+      this.emitFile({ type: 'asset', fileName: 'ai-profile.txt', source: buildAiProfile() });
+    },
+    configureServer(server) {
+      server.middlewares.use('/ai-profile.txt', async (_req, res) => {
+        const mod = await server.ssrLoadModule('/src/data/aiProfile.ts');
+        res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+        res.end(mod.buildAiProfile());
+      });
+    },
+  };
+}
+
 export default defineConfig({
     base: '/',
-    plugins: [react(), tailwindcss()],
+    plugins: [react(), tailwindcss(), aiProfile()],
     resolve: {
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
       alias: {

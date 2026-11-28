@@ -10,9 +10,13 @@ import { ArrowUp, Briefcase, MessageSquare, RotateCcw, Sparkles, X } from "lucid
  */
 const ENDPOINT = import.meta.env.VITE_AI_ENDPOINT as string | undefined;
 
-/** Dispatch this event anywhere to open the panel (used by the hero CTA). */
+/**
+ * Open the panel from anywhere (hero CTA, Impact page "Ask how" buttons).
+ * Pass a question to send it immediately.
+ */
 export const OPEN_ASK_AI_EVENT = "open-ask-ai";
-export const openAskAI = () => window.dispatchEvent(new Event(OPEN_ASK_AI_EVENT));
+export const openAskAI = (question?: string) =>
+  window.dispatchEvent(new CustomEvent<{ question?: string }>(OPEN_ASK_AI_EVENT, { detail: { question } }));
 export const isAskAIEnabled = Boolean(ENDPOINT);
 
 type Mode = "chat" | "fit";
@@ -40,11 +44,29 @@ export function AskAI() {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const abortRef = useRef<AbortController | null>(null);
 
+  const [pendingQuestion, setPendingQuestion] = useState<string | null>(null);
+
   useEffect(() => {
-    const onOpen = () => setOpen(true);
+    const onOpen = (e: Event) => {
+      setOpen(true);
+      const question = (e as CustomEvent<{ question?: string }>).detail?.question;
+      if (typeof question === "string" && question.trim()) {
+        setMode("chat");
+        setPendingQuestion(question);
+      }
+    };
     window.addEventListener(OPEN_ASK_AI_EVENT, onOpen);
     return () => window.removeEventListener(OPEN_ASK_AI_EVENT, onOpen);
   }, []);
+
+  // Send a question handed over by openAskAI() once any in-flight answer finishes.
+  useEffect(() => {
+    if (!ENDPOINT || !pendingQuestion || busy) return;
+    const question = pendingQuestion;
+    setPendingQuestion(null);
+    void send(question, "chat");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pendingQuestion, busy]);
 
   useEffect(() => {
     if (open) inputRef.current?.focus();
@@ -147,11 +169,13 @@ export function AskAI() {
         <button
           type="button"
           onClick={() => setOpen(true)}
-          className="u-btn u-btn-primary fixed bottom-5 right-5 z-50 shadow-lg shadow-black/40 sm:bottom-6 sm:right-6"
+          className="u-btn u-btn-primary fixed bottom-4 right-4 z-50 shadow-lg shadow-black/40 max-sm:h-12 max-sm:w-12 max-sm:justify-center max-sm:rounded-full max-sm:p-0 sm:bottom-6 sm:right-6"
           aria-haspopup="dialog"
+          aria-label="Ask my AI"
         >
-          <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
-          Ask my AI
+          {/* icon-only on phones so it doesn't cover page text */}
+          <Sparkles className="h-5 w-5 sm:h-3.5 sm:w-3.5" aria-hidden="true" />
+          <span className="hidden sm:inline">Ask my AI</span>
         </button>
       )}
 
@@ -291,7 +315,7 @@ export function AskAI() {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={onChatKey}
                 placeholder="Ask a question…"
-                className="max-h-32 min-h-[2.5rem] flex-1 resize-none rounded border border-[var(--color-line-strong)] bg-[var(--color-ink-900)] px-3 py-2 text-sm text-[var(--color-bone)] placeholder:text-[var(--color-dim)] focus:border-[var(--color-signal-500)] focus:outline-none"
+                className="max-h-32 min-h-[2.5rem] flex-1 resize-none rounded border border-[var(--color-line-strong)] bg-[var(--color-ink-900)] px-3 py-2 text-base text-[var(--color-bone)] sm:text-sm placeholder:text-[var(--color-dim)] focus:border-[var(--color-signal-500)] focus:outline-none"
               />
               <button
                 type="submit"
@@ -315,7 +339,7 @@ export function AskAI() {
                 value={jd}
                 onChange={(e) => setJd(e.target.value)}
                 placeholder="Paste the job description here…"
-                className="resize-none rounded border border-[var(--color-line-strong)] bg-[var(--color-ink-900)] px-3 py-2 text-sm text-[var(--color-bone)] placeholder:text-[var(--color-dim)] focus:border-[var(--color-signal-500)] focus:outline-none"
+                className="resize-none rounded border border-[var(--color-line-strong)] bg-[var(--color-ink-900)] px-3 py-2 text-base text-[var(--color-bone)] sm:text-sm placeholder:text-[var(--color-dim)] focus:border-[var(--color-signal-500)] focus:outline-none"
               />
               <button
                 type="submit"
