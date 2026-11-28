@@ -1,5 +1,19 @@
 import { Heart, Users, Code, Target, TrendingUp, Award, Rocket, DollarSign, BarChart3 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { StatusBadge } from "./StatusBadge";
+import { NOVAONE, BYTONOMY, HABITAT } from "../data/ventures";
+
+/** Optional icons for skill tags (purely decorative). */
+const TAG_ICONS: Record<string, LucideIcon> = {
+  "JavaScript": Code,
+  "Business Strategy": DollarSign,
+  "Financial Modeling": BarChart3,
+  "Team Leadership": Users,
+  "Project Prioritization": Target,
+  "Committee Leadership": Users,
+  "Member Recruitment": TrendingUp,
+  "Strategic Alignment": Target,
+};
 
 export function ProfessionalDevelopmentPage() {
   return (
@@ -49,72 +63,40 @@ export function ProfessionalDevelopmentPage() {
                 <div className="p-6 sm:p-8 lg:col-span-2">
                   <div className="flex items-start justify-between gap-4 mb-4">
                     <div>
-                      <h3 className="text-gray-100 mb-2 text-xl sm:text-2xl">NovaOne Technology</h3>
-                      <p className="text-emerald-400 mb-4 text-sm sm:text-base">Co-Founder & Technology Lead</p>
+                      <h3 className="text-gray-100 mb-2 text-xl sm:text-2xl">{NOVAONE.name}</h3>
+                      <p className="text-emerald-400 mb-4 text-sm sm:text-base">{NOVAONE.role}</p>
                     </div>
                     <div className="flex gap-2">
                       <StatusBadge className="whitespace-nowrap">Active</StatusBadge>
                     </div>
                   </div>
                   
-                  <p className="text-gray-400 mb-6 text-sm sm:text-base">
-                    Co-founded a technology startup focused on developing innovative software solutions. Led the technical development strategy while managing budget, infrastructure, and vendor relationships.
-                  </p>
+                  <p className="text-gray-400 mb-6 text-sm sm:text-base">{NOVAONE.summary}</p>
                   
                   <div className="mb-6">
                     <h4 className="text-gray-200 mb-3 text-base sm:text-lg">Key Contributions</h4>
                     <div className="grid sm:grid-cols-2 gap-3">
-                      <div className="flex items-start gap-2 text-gray-400 text-sm sm:text-base">
-                        <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full mt-2 flex-shrink-0" />
-                        <span>Defined and developed product roadmap through customer engagement</span>
-                      </div>
-                      <div className="flex items-start gap-2 text-gray-400">
-                        <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full mt-2 flex-shrink-0" />
-                        <span>Created wireframes for initial product design</span>
-                      </div>
-                      <div className="flex items-start gap-2 text-gray-400">
-                        <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full mt-2 flex-shrink-0" />
-                        <span>Utilized GitHub Copilot to develop JavaScript logic</span>
-                      </div>
-                      <div className="flex items-start gap-2 text-gray-400">
-                        <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full mt-2 flex-shrink-0" />
-                        <span>Managed startup budget and financial planning</span>
-                      </div>
-                      <div className="flex items-start gap-2 text-gray-400">
-                        <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full mt-2 flex-shrink-0" />
-                        <span>Implemented Google Cloud infrastructure</span>
-                      </div>
-                      <div className="flex items-start gap-2 text-gray-400">
-                        <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full mt-2 flex-shrink-0" />
-                        <span>Established CockroachDB database architecture</span>
-                      </div>
-                      <div className="flex items-start gap-2 text-gray-400">
-                        <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full mt-2 flex-shrink-0" />
-                        <span>Built company website using Squarespace</span>
-                      </div>
-                      <div className="flex items-start gap-2 text-gray-400">
-                        <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full mt-2 flex-shrink-0" />
-                        <span>Negotiated operating agreement and equity distribution</span>
-                      </div>
+                      {NOVAONE.highlights.map((item) => (
+                        <div key={item} className="flex items-start gap-2 text-gray-400 text-sm sm:text-base">
+                          <div className="w-1.5 h-1.5 bg-emerald-400 rounded-full mt-2 flex-shrink-0" />
+                          <span>{item}</span>
+                        </div>
+                      ))}
                     </div>
                   </div>
 
                   <div className="mb-6">
                     <h4 className="text-gray-200 mb-3">Technology Stack</h4>
                     <div className="flex flex-wrap gap-2">
-                      <span className="px-3 py-1 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-lg flex items-center gap-2">
-                        <Code className="w-3 h-3" />
-                        JavaScript
-                      </span>
-                      <span className="px-3 py-1 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-lg">GitHub Copilot</span>
-                      <span className="px-3 py-1 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-lg">Google Cloud</span>
-                      <span className="px-3 py-1 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-lg">CockroachDB</span>
-                      <span className="px-3 py-1 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-lg">Postman</span>
-                      <span className="px-3 py-1 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-lg">Squarespace</span>
-                      <span className="px-3 py-1 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-lg">Fivetran</span>
-                      <span className="px-3 py-1 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-lg">OKTA</span>
-                      <span className="px-3 py-1 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-lg">Cypress</span>
-                      <span className="px-3 py-1 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-lg">Nightwatch.js</span>
+                      {NOVAONE.skills.map((skill) => {
+                        const Icon = TAG_ICONS[skill];
+                        return (
+                          <span key={skill} className="px-3 py-1 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-lg flex items-center gap-2">
+                            {Icon && <Icon className="w-3 h-3" />}
+                            {skill}
+                          </span>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
@@ -142,79 +124,40 @@ export function ProfessionalDevelopmentPage() {
                 <div className="p-6 sm:p-8 lg:col-span-2">
                   <div className="flex items-start justify-between gap-4 mb-4">
                     <div>
-                      <h3 className="text-gray-100 mb-2">Bytonomy Tech</h3>
-                      <p className="text-emerald-400 mb-4">Co-Founder & Product Lead</p>
+                      <h3 className="text-gray-100 mb-2">{BYTONOMY.name}</h3>
+                      <p className="text-emerald-400 mb-4">{BYTONOMY.role}</p>
                     </div>
                     <div className="flex gap-2">
                       <StatusBadge>Active</StatusBadge>
                     </div>
                   </div>
                   
-                  <p className="text-gray-400 mb-6">
-                    Co-founded an innovative fintech startup revolutionizing financial accessibility. Led product strategy, business planning, and go-to-market initiatives while coordinating cross-functional teams.
-                  </p>
+                  <p className="text-gray-400 mb-6">{BYTONOMY.summary}</p>
                   
                   <div className="mb-6">
                     <h4 className="text-gray-200 mb-3">Key Achievements</h4>
                     <div className="grid md:grid-cols-2 gap-3">
-                      <div className="flex items-start gap-2 text-gray-400">
-                        <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mt-2 flex-shrink-0" />
-                        <span>Established company vision through comprehensive business plan</span>
-                      </div>
-                      <div className="flex items-start gap-2 text-gray-400">
-                        <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mt-2 flex-shrink-0" />
-                        <span>Created financial models based on project projections</span>
-                      </div>
-                      <div className="flex items-start gap-2 text-gray-400">
-                        <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mt-2 flex-shrink-0" />
-                        <span>Developed product features and coordinated with Lead Developers</span>
-                      </div>
-                      <div className="flex items-start gap-2 text-gray-400">
-                        <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mt-2 flex-shrink-0" />
-                        <span>Networked and established client relationships</span>
-                      </div>
-                      <div className="flex items-start gap-2 text-gray-400">
-                        <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mt-2 flex-shrink-0" />
-                        <span>Developed marketing plan to attract users</span>
-                      </div>
-                      <div className="flex items-start gap-2 text-gray-400">
-                        <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mt-2 flex-shrink-0" />
-                        <span>Coordinated team building events and work sessions</span>
-                      </div>
-                      <div className="flex items-start gap-2 text-gray-400">
-                        <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mt-2 flex-shrink-0" />
-                        <span>Created functional documentation for features</span>
-                      </div>
-                      <div className="flex items-start gap-2 text-gray-400">
-                        <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mt-2 flex-shrink-0" />
-                        <span>Prioritized projects based on timeliness and complexity</span>
-                      </div>
+                      {BYTONOMY.highlights.map((item) => (
+                        <div key={item} className="flex items-start gap-2 text-gray-400 text-sm sm:text-base">
+                          <div className="w-1.5 h-1.5 bg-blue-400 rounded-full mt-2 flex-shrink-0" />
+                          <span>{item}</span>
+                        </div>
+                      ))}
                     </div>
                   </div>
 
                   <div className="mb-6">
                     <h4 className="text-gray-200 mb-3">Core Competencies</h4>
                     <div className="flex flex-wrap gap-2">
-                      <span className="px-3 py-1 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-lg flex items-center gap-2">
-                        <DollarSign className="w-3 h-3" />
-                        Business Strategy
-                      </span>
-                      <span className="px-3 py-1 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-lg flex items-center gap-2">
-                        <BarChart3 className="w-3 h-3" />
-                        Financial Modeling
-                      </span>
-                      <span className="px-3 py-1 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-lg">Product Management</span>
-                      <span className="px-3 py-1 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-lg">Client Relations</span>
-                      <span className="px-3 py-1 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-lg">Marketing Strategy</span>
-                      <span className="px-3 py-1 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-lg flex items-center gap-2">
-                        <Users className="w-3 h-3" />
-                        Team Leadership
-                      </span>
-                      <span className="px-3 py-1 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-lg">Documentation</span>
-                      <span className="px-3 py-1 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-lg flex items-center gap-2">
-                        <Target className="w-3 h-3" />
-                        Project Prioritization
-                      </span>
+                      {BYTONOMY.skills.map((skill) => {
+                        const Icon = TAG_ICONS[skill];
+                        return (
+                          <span key={skill} className="px-3 py-1 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-lg flex items-center gap-2">
+                            {Icon && <Icon className="w-3 h-3" />}
+                            {skill}
+                          </span>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
@@ -253,8 +196,8 @@ export function ProfessionalDevelopmentPage() {
                 <div className="p-6 sm:p-8 lg:col-span-2">
                   <div className="flex items-start justify-between gap-4 mb-4">
                     <div>
-                      <h3 className="text-gray-100 mb-2">Habitat for Humanity International</h3>
-                      <p className="text-emerald-400 mb-4">Membership Chair - Young Professionals Board</p>
+                      <h3 className="text-gray-100 mb-2">{HABITAT.name}</h3>
+                      <p className="text-emerald-400 mb-4">{HABITAT.role}</p>
                     </div>
                     <div className="flex gap-2">
                       <span className="px-3 py-1 bg-red-500/20 text-red-400 border border-red-500/30 rounded-full flex items-center gap-2">
@@ -264,58 +207,32 @@ export function ProfessionalDevelopmentPage() {
                     </div>
                   </div>
                   
-                  <p className="text-gray-400 mb-6">
-                    Serving on the Young Professionals Board, leading membership growth initiatives and fostering community engagement to support Habitat's mission of building affordable housing worldwide.
-                  </p>
+                  <p className="text-gray-400 mb-6">{HABITAT.summary}</p>
                   
                   <div className="mb-6">
                     <h4 className="text-gray-200 mb-3">Key Responsibilities</h4>
                     <div className="grid md:grid-cols-2 gap-3">
-                      <div className="flex items-start gap-2 text-gray-400">
-                        <div className="w-1.5 h-1.5 bg-red-400 rounded-full mt-2 flex-shrink-0" />
-                        <span>Led committee operations as Membership Chair</span>
-                      </div>
-                      <div className="flex items-start gap-2 text-gray-400">
-                        <div className="w-1.5 h-1.5 bg-red-400 rounded-full mt-2 flex-shrink-0" />
-                        <span>Recruited and engaged new board members</span>
-                      </div>
-                      <div className="flex items-start gap-2 text-gray-400">
-                        <div className="w-1.5 h-1.5 bg-red-400 rounded-full mt-2 flex-shrink-0" />
-                        <span>Ensured alignment with organizational goals</span>
-                      </div>
-                      <div className="flex items-start gap-2 text-gray-400">
-                        <div className="w-1.5 h-1.5 bg-red-400 rounded-full mt-2 flex-shrink-0" />
-                        <span>Maintained comprehensive meeting documentation</span>
-                      </div>
-                      <div className="flex items-start gap-2 text-gray-400">
-                        <div className="w-1.5 h-1.5 bg-red-400 rounded-full mt-2 flex-shrink-0" />
-                        <span>Organized community engagement events</span>
-                      </div>
-                      <div className="flex items-start gap-2 text-gray-400">
-                        <div className="w-1.5 h-1.5 bg-red-400 rounded-full mt-2 flex-shrink-0" />
-                        <span>Developed strategic membership growth plans</span>
-                      </div>
+                      {HABITAT.highlights.map((item) => (
+                        <div key={item} className="flex items-start gap-2 text-gray-400 text-sm sm:text-base">
+                          <div className="w-1.5 h-1.5 bg-red-400 rounded-full mt-2 flex-shrink-0" />
+                          <span>{item}</span>
+                        </div>
+                      ))}
                     </div>
                   </div>
 
                   <div className="mb-6">
                     <h4 className="text-gray-200 mb-3">Leadership Skills</h4>
                     <div className="flex flex-wrap gap-2">
-                      <span className="px-3 py-1 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-lg flex items-center gap-2">
-                        <Users className="w-3 h-3" />
-                        Committee Leadership
-                      </span>
-                      <span className="px-3 py-1 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-lg flex items-center gap-2">
-                        <TrendingUp className="w-3 h-3" />
-                        Member Recruitment
-                      </span>
-                      <span className="px-3 py-1 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-lg flex items-center gap-2">
-                        <Target className="w-3 h-3" />
-                        Strategic Alignment
-                      </span>
-                      <span className="px-3 py-1 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-lg">Community Engagement</span>
-                      <span className="px-3 py-1 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-lg">Documentation</span>
-                      <span className="px-3 py-1 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-lg">Event Planning</span>
+                      {HABITAT.skills.map((skill) => {
+                        const Icon = TAG_ICONS[skill];
+                        return (
+                          <span key={skill} className="px-3 py-1 bg-gray-800/50 text-gray-300 border border-gray-700 rounded-lg flex items-center gap-2">
+                            {Icon && <Icon className="w-3 h-3" />}
+                            {skill}
+                          </span>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>

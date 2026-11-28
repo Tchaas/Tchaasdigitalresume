@@ -2,7 +2,16 @@
 
 Powers the **Ask my AI** panel on tchaasawright.com. Visitors can ask questions
 about Tchaas's background, or paste a job description for a fit analysis.
-Answers come only from `src/profile.ts`, using Claude Haiku 5.5 (`claude-haiku-5-5`), the lowest-cost Claude model.
+Uses Claude Haiku 5.5 (`claude-haiku-5-5`), the lowest-cost Claude model.
+
+## Where the AI's knowledge comes from
+
+The assistant answers only from your site's own data in `src/data/` (experience,
+education, skills, research, ventures, impact metrics). On every site build,
+`vite.config.ts` turns that data into `/ai-profile.txt`, and the worker reads it
+from `PROFILE_URL` (cached 5 minutes). So **updating the website updates the AI** —
+no worker redeploy needed. If the site can't be reached, the worker falls back to
+the copy bundled at its last deploy.
 
 The worker exists so the Anthropic API key never ships to the browser.
 
@@ -35,8 +44,9 @@ VITE_AI_ENDPOINT=http://localhost:8787 npm run dev
 
 ## Keeping it accurate
 
-When the résumé or site changes, edit `src/profile.ts` and run `npm run deploy`.
-Only put information there you're comfortable with any visitor seeing.
+Edit the files in `src/data/` and push — the site and the AI both update. Only put
+information there you're comfortable with any visitor seeing. Redeploy the worker
+(`npm run deploy`) only when worker code changes, or to refresh its fallback copy.
 
 ## Guardrails built in
 

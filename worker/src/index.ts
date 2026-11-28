@@ -1,10 +1,13 @@
 import Anthropic from "@anthropic-ai/sdk";
-import { PROFILE } from "./profile";
+// Same builder the website uses; bundled here as a fallback copy.
+import { buildAiProfile } from "../../src/data/aiProfile";
 
 export interface Env {
   ANTHROPIC_API_KEY: string;
   /** Comma-separated list of origins allowed to call this worker. */
   ALLOWED_ORIGINS: string;
+  /** Live profile published by the site build (src/data → /ai-profile.txt). */
+  PROFILE_URL?: string;
   /** Cloudflare rate-limit binding (see wrangler.toml). Optional in local dev. */
   RATE_LIMITER?: { limit(opts: { key: string }): Promise<{ success: boolean }> };
 }
@@ -32,6 +35,37 @@ const FIT_RULES = `The visitor has pasted a job description. Produce a candid fi
 3. "Gaps or areas to probe" — honest bullets for requirements the profile doesn't clearly cover (say "not shown in the profile" rather than claiming a weakness).
 4. One line suggesting what to ask Tchaas in an interview, and the contact email.
 Be honest; recruiters value accuracy over enthusiasm. Up to ~350 words.`;
+
+/* ------------------------------------------------------------
+   Profile: read live from the site so the AI always matches it.
+   ------------------------------------------------------------ */
+
+const FALLBACK_PROFILE = buildAiProfile();
+const PROFILE_TTL_MS = 5 * 60 * 1000;
+let cachedProfile: { text: string; at: number } | null = null;
+
+async function loadProfile(env: Env): Promise<string> {
+  if (cachedProfile && Date.now() - cachedProfile.at < PROFILE_TTL_MS) return cachedProfile.text;
+  if (env.PROFILE_URL) {
+    try {
+      const res = await fetch(env.PROFILE_URL, {
+        cf: { cacheTtl: 300, cacheEverything: true },
+        signal: AbortSignal.timeout(3000),
+      });
+      const text = res.ok ? await res.text() : "";
+      // Sanity check: must look like the generated profile, within a sane size.
+      if (text.startsWith("# ") && text.includes("## Work experience") && text.length < 100_000) {
+        cachedProfile = { text, at: Date.now() };
+        return text;
+      }
+      console.warn("Profile fetch returned unexpected content; using bundled copy", res.status);
+    } catch (err) {
+      console.warn("Profile fetch failed; using bundled copy", err);
+    }
+  }
+  cachedProfile = { text: FALLBACK_PROFILE, at: Date.now() };
+  return FALLBACK_PROFILE;
+}
 
 function corsHeaders(origin: string | null, env: Env): Record<string, string> {
   const allowed = env.ALLOWED_ORIGINS.split(",").map((o) => o.trim());
@@ -107,12 +141,13 @@ export default {
     const mode: Mode = body.mode === "fit" ? "fit" : "chat";
 
     const client = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY });
+    const profile = await loadProfile(env);
 
     // Static system prompt first (cached across visitors), mode-specific rules after.
     const system: Anthropic.TextBlockParam[] = [
       {
         type: "text",
-        text: `${BASE_RULES}\n\n<profile>\n${PROFILE}\n</profile>`,
+        text: `${BASE_RULES}\n\n<profile>\n${profile}\n</profile>`,
         cache_control: { type: "ephemeral" },
       },
     ];
